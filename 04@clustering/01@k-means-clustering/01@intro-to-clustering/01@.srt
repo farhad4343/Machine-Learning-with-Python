@@ -1,0 +1,463 @@
+1
+00:00:00,000 --> 00:00:02,355
+Hello and welcome.
+
+2
+00:00:02,355 --> 00:00:06,750
+In this video we'll give you a high level introduction to clustering,
+
+3
+00:00:06,750 --> 00:00:10,745
+its applications, and different types of clustering algorithms.
+
+4
+00:00:10,745 --> 00:00:13,810
+Let's get started! Imagine that you have
+
+5
+00:00:13,810 --> 00:00:19,540
+a customer dataset and you need to apply customer segmentation on this historical data.
+
+6
+00:00:19,540 --> 00:00:23,320
+Customer segmentation is the practice of partitioning
+
+7
+00:00:23,320 --> 00:00:28,310
+a customer base into groups of individuals that have similar characteristics.
+
+8
+00:00:28,310 --> 00:00:30,785
+It is a significant strategy,
+
+9
+00:00:30,785 --> 00:00:34,390
+as it allows the business to target specific groups of customers,
+
+10
+00:00:34,390 --> 00:00:38,095
+so as to more effectively allocate marketing resources.
+
+11
+00:00:38,095 --> 00:00:43,675
+For example, one group might contain customers who are high profit and low risk.
+
+12
+00:00:43,675 --> 00:00:48,390
+That is; more likely to purchase products or subscribe for a service.
+
+13
+00:00:48,390 --> 00:00:51,750
+Knowing this information allows a business to devote
+
+14
+00:00:51,750 --> 00:00:55,710
+more time and attention to retaining these customers.
+
+15
+00:00:55,710 --> 00:01:01,255
+Another group might include customers from nonprofit organizations and so on.
+
+16
+00:01:01,255 --> 00:01:07,905
+A general segmentation process is not usually feasible for large volumes of very data,
+
+17
+00:01:07,905 --> 00:01:11,040
+therefore you need an analytical approach to
+
+18
+00:01:11,040 --> 00:01:14,460
+deriving segments and groups from large datasets.
+
+19
+00:01:14,460 --> 00:01:18,440
+Customers can be grouped based on several factors, including;
+
+20
+00:01:18,440 --> 00:01:22,620
+age, gender, interests, spending habits and so on.
+
+21
+00:01:22,620 --> 00:01:26,280
+The important requirement is to use the available data to
+
+22
+00:01:26,280 --> 00:01:30,690
+understand and identify how customers are similar to each other.
+
+23
+00:01:30,690 --> 00:01:34,245
+Let's learn how to divide a set of customers into categories,
+
+24
+00:01:34,245 --> 00:01:36,825
+based on characteristics they share.
+
+25
+00:01:36,825 --> 00:01:39,870
+One of the most adopted approaches that can be used
+
+26
+00:01:39,870 --> 00:01:42,985
+for customer segmentation is clustering.
+
+27
+00:01:42,985 --> 00:01:46,455
+Clustering can group data only unsupervised,
+
+28
+00:01:46,455 --> 00:01:49,575
+based on the similarity of customers to each other.
+
+29
+00:01:49,575 --> 00:01:54,080
+It will partition your customers into mutually exclusive groups.
+
+30
+00:01:54,080 --> 00:01:56,665
+For example, into three clusters.
+
+31
+00:01:56,665 --> 00:02:01,655
+The customers in each cluster are similar to each other demographically.
+
+32
+00:02:01,655 --> 00:02:04,505
+Now we can create a profile for each group,
+
+33
+00:02:04,505 --> 00:02:08,105
+considering the common characteristics of each cluster.
+
+34
+00:02:08,105 --> 00:02:13,500
+For example, the first group made up of affluent and middle aged customers.
+
+35
+00:02:13,500 --> 00:02:15,740
+The second is made up of young,
+
+36
+00:02:15,740 --> 00:02:18,585
+educated and middle income customers,
+
+37
+00:02:18,585 --> 00:02:23,240
+and the third group includes young and low income customers.
+
+38
+00:02:23,240 --> 00:02:26,450
+Finally, we can assign each individual in
+
+39
+00:02:26,450 --> 00:02:30,455
+our dataset to one of these groups or segments of customers.
+
+40
+00:02:30,455 --> 00:02:34,790
+Now imagine that you cross join this segmented dataset with
+
+41
+00:02:34,790 --> 00:02:40,055
+the dataset of the product or services that customers purchase from your company.
+
+42
+00:02:40,055 --> 00:02:45,050
+This information would really help to understand and predict the differences and
+
+43
+00:02:45,050 --> 00:02:50,910
+individual customers preferences and their buying behaviors across various products.
+
+44
+00:02:50,910 --> 00:02:54,620
+Indeed, having this information would allow your company to
+
+45
+00:02:54,620 --> 00:02:59,035
+develop highly personalized experiences for each segment.
+
+46
+00:02:59,035 --> 00:03:03,385
+Customer segmentation is one of the popular usages of clustering.
+
+47
+00:03:03,385 --> 00:03:08,470
+Cluster analysis also has many other applications in different domains.
+
+48
+00:03:08,470 --> 00:03:13,570
+So let's first define clustering and then we'll look at other applications.
+
+49
+00:03:13,570 --> 00:03:18,925
+Clustering means finding clusters in a dataset, unsupervised.
+
+50
+00:03:18,925 --> 00:03:21,670
+So what is a cluster?
+
+51
+00:03:21,670 --> 00:03:25,030
+A cluster is a group of data points or objects in
+
+52
+00:03:25,030 --> 00:03:29,110
+a dataset that are similar to other objects in the group,
+
+53
+00:03:29,110 --> 00:03:32,515
+and dissimilar to datapoints in other clusters.
+
+54
+00:03:32,515 --> 00:03:38,875
+Now the question is," What is different between clustering and classification?"
+
+55
+00:03:38,875 --> 00:03:42,010
+Let's look at our customer dataset again.
+
+56
+00:03:42,010 --> 00:03:46,655
+Classification algorithms predict categorical classed labels.
+
+57
+00:03:46,655 --> 00:03:54,265
+This means assigning instances to predefined classes such as defaulted or not defaulted.
+
+58
+00:03:54,265 --> 00:03:57,805
+For example, if an analyst wants to analyze
+
+59
+00:03:57,805 --> 00:04:02,850
+customer data in order to know which customers might default on their payments,
+
+60
+00:04:02,850 --> 00:04:05,890
+she uses a labeled dataset as
+
+61
+00:04:05,890 --> 00:04:10,955
+training data and uses classification approaches such as a decision tree,
+
+62
+00:04:10,955 --> 00:04:14,240
+Support Vector Machines or SVM,
+
+63
+00:04:14,240 --> 00:04:21,655
+or logistic regression, to predict the default value for a new or unknown customer.
+
+64
+00:04:21,655 --> 00:04:25,900
+Generally speaking, classification is a supervised learning
+
+65
+00:04:25,900 --> 00:04:30,335
+where each training data instance belongs to a particular class.
+
+66
+00:04:30,335 --> 00:04:36,865
+In clustering however, the data is unlabeled and the process is unsupervised.
+
+67
+00:04:36,865 --> 00:04:40,660
+For example, we can use a clustering algorithm such
+
+68
+00:04:40,660 --> 00:04:44,455
+as k-means to group similar customers as mentioned,
+
+69
+00:04:44,455 --> 00:04:46,535
+and assign them to a cluster,
+
+70
+00:04:46,535 --> 00:04:49,490
+based on whether they share similar attributes,
+
+71
+00:04:49,490 --> 00:04:52,315
+such as; age, education, and so on.
+
+72
+00:04:52,315 --> 00:04:55,940
+While I'll be giving you some examples in different industries,
+
+73
+00:04:55,940 --> 00:04:59,385
+I'd like you to think about more samples of clustering.
+
+74
+00:04:59,385 --> 00:05:01,305
+In the retail industry,
+
+75
+00:05:01,305 --> 00:05:05,510
+clustering is used to find associations among customers based on
+
+76
+00:05:05,510 --> 00:05:08,340
+their demographic characteristics and use
+
+77
+00:05:08,340 --> 00:05:12,765
+that information to identify buying patterns of various customer groups.
+
+78
+00:05:12,765 --> 00:05:17,520
+Also, it can be used in recommendation systems to find a group of
+
+79
+00:05:17,520 --> 00:05:22,500
+similar items or similar users and use it for collaborative filtering,
+
+80
+00:05:22,500 --> 00:05:26,200
+to recommend things like books or movies to customers.
+
+81
+00:05:26,200 --> 00:05:29,220
+In banking, analysts find clusters of
+
+82
+00:05:29,220 --> 00:05:34,425
+normal transactions to find the patterns of fraudulent credit card usage.
+
+83
+00:05:34,425 --> 00:05:38,925
+Also they use clustering to identify clusters of customers.
+
+84
+00:05:38,925 --> 00:05:44,045
+For instance, to find loyal customers versus churned customers.
+
+85
+00:05:44,045 --> 00:05:46,080
+In the insurance industry,
+
+86
+00:05:46,080 --> 00:05:49,795
+clustering is used for fraud detection in claims analysis,
+
+87
+00:05:49,795 --> 00:05:55,615
+or to evaluate the insurance risk of certain customers based on their segments.
+
+88
+00:05:55,615 --> 00:05:59,530
+In publication media, clustering is used to auto
+
+89
+00:05:59,530 --> 00:06:04,035
+categorize news based on his content or to tag news,
+
+90
+00:06:04,035 --> 00:06:09,125
+then cluster it so as to recommend similar news articles to readers.
+
+91
+00:06:09,125 --> 00:06:13,720
+In medicine, it can be used to characterize patient behavior,
+
+92
+00:06:13,720 --> 00:06:16,135
+based on their similar characteristics.
+
+93
+00:06:16,135 --> 00:06:22,705
+So as to identify successful medical therapies for different illnesses or in biology,
+
+94
+00:06:22,705 --> 00:06:27,025
+clustering is used to group genes with similar expression patterns
+
+95
+00:06:27,025 --> 00:06:31,990
+or to cluster genetic markers to identify family ties.
+
+96
+00:06:31,990 --> 00:06:36,535
+If you look around you can find many other applications of clustering,
+
+97
+00:06:36,535 --> 00:06:40,735
+but generally clustering can be used for one of the following purposes;
+
+98
+00:06:40,735 --> 00:06:46,905
+exploratory data analysis, summary generation or reducing the scale,
+
+99
+00:06:46,905 --> 00:06:52,705
+outlier detection- especially to be used for fraud detection or noise removal,
+
+100
+00:06:52,705 --> 00:06:59,265
+finding duplicates and datasets or as a pre-processing step for either prediction,
+
+101
+00:06:59,265 --> 00:07:04,050
+other data mining tasks or as part of a complex system.
+
+102
+00:07:04,050 --> 00:07:09,025
+Let's briefly look at different clustering algorithms and their characteristics.
+
+103
+00:07:09,025 --> 00:07:11,860
+Partitioned-based clustering is a group of
+
+104
+00:07:11,860 --> 00:07:15,800
+clustering algorithms that produces fear like clusters,
+
+105
+00:07:15,800 --> 00:07:20,735
+such as; K-Means, K-Medians or Fuzzy c-Means.
+
+106
+00:07:20,735 --> 00:07:23,980
+These algorithms are relatively efficient and are
+
+107
+00:07:23,980 --> 00:07:27,275
+used for medium and large sized databases.
+
+108
+00:07:27,275 --> 00:07:31,750
+Hierarchical clustering algorithms produce trees of clusters,
+
+109
+00:07:31,750 --> 00:07:35,040
+such as agglomerative and divisive algorithms.
+
+110
+00:07:35,040 --> 00:07:38,200
+This group of algorithms are very intuitive
+
+111
+00:07:38,200 --> 00:07:41,960
+and are generally good for use with small size datasets.
+
+112
+00:07:41,960 --> 00:07:47,575
+Density-based clustering algorithms produce arbitrary shaped clusters.
+
+113
+00:07:47,575 --> 00:07:50,260
+They are especially good when dealing with
+
+114
+00:07:50,260 --> 00:07:54,160
+spatial clusters or when there is noise in your data set.
+
+115
+00:07:54,160 --> 00:07:57,670
+For example, the DB scan algorithm.
+
+116
+00:07:57,670 --> 00:08:01,730
+This concludes our video. Thanks for watching!
