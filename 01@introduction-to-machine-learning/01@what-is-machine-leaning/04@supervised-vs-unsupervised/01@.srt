@@ -1,0 +1,387 @@
+1
+00:00:00,000 --> 00:00:02,085
+Hello, and welcome.
+
+2
+00:00:02,085 --> 00:00:08,120
+In this video we'll introduce supervised algorithms, versus unsupervised algorithms.
+
+3
+00:00:08,120 --> 00:00:10,005
+So, let's get started.
+
+4
+00:00:10,005 --> 00:00:13,320
+An easy way to begin grasping the concept of
+
+5
+00:00:13,320 --> 00:00:17,875
+supervised learning is by looking directly at the words that make it up.
+
+6
+00:00:17,875 --> 00:00:20,440
+Supervise, means to observe,
+
+7
+00:00:20,440 --> 00:00:24,940
+and direct the execution of a task, project, or activity.
+
+8
+00:00:24,940 --> 00:00:28,615
+Obviously we aren't going to be supervising a person,
+
+9
+00:00:28,615 --> 00:00:32,680
+instead will be supervising a machine learning model that
+
+10
+00:00:32,680 --> 00:00:36,965
+might be able to produce classification regions like we see here.
+
+11
+00:00:36,965 --> 00:00:41,320
+So, how do we supervise a machine learning model?
+
+12
+00:00:41,320 --> 00:00:44,295
+We do this by teaching the model,
+
+13
+00:00:44,295 --> 00:00:49,735
+that is we load the model with knowledge so that we can have it predict future instances.
+
+14
+00:00:49,735 --> 00:00:53,470
+But this leads to the next question which is,
+
+15
+00:00:53,470 --> 00:00:56,220
+how exactly do we teach a model?
+
+16
+00:00:56,220 --> 00:01:01,360
+We teach the model by training it with some data from a labeled dataset.
+
+17
+00:01:01,360 --> 00:01:04,820
+It's important to note that the data is labeled,
+
+18
+00:01:04,820 --> 00:01:07,740
+and what does a labeled dataset look like?
+
+19
+00:01:07,740 --> 00:01:10,425
+Well, it could look something like this.
+
+20
+00:01:10,425 --> 00:01:14,150
+This example is taken from the cancer dataset.
+
+21
+00:01:14,150 --> 00:01:18,340
+As you can see, we have some historical data for patients,
+
+22
+00:01:18,340 --> 00:01:21,235
+and we already know the class of each row.
+
+23
+00:01:21,235 --> 00:01:25,440
+Let's start by introducing some components of this table.
+
+24
+00:01:25,440 --> 00:01:29,220
+The names up here which are called clump thickness,
+
+25
+00:01:29,220 --> 00:01:31,240
+uniformity of cell size,
+
+26
+00:01:31,240 --> 00:01:33,335
+uniformity of cell shape,
+
+27
+00:01:33,335 --> 00:01:37,950
+marginal adhesion and so on are called attributes.
+
+28
+00:01:37,950 --> 00:01:42,560
+The columns are called features which include the data.
+
+29
+00:01:42,560 --> 00:01:44,570
+If you plot this data,
+
+30
+00:01:44,570 --> 00:01:47,220
+and look at a single data point on a plot,
+
+31
+00:01:47,220 --> 00:01:50,830
+it'll have all of these attributes that would make
+
+32
+00:01:50,830 --> 00:01:55,495
+a row on this chart also referred to as an observation.
+
+33
+00:01:55,495 --> 00:01:58,190
+Looking directly at the value of the data,
+
+34
+00:01:58,190 --> 00:02:00,550
+you can have two kinds.
+
+35
+00:02:00,550 --> 00:02:02,935
+The first is numerical.
+
+36
+00:02:02,935 --> 00:02:05,230
+When dealing with machine learning,
+
+37
+00:02:05,230 --> 00:02:08,040
+the most commonly used data is numeric.
+
+38
+00:02:08,040 --> 00:02:10,410
+The second is categorical,
+
+39
+00:02:10,410 --> 00:02:15,470
+that is its non-numeric because it contains characters rather than numbers.
+
+40
+00:02:15,470 --> 00:02:21,675
+In this case, it's categorical because this dataset is made for classification.
+
+41
+00:02:21,675 --> 00:02:25,710
+There are two types of supervised learning techniques.
+
+42
+00:02:25,710 --> 00:02:29,565
+They are; classification, and regression.
+
+43
+00:02:29,565 --> 00:02:36,300
+Classification is the process of predicting a discrete class label, or category.
+
+44
+00:02:36,300 --> 00:02:39,280
+Regression is the process of predicting
+
+45
+00:02:39,280 --> 00:02:45,290
+a continuous value as opposed to predicting a categorical value in classification.
+
+46
+00:02:45,290 --> 00:02:47,290
+Look at this dataset.
+
+47
+00:02:47,290 --> 00:02:51,070
+It is related to CO2 emissions of different cars.
+
+48
+00:02:51,070 --> 00:02:54,265
+It includes; engine size, cylinders,
+
+49
+00:02:54,265 --> 00:02:59,615
+fuel consumption, and CO2 emission of various models of automobiles.
+
+50
+00:02:59,615 --> 00:03:03,320
+Given this dataset, you can use regression to predict
+
+51
+00:03:03,320 --> 00:03:08,600
+the CO2 emission of a new car by using other fields such as engine size,
+
+52
+00:03:08,600 --> 00:03:10,740
+or number of cylinders.
+
+53
+00:03:10,740 --> 00:03:14,060
+Since we know the meaning of supervised learning,
+
+54
+00:03:14,060 --> 00:03:17,225
+what do you think unsupervised learning means?
+
+55
+00:03:17,225 --> 00:03:21,775
+Yes, unsupervised learning is exactly as it sounds.
+
+56
+00:03:21,775 --> 00:03:24,150
+We do not supervise the model,
+
+57
+00:03:24,150 --> 00:03:27,130
+but we let the model work on its own to discover
+
+58
+00:03:27,130 --> 00:03:30,680
+information that may not be visible to the human eye.
+
+59
+00:03:30,680 --> 00:03:35,985
+It means, the unsupervised algorithm trains on the dataset,
+
+60
+00:03:35,985 --> 00:03:39,705
+and draws conclusions on unlabeled data.
+
+61
+00:03:39,705 --> 00:03:44,709
+Generally speaking, unsupervised learning has more difficult algorithms
+
+62
+00:03:44,709 --> 00:03:49,450
+than supervised learning since we know little to no information about the data,
+
+63
+00:03:49,450 --> 00:03:52,290
+or the outcomes that are to be expected.
+
+64
+00:03:52,290 --> 00:03:56,230
+Dimension reduction, density estimation,
+
+65
+00:03:56,230 --> 00:03:59,640
+market basket analysis, and clustering are
+
+66
+00:03:59,640 --> 00:04:03,825
+the most widely used unsupervised machine learning techniques.
+
+67
+00:04:03,825 --> 00:04:07,940
+Dimensionality reduction, and/or feature selection,
+
+68
+00:04:07,940 --> 00:04:10,560
+play a large role in this by reducing
+
+69
+00:04:10,560 --> 00:04:14,625
+redundant features to make the classification easier.
+
+70
+00:04:14,625 --> 00:04:18,300
+Market basket analysis is a modeling technique
+
+71
+00:04:18,300 --> 00:04:21,930
+based upon the theory that if you buy a certain group of items,
+
+72
+00:04:21,930 --> 00:04:25,070
+you're more likely to buy another group of items.
+
+73
+00:04:25,070 --> 00:04:29,100
+Density estimation is a very simple concept that is
+
+74
+00:04:29,100 --> 00:04:33,510
+mostly used to explore the data to find some structure within it.
+
+75
+00:04:33,510 --> 00:04:35,630
+And finally, clustering.
+
+76
+00:04:35,630 --> 00:04:37,950
+Clustering is considered to be one of
+
+77
+00:04:37,950 --> 00:04:43,490
+the most popular unsupervised machine learning techniques used for grouping data points,
+
+78
+00:04:43,490 --> 00:04:46,090
+or objects that are somehow similar.
+
+79
+00:04:46,090 --> 00:04:50,855
+Cluster analysis has many applications in different domains,
+
+80
+00:04:50,855 --> 00:04:56,185
+whether it be a bank's desire to segment his customers based on certain characteristics,
+
+81
+00:04:56,185 --> 00:04:59,720
+or helping an individual to organize in-group his,
+
+82
+00:04:59,720 --> 00:05:02,065
+or her favorite types of music.
+
+83
+00:05:02,065 --> 00:05:07,475
+Generally speaking though, clustering is used mostly for discovering structure,
+
+84
+00:05:07,475 --> 00:05:10,955
+summarization, and anomaly detection.
+
+85
+00:05:10,955 --> 00:05:15,580
+So, to recap, the biggest difference between supervised,
+
+86
+00:05:15,580 --> 00:05:19,660
+and unsupervised learning is that supervised learning deals with
+
+87
+00:05:19,660 --> 00:05:25,165
+labeled data while unsupervised learning deals with unlabeled data.
+
+88
+00:05:25,165 --> 00:05:27,490
+In supervised learning, we have
+
+89
+00:05:27,490 --> 00:05:31,670
+machine learning algorithms for classification, and regression.
+
+90
+00:05:31,670 --> 00:05:36,195
+In unsupervised learning, we have methods such as clustering.
+
+91
+00:05:36,195 --> 00:05:39,090
+In comparison to supervised learning,
+
+92
+00:05:39,090 --> 00:05:42,160
+unsupervised learning has fewer models,
+
+93
+00:05:42,160 --> 00:05:45,040
+and fewer evaluation methods that can be used
+
+94
+00:05:45,040 --> 00:05:48,635
+to ensure that the outcome of the model is accurate.
+
+95
+00:05:48,635 --> 00:05:51,790
+As such, unsupervised learning creates
+
+96
+00:05:51,790 --> 00:05:54,940
+a less controllable environment as the machine is
+
+97
+00:05:54,940 --> 00:05:59,400
+creating outcomes for us. Thanks for watching.

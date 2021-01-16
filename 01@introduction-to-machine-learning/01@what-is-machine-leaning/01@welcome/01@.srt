@@ -1,0 +1,175 @@
+1
+00:00:00,000 --> 00:00:03,965
+Hello and welcome to machine learning with Python.
+
+2
+00:00:03,965 --> 00:00:07,170
+In this course, you'll learn how machine learning
+
+3
+00:00:07,170 --> 00:00:10,490
+is used in many key fields and industries.
+
+4
+00:00:10,490 --> 00:00:13,585
+For example, in the healthcare industry,
+
+5
+00:00:13,585 --> 00:00:18,060
+data scientists use machine learning to predict whether a human cell that is
+
+6
+00:00:18,060 --> 00:00:23,385
+believed to be at risk of developing cancer is either benign or malignant.
+
+7
+00:00:23,385 --> 00:00:26,070
+As such, machine learning can play
+
+8
+00:00:26,070 --> 00:00:30,055
+a key role in determining a person's health and welfare.
+
+9
+00:00:30,055 --> 00:00:33,820
+You'll also learn about the value of decision trees,
+
+10
+00:00:33,820 --> 00:00:37,885
+and how building a good decision tree from historical data
+
+11
+00:00:37,885 --> 00:00:43,255
+helps doctors to prescribe the proper medicine for each of their patients.
+
+12
+00:00:43,255 --> 00:00:46,750
+You'll learn how bankers use machine learning to make
+
+13
+00:00:46,750 --> 00:00:50,690
+decisions on whether to approve loan applications.
+
+14
+00:00:50,690 --> 00:00:55,890
+You will learn how to use machine learning to do bank customer segmentation,
+
+15
+00:00:55,890 --> 00:01:01,785
+where it is not usually easy to run for huge volumes of varied data.
+
+16
+00:01:01,785 --> 00:01:08,380
+In this course, you'll see how machine learning helps websites such as YouTube, Amazon,
+
+17
+00:01:08,380 --> 00:01:13,960
+or Netflix develop recommendations to their customers about various products or
+
+18
+00:01:13,960 --> 00:01:16,780
+services such as which movies they might be
+
+19
+00:01:16,780 --> 00:01:20,380
+interested in going to see or which books to buy.
+
+20
+00:01:20,380 --> 00:01:24,390
+There is so much that you can do with machine learning.
+
+21
+00:01:24,390 --> 00:01:29,855
+Here, you'll learn how to use popular Python libraries to build your model.
+
+22
+00:01:29,855 --> 00:01:33,460
+For example given an automobile dataset,
+
+23
+00:01:33,460 --> 00:01:36,790
+we can use the scikit-learn library to estimate
+
+24
+00:01:36,790 --> 00:01:42,130
+the CO2 emission of cars using their engine size or cylinders.
+
+25
+00:01:42,130 --> 00:01:45,320
+We can even predict what the CO2 emissions will
+
+26
+00:01:45,320 --> 00:01:48,805
+be for a car that hasn't even been produced yet.
+
+27
+00:01:48,805 --> 00:01:54,515
+We'll see how the telecommunications industries can predict customer churn.
+
+28
+00:01:54,515 --> 00:01:57,145
+You can run and practice the code of
+
+29
+00:01:57,145 --> 00:02:01,990
+all these samples using the built-in lab environment in this course.
+
+30
+00:02:01,990 --> 00:02:07,555
+You don't have to install anything to your computer or do anything on the cloud.
+
+31
+00:02:07,555 --> 00:02:13,285
+All you have to do is click a button to start the lab environment in your browser.
+
+32
+00:02:13,285 --> 00:02:19,585
+The code for the samples is already written using Python language in Jupiter notebooks,
+
+33
+00:02:19,585 --> 00:02:26,440
+and you can run it to see the results or change it to understand the algorithms better.
+
+34
+00:02:26,560 --> 00:02:31,240
+So, what will you be able to achieve by taking this course?
+
+35
+00:02:31,240 --> 00:02:36,045
+Well, by putting in just a few hours a week over the next few weeks,
+
+36
+00:02:36,045 --> 00:02:40,800
+you'll get new skills to add to your resume such as regression,
+
+37
+00:02:40,800 --> 00:02:46,180
+classification, clustering, scikit-learn, and scipy.
+
+38
+00:02:46,180 --> 00:02:49,410
+You'll also get new projects that you can add to
+
+39
+00:02:49,410 --> 00:02:52,505
+your portfolio including cancer detection,
+
+40
+00:02:52,505 --> 00:02:56,670
+predicting economic trends, predicting customer churn,
+
+41
+00:02:56,670 --> 00:03:00,045
+recommendation engines, and many more.
+
+42
+00:03:00,045 --> 00:03:06,450
+You'll also get a certificate in machine learning to prove your competency and share
+
+43
+00:03:06,450 --> 00:03:13,110
+it anywhere you like online or offline such as LinkedIn profiles and social media.
+
+44
+00:03:13,110 --> 00:03:15,530
+So, let's get started.

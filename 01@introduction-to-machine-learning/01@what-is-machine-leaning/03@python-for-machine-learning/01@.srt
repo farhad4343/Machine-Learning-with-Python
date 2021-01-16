@@ -1,0 +1,331 @@
+1
+00:00:00,000 --> 00:00:03,225
+Hello and welcome. In this video,
+
+2
+00:00:03,225 --> 00:00:08,235
+we'll talk about how to use Python for machine learning. So let's get started.
+
+3
+00:00:08,235 --> 00:00:13,605
+Python is a popular and powerful general purpose programming language
+
+4
+00:00:13,605 --> 00:00:18,290
+that recently emerged as the preferred language among data scientists.
+
+5
+00:00:18,290 --> 00:00:24,540
+You can write your machine-learning algorithms using Python and it works very well.
+
+6
+00:00:24,540 --> 00:00:30,765
+However, there are a lot of modules and libraries already implemented in Python,
+
+7
+00:00:30,765 --> 00:00:33,325
+that can make your life much easier.
+
+8
+00:00:33,325 --> 00:00:36,390
+We try to introduce the Python packages in
+
+9
+00:00:36,390 --> 00:00:41,340
+this course and use it in the labs to give you better hands-on experience.
+
+10
+00:00:41,340 --> 00:00:44,400
+The first package is NumPy which is
+
+11
+00:00:44,400 --> 00:00:49,095
+a math library to work with N-dimensional arrays in Python.
+
+12
+00:00:49,095 --> 00:00:54,135
+It enables you to do computation efficiently and effectively.
+
+13
+00:00:54,135 --> 00:00:58,775
+It is better than regular Python because of its amazing capabilities.
+
+14
+00:00:58,775 --> 00:01:02,860
+For example, for working with arrays, dictionaries,
+
+15
+00:01:02,860 --> 00:01:08,635
+functions, datatypes and working with images you need to know NumPy.
+
+16
+00:01:08,635 --> 00:01:15,105
+SciPy is a collection of numerical algorithms and domain specific toolboxes,
+
+17
+00:01:15,105 --> 00:01:18,580
+including signal processing, optimization,
+
+18
+00:01:18,580 --> 00:01:20,890
+statistics and much more.
+
+19
+00:01:20,890 --> 00:01:26,985
+SciPy is a good library for scientific and high performance computation.
+
+20
+00:01:26,985 --> 00:01:32,910
+Matplotlib is a very popular plotting package that provides 2D plotting,
+
+21
+00:01:32,910 --> 00:01:34,980
+as well as 3D plotting.
+
+22
+00:01:34,980 --> 00:01:40,500
+Basic knowledge about these three packages which are built on top of Python,
+
+23
+00:01:40,500 --> 00:01:45,675
+is a good asset for data scientists who want to work with real-world problems.
+
+24
+00:01:45,675 --> 00:01:48,350
+If you're not familiar with these packages,
+
+25
+00:01:48,350 --> 00:01:53,445
+I recommend that you take the data analysis with Python course first.
+
+26
+00:01:53,445 --> 00:01:58,215
+This course covers most of the useful topics in these packages.
+
+27
+00:01:58,215 --> 00:02:02,670
+Pandas library is a very high-level Python library
+
+28
+00:02:02,670 --> 00:02:06,835
+that provides high performance easy to use data structures.
+
+29
+00:02:06,835 --> 00:02:12,640
+It has many functions for data importing, manipulation and analysis.
+
+30
+00:02:12,640 --> 00:02:16,200
+In particular, it offers data structures and
+
+31
+00:02:16,200 --> 00:02:21,360
+operations for manipulating numerical tables and timeseries.
+
+32
+00:02:21,360 --> 00:02:25,680
+SciKit Learn is a collection of algorithms and tools for
+
+33
+00:02:25,680 --> 00:02:28,440
+machine learning which is our focus here
+
+34
+00:02:28,440 --> 00:02:32,225
+and which you'll learn to use within this course.
+
+35
+00:02:32,225 --> 00:02:36,860
+As we'll be using SciKit Learn quite a bit in the labs,
+
+36
+00:02:36,860 --> 00:02:43,120
+let me explain more about it and show you why it is so popular among data scientists.
+
+37
+00:02:43,120 --> 00:02:50,410
+SciKit Learn is a free Machine Learning Library for the Python programming language.
+
+38
+00:02:50,410 --> 00:02:52,910
+It has most of the classification,
+
+39
+00:02:52,910 --> 00:02:55,885
+regression and clustering algorithms,
+
+40
+00:02:55,885 --> 00:02:57,670
+and it's designed to work with
+
+41
+00:02:57,670 --> 00:03:03,575
+a Python numerical and scientific libraries; NumPy and SciPy.
+
+42
+00:03:03,575 --> 00:03:07,600
+Also, it includes very good documentation.
+
+43
+00:03:07,600 --> 00:03:09,210
+On top of that,
+
+44
+00:03:09,210 --> 00:03:12,540
+implementing machine learning models with SciKit Learn
+
+45
+00:03:12,540 --> 00:03:16,735
+is really easy with a few lines of Python code.
+
+46
+00:03:16,735 --> 00:03:21,640
+Most of the tasks that need to be done in a machine learning pipeline are
+
+47
+00:03:21,640 --> 00:03:27,525
+implemented already in Scikit Learn including pre-processing of data,
+
+48
+00:03:27,525 --> 00:03:32,535
+feature selection, feature extraction, train test splitting,
+
+49
+00:03:32,535 --> 00:03:35,830
+defining the algorithms, fitting models,
+
+50
+00:03:35,830 --> 00:03:41,555
+tuning parameters, prediction, evaluation and exporting the model.
+
+51
+00:03:41,555 --> 00:03:47,515
+Let me show you an example of how SciKit Learn looks like when you use this library.
+
+52
+00:03:47,515 --> 00:03:51,000
+You don't have to understand the code for now but just see
+
+53
+00:03:51,000 --> 00:03:55,255
+how easily you can build a model with just a few lines of code.
+
+54
+00:03:55,255 --> 00:04:01,830
+Basically, machine-learning algorithms benefit from standardization of the dataset.
+
+55
+00:04:01,830 --> 00:04:06,695
+If there are some outliers or different scales fields in your dataset,
+
+56
+00:04:06,695 --> 00:04:08,380
+you have to fix them.
+
+57
+00:04:08,380 --> 00:04:14,680
+The pre-processing package of SciKit Learn provides several common utility functions and
+
+58
+00:04:14,680 --> 00:04:17,020
+transformer classes to change
+
+59
+00:04:17,020 --> 00:04:21,795
+raw feature vectors into a suitable form of vector for modeling.
+
+60
+00:04:21,795 --> 00:04:26,020
+You have to split your dataset into train and test sets to
+
+61
+00:04:26,020 --> 00:04:30,575
+train your model and then test the model's accuracy separately.
+
+62
+00:04:30,575 --> 00:04:34,750
+SciKit Learn can split arrays or matrices into
+
+63
+00:04:34,750 --> 00:04:39,605
+random train and test subsets for you in one line of code.
+
+64
+00:04:39,605 --> 00:04:42,270
+Then you can set up your algorithm.
+
+65
+00:04:42,270 --> 00:04:48,660
+For example, you can build a classifier using a support vector classification algorithm.
+
+66
+00:04:48,660 --> 00:04:54,805
+We call our estimator instance CLF and initialize its parameters.
+
+67
+00:04:54,805 --> 00:04:57,700
+Now you can train your model with the train
+
+68
+00:04:57,700 --> 00:05:01,850
+set by passing our training set to the fit method,
+
+69
+00:05:01,850 --> 00:05:05,785
+the CLF model learns to classify unknown cases.
+
+70
+00:05:05,785 --> 00:05:09,825
+Then we can use our test set to run predictions,
+
+71
+00:05:09,825 --> 00:05:15,730
+and the result tells us what the class of each unknown value is.
+
+72
+00:05:15,730 --> 00:05:21,205
+Also, you can use the different metrics to evaluate your model accuracy.
+
+73
+00:05:21,205 --> 00:05:25,830
+For example, using a confusion matrix to show the results.
+
+74
+00:05:25,830 --> 00:05:29,075
+And finally, you save your model.
+
+75
+00:05:29,075 --> 00:05:34,980
+You may find all or some of these machine-learning terms confusing but don't worry,
+
+76
+00:05:34,980 --> 00:05:38,810
+we'll talk about all of these topics in the following videos.
+
+77
+00:05:38,810 --> 00:05:42,960
+The most important point to remember is that the entire process of
+
+78
+00:05:42,960 --> 00:05:49,805
+a machine learning task can be done simply in a few lines of code using SciKit Learn.
+
+79
+00:05:49,805 --> 00:05:52,890
+Please notice that though it is possible,
+
+80
+00:05:52,890 --> 00:05:59,520
+it would not be that easy if you want to do all of this using NumPy or SciPy packages.
+
+81
+00:05:59,520 --> 00:06:03,480
+And of course, it needs much more coding if you use
+
+82
+00:06:03,480 --> 00:06:08,160
+pure Python programming to implement all of these tasks.
+
+83
+00:06:08,160 --> 00:06:10,400
+Thanks for watching.
