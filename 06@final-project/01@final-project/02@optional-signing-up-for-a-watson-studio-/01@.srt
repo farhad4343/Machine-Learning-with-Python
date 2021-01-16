@@ -1,0 +1,280 @@
+1
+00:00:01,860 --> 00:00:05,090
+All right, before we start
+learning about foursquare and
+
+2
+00:00:05,090 --> 00:00:08,850
+their API, let's get some of
+the logistics out of the way.
+
+3
+00:00:08,850 --> 00:00:13,660
+For this project, we will be using
+Watson Studio as the platform
+
+4
+00:00:13,660 --> 00:00:18,450
+to build our code for the project and
+to share it with our peers.
+
+5
+00:00:18,450 --> 00:00:22,100
+So each of you will need to
+create a Watson Studio account
+
+6
+00:00:22,100 --> 00:00:24,420
+in order to proceed with the course.
+
+7
+00:00:24,420 --> 00:00:27,025
+And in this video I will walk
+you through the process.
+
+8
+00:00:30,550 --> 00:00:35,399
+Now for those you who don't know,
+Watson Studio is an awesome platform that
+
+9
+00:00:35,399 --> 00:00:40,174
+provides a suite of tools for data
+other scientists to collaboratively and
+
+10
+00:00:40,174 --> 00:00:45,470
+easily work with application developers,
+and subject matter experts.
+
+11
+00:00:45,470 --> 00:00:48,900
+And to build, train, and
+deploy models at scale.
+
+12
+00:00:48,900 --> 00:00:53,570
+For the sake of this project, we won't
+be doing any extensive machine learning.
+
+13
+00:00:53,570 --> 00:00:55,610
+But by using Watson Studio and
+
+14
+00:00:55,610 --> 00:00:59,630
+learning about its features, you will
+hopefully appreciate what it has to offer.
+
+15
+00:01:02,363 --> 00:01:06,720
+So let's go to the following link that is
+
+16
+00:01:06,720 --> 00:01:11,600
+www.ibm.com/cloud/watson-studio.
+
+17
+00:01:16,685 --> 00:01:20,190
+This will take you to the landing
+page of Watson Studio.
+
+18
+00:01:20,190 --> 00:01:24,510
+Feel free to check it out to
+learn more about its features and
+
+19
+00:01:24,510 --> 00:01:27,040
+what the platform has to offer.
+
+20
+00:01:27,040 --> 00:01:29,840
+You can also watch the video
+to learn more about it.
+
+21
+00:01:33,030 --> 00:01:35,842
+And once you're ready
+to create an account,
+
+22
+00:01:35,842 --> 00:01:38,731
+you can simply click on
+Start your free trial.
+
+23
+00:01:41,860 --> 00:01:45,667
+This will bring you to a page where
+you have to enter your email address.
+
+24
+00:01:47,383 --> 00:01:48,419
+So I'm going to do that.
+
+25
+00:01:55,188 --> 00:01:57,560
+And then check the box
+to accept the terms.
+
+26
+00:01:58,680 --> 00:02:00,151
+Once you've done that, click Next.
+
+27
+00:02:08,170 --> 00:02:13,910
+This will redirect you to a page where you
+have to fill in your personal details.
+
+28
+00:02:13,910 --> 00:02:17,770
+So go ahead and fill in your First and
+Last Name, your Country or
+
+29
+00:02:17,770 --> 00:02:20,410
+Region, and a password for your account.
+
+30
+00:02:22,470 --> 00:02:26,820
+Then you can check the box if you wish
+to remain informed about any products or
+
+31
+00:02:26,820 --> 00:02:27,920
+services by IBM.
+
+32
+00:02:29,680 --> 00:02:31,677
+And then scroll down and
+click Create Account.
+
+33
+00:02:38,463 --> 00:02:43,003
+Awesome, so at this point, you should
+receive an email to confirm your account
+
+34
+00:02:43,003 --> 00:02:45,950
+and to continue with this kind of process.
+
+35
+00:02:45,950 --> 00:02:49,280
+So go to your account and
+follow the instructions in the email.
+
+36
+00:02:49,280 --> 00:02:50,875
+I'm going to do the same thing here.
+
+37
+00:02:50,875 --> 00:02:56,411
+[SOUND] By the way,
+this is just a dummy account
+
+38
+00:02:56,411 --> 00:03:01,958
+that I created for demonstration purposes.
+
+39
+00:03:01,958 --> 00:03:02,770
+There you go.
+
+40
+00:03:02,770 --> 00:03:05,340
+Here is the email from IBM Cloud.
+
+41
+00:03:05,340 --> 00:03:09,107
+So you click on the email and
+you click Confirm Account.
+
+42
+00:03:14,649 --> 00:03:15,410
+Awesome.
+
+43
+00:03:16,650 --> 00:03:19,770
+You should automatically then
+get redirected to this page.
+
+44
+00:03:21,320 --> 00:03:25,720
+Now this page has all the details
+about the IBM privacy policy, so
+
+45
+00:03:25,720 --> 00:03:29,760
+feel free to read it to understand
+the policy and your rights as a user.
+
+46
+00:03:29,760 --> 00:03:32,592
+Then scroll down all the way to
+the bottom and click proceed.
+
+47
+00:03:40,083 --> 00:03:44,390
+Here you can specify what account
+to use and the organization.
+
+48
+00:03:44,390 --> 00:03:48,120
+And the IBM cloud space,
+in case you have more than one.
+
+49
+00:03:48,120 --> 00:03:51,752
+But for most of you, you can simply
+go with the default settings, so
+
+50
+00:03:51,752 --> 00:03:52,982
+just click Continue.
+
+51
+00:03:55,717 --> 00:03:57,968
+Right now we'll take some
+time to create your account.
+
+52
+00:04:00,749 --> 00:04:02,070
+There you go.
+
+53
+00:04:02,070 --> 00:04:05,910
+And that completes the process
+of signing up on Watson Studio.
+
+54
+00:04:05,910 --> 00:04:07,187
+Now you can click Get Started.
+
+55
+00:04:09,261 --> 00:04:12,919
+Once you get to this page,
+you're good to go and
+
+56
+00:04:12,919 --> 00:04:16,950
+you're good to start
+creating new projects.
+
+57
+00:04:16,950 --> 00:04:20,647
+Now in the next video,
+I'll show you how to create a project and
+
+58
+00:04:20,647 --> 00:04:23,457
+how to start creating notebooks
+under that project and
+
+59
+00:04:23,457 --> 00:04:27,117
+how to share them with your peers or
+other collaborators.
+
+60
+00:04:27,117 --> 00:04:28,317
+So I'll see you in the next video.

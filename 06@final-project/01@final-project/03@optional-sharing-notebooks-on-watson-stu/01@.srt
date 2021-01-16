@@ -1,0 +1,735 @@
+1
+00:00:06,020 --> 00:00:08,855
+All right, so in this video,
+
+2
+00:00:08,855 --> 00:00:13,690
+I will walk you through the process of creating a project on Watson Studio for discourse,
+
+3
+00:00:13,690 --> 00:00:17,170
+and I'll show you how to create notebooks under that project,
+
+4
+00:00:17,170 --> 00:00:20,680
+and how to share them with your peers since your submissions in
+
+5
+00:00:20,680 --> 00:00:25,660
+this course will be mainly notebooks shared from your Watson Studio account.
+
+6
+00:00:25,660 --> 00:00:30,410
+It's very important that you familiarize yourself with this process.
+
+7
+00:00:30,770 --> 00:00:33,030
+Let's go to Watson Studio,
+
+8
+00:00:33,030 --> 00:00:34,275
+and log into your account.
+
+9
+00:00:34,275 --> 00:00:36,730
+When you click sign in,
+
+10
+00:00:39,560 --> 00:00:43,180
+you should land on this page.
+
+11
+00:00:43,910 --> 00:00:46,925
+This is the landing page of your account,
+
+12
+00:00:46,925 --> 00:00:51,385
+here you can see a summary and overview of your account for example,
+
+13
+00:00:51,385 --> 00:00:55,315
+any projects that you created or are currently working on,
+
+14
+00:00:55,315 --> 00:00:57,820
+any catalogs that you created so you can
+
+15
+00:00:57,820 --> 00:01:00,969
+organize your assets and your projects into catalogs,
+
+16
+00:01:00,969 --> 00:01:06,050
+or any Watson services that you signed up for and you're currently using,
+
+17
+00:01:07,260 --> 00:01:10,645
+but since you just created your account,
+
+18
+00:01:10,645 --> 00:01:12,910
+then you shouldn't have any projects listed.
+
+19
+00:01:12,910 --> 00:01:15,100
+To create a project,
+
+20
+00:01:15,100 --> 00:01:18,420
+you can simply click on the New project icon,
+
+21
+00:01:18,420 --> 00:01:20,560
+so you click on that.
+
+22
+00:01:20,750 --> 00:01:27,940
+Watson Studio supports different types of projects ranging from very basic projects to
+
+23
+00:01:27,940 --> 00:01:30,520
+very complicated ones involving
+
+24
+00:01:30,520 --> 00:01:35,480
+Deep Learning and Visual Recognition and Data Engineering.
+
+25
+00:01:35,480 --> 00:01:39,000
+The beautiful thing about Watson Studio is that
+
+26
+00:01:39,000 --> 00:01:42,360
+the environment for each project is prepped for you,
+
+27
+00:01:42,360 --> 00:01:46,229
+meaning each project comes with a suite of tools and services
+
+28
+00:01:46,229 --> 00:01:48,780
+pre-installed for your convenience so you don't
+
+29
+00:01:48,780 --> 00:01:51,750
+have to worry and spend time installing them.
+
+30
+00:01:51,750 --> 00:01:55,860
+If you expect to use all of the different concepts shown here,
+
+31
+00:01:55,860 --> 00:01:58,635
+then you can start a complete project.
+
+32
+00:01:58,635 --> 00:02:01,950
+But in our case we're simply analyzing
+
+33
+00:02:01,950 --> 00:02:06,315
+neighborhood data and we're not doing any extensive machine learning work,
+
+34
+00:02:06,315 --> 00:02:09,780
+so creating a Data Science project should suffice.
+
+35
+00:02:09,780 --> 00:02:15,490
+Let's click on Data Science and click okay.
+
+36
+00:02:32,840 --> 00:02:38,230
+Now here, we get to name our project and briefly describe it
+
+37
+00:02:38,230 --> 00:02:43,790
+for a reference or friendly collaborators who will be joining anytime in the future.
+
+38
+00:02:44,310 --> 00:02:54,480
+Let's name our project Coursera_ Capstone and give it a brief description.
+
+39
+00:02:54,480 --> 00:03:02,085
+I'm going to use Coursera Capstone Project-
+
+40
+00:03:02,085 --> 00:03:07,570
+Analyzing Neighborhood Data.
+
+41
+00:03:11,690 --> 00:03:13,955
+Now for this option,
+
+42
+00:03:13,955 --> 00:03:17,335
+if you'll be sharing your code with any external collaborator,
+
+43
+00:03:17,335 --> 00:03:20,200
+which in this case you will since you will be sharing
+
+44
+00:03:20,200 --> 00:03:24,385
+the code with your peers for peer evaluation and assessment,
+
+45
+00:03:24,385 --> 00:03:27,400
+then you can uncheck this box in order to
+
+46
+00:03:27,400 --> 00:03:31,495
+avoid any restriction on who you can share the project with.
+
+47
+00:03:31,495 --> 00:03:35,860
+Now before we can proceed we need to define our storage
+
+48
+00:03:35,860 --> 00:03:40,500
+where all of our files will be stored this involves two steps,
+
+49
+00:03:40,500 --> 00:03:42,090
+in the first step,
+
+50
+00:03:42,090 --> 00:03:44,954
+we will create a storage service,
+
+51
+00:03:44,954 --> 00:03:51,940
+and then in the second step we'll have to come back and refresh for the service tip here.
+
+52
+00:03:53,390 --> 00:03:55,770
+Let's do the first step now,
+
+53
+00:03:55,770 --> 00:03:57,940
+so click on Add.
+
+54
+00:04:00,710 --> 00:04:06,885
+All right this page shows the storage service features and the different plans available,
+
+55
+00:04:06,885 --> 00:04:10,605
+we will go with the default free plan, the Lite plan.
+
+56
+00:04:10,605 --> 00:04:17,890
+It should be more than enough for this course. Click create.
+
+57
+00:04:18,470 --> 00:04:26,745
+You can go with the Default settings and just click Confirm. There you go.
+
+58
+00:04:26,745 --> 00:04:28,860
+Now the service has been created,
+
+59
+00:04:28,860 --> 00:04:32,190
+we can go ahead and Refresh for the service to appear.
+
+60
+00:04:32,190 --> 00:04:33,710
+Click Refresh.
+
+61
+00:04:33,710 --> 00:04:39,170
+There you go and then scroll down and click Create.
+
+62
+00:04:43,820 --> 00:04:47,970
+Awesome, so now that the project has been created.
+
+63
+00:04:47,970 --> 00:04:50,280
+This is the overview page of
+
+64
+00:04:50,280 --> 00:04:57,075
+the project and now we can start creating notebooks to start building our code.
+
+65
+00:04:57,075 --> 00:05:00,375
+The notebooks are referred to as Assets to this project.
+
+66
+00:05:00,375 --> 00:05:06,730
+You can click on Add to project and select Notebook from the drop-down menu.
+
+67
+00:05:09,440 --> 00:05:15,065
+Now on this page we can decide whether we want to create a Blank notebook,
+
+68
+00:05:15,065 --> 00:05:17,150
+or a notebook from a file,
+
+69
+00:05:17,150 --> 00:05:18,670
+or notebook from URL.
+
+70
+00:05:18,670 --> 00:05:22,125
+Now for this course we're starting from scratch,
+
+71
+00:05:22,125 --> 00:05:24,975
+so we'll have to create a Blank notebook.
+
+72
+00:05:24,975 --> 00:05:30,695
+Let's give it a name, I'm going to name it
+
+73
+00:05:30,695 --> 00:05:38,890
+Capstone_Intro_Notebook and you can give it a brief description.
+
+74
+00:05:38,890 --> 00:05:48,365
+I'm just going to say Capstone Project Demonstration Notebook.
+
+75
+00:05:48,365 --> 00:05:55,630
+We will be using a Python 3 kernel and the default server for runtime.
+
+76
+00:05:55,640 --> 00:06:01,750
+So we scroll down and we click Create Notebook.
+
+77
+00:06:11,720 --> 00:06:16,340
+It will take some time to initialize the notebook.
+
+78
+00:06:28,770 --> 00:06:35,870
+Right, almost there, and there you go.
+
+79
+00:06:36,320 --> 00:06:39,470
+Now this is a typical Jupyter Notebook,
+
+80
+00:06:39,470 --> 00:06:42,100
+so all the Notebook features can be used here.
+
+81
+00:06:42,100 --> 00:06:45,265
+You can create Markdown cells for example,
+
+82
+00:06:45,265 --> 00:06:53,850
+let me go ahead and create a title and call this Capstone Project Notebook.
+
+83
+00:06:53,850 --> 00:07:02,050
+Right, you can run code so you can do mathematical operations, so 1+1,
+
+84
+00:07:02,050 --> 00:07:09,140
+or 1+2 it will give you the answer you can execute a print statement,
+
+85
+00:07:10,260 --> 00:07:15,530
+'I am excited about this course!'
+
+86
+00:07:16,970 --> 00:07:20,440
+One thing that's really cool about these notebooks is
+
+87
+00:07:20,440 --> 00:07:24,025
+that if you have a cell that contains
+
+88
+00:07:24,025 --> 00:07:27,760
+your credentials or other sensitive information and you don't want
+
+89
+00:07:27,760 --> 00:07:31,730
+to share that with either your peers or other collaborators,
+
+90
+00:07:31,730 --> 00:07:36,100
+you can simply add a comment to that cell and it will hide the content.
+
+91
+00:07:36,100 --> 00:07:43,850
+See what you do, add a comment using, @hidden_cell,
+
+92
+00:07:45,080 --> 00:07:49,690
+let's say define my credentials,
+
+93
+00:07:50,630 --> 00:07:58,005
+password one, two, three, four, five, right?
+
+94
+00:07:58,005 --> 00:08:01,960
+When you do that and you share the notebook the content will be
+
+95
+00:08:01,960 --> 00:08:06,380
+hidden and I'll show you how the cell looks like after you share the notebook.
+
+96
+00:08:06,860 --> 00:08:10,715
+All right, now to share your notebook you have two options.
+
+97
+00:08:10,715 --> 00:08:13,540
+There is direct share using a link to
+
+98
+00:08:13,540 --> 00:08:19,675
+this notebook and you do that by clicking the share icon.
+
+99
+00:08:19,675 --> 00:08:25,010
+So it opens this model and then you need to activate sharing
+
+100
+00:08:25,010 --> 00:08:29,945
+the notebook and you have three options.
+
+101
+00:08:29,945 --> 00:08:34,810
+You can either share only text and output or you can share
+
+102
+00:08:34,810 --> 00:08:36,500
+all the content excluding
+
+103
+00:08:36,500 --> 00:08:41,940
+sensitive code cells or you share the entire notebook including the code.
+
+104
+00:08:41,940 --> 00:08:44,730
+So just to be safe,
+
+105
+00:08:44,730 --> 00:08:52,865
+it's better to go with the second option and it tells you what this option means.
+
+106
+00:08:52,865 --> 00:08:58,220
+It means that you can exclude code cells containing sensitive data.
+
+107
+00:08:58,220 --> 00:09:04,085
+The way to share that notebook is you just copy this link and you paste it somewhere.
+
+108
+00:09:04,085 --> 00:09:05,990
+So you look you will paste it on
+
+109
+00:09:05,990 --> 00:09:09,270
+the Coursera website where you'll be asked to share a link to
+
+110
+00:09:09,270 --> 00:09:12,190
+the notebook or you can email it or
+
+111
+00:09:12,190 --> 00:09:15,120
+send it to any other collaborator you'll be working with.
+
+112
+00:09:15,120 --> 00:09:17,895
+So this is the first option to share a notebook.
+
+113
+00:09:17,895 --> 00:09:23,035
+Now the other option which is the one I like to use and recommend
+
+114
+00:09:23,035 --> 00:09:28,485
+is the option to share your notebook by publishing it to your GitHub repository.
+
+115
+00:09:28,485 --> 00:09:30,710
+To do that, you will need to do two things.
+
+116
+00:09:30,710 --> 00:09:37,365
+Number one, create a personal access token and add it to your Watson Studio account,
+
+117
+00:09:37,365 --> 00:09:42,165
+and number two is to link your project to your GitHub repository.
+
+118
+00:09:42,165 --> 00:09:45,330
+Now, before we create the personal access token,
+
+119
+00:09:45,330 --> 00:09:47,400
+let me show you where you have to paste it.
+
+120
+00:09:47,400 --> 00:09:55,300
+So go to your profile icon and select settings from the dropdown menu.
+
+121
+00:09:56,960 --> 00:10:00,960
+Now, on your account settings page,
+
+122
+00:10:00,960 --> 00:10:04,620
+select the Integrations tab and this is
+
+123
+00:10:04,620 --> 00:10:09,460
+the field where you have to paste your personal access token.
+
+124
+00:10:09,460 --> 00:10:11,925
+Now to create this token,
+
+125
+00:10:11,925 --> 00:10:15,310
+go to your GitHub account,
+
+126
+00:10:17,000 --> 00:10:22,815
+click on your profile image and select Settings from the dropdown menu,
+
+127
+00:10:22,815 --> 00:10:31,660
+and then on the left menu select Developers Settings and then Personal access tokens.
+
+128
+00:10:31,660 --> 00:10:35,260
+Click Generate new token.
+
+129
+00:10:35,260 --> 00:10:37,380
+Now, give it a name.
+
+130
+00:10:37,380 --> 00:10:42,555
+I'm going to use capstone project
+
+131
+00:10:42,555 --> 00:10:48,405
+token and I'm going to give myself full access.
+
+132
+00:10:48,405 --> 00:10:58,900
+I'm going to select everything here and then click Generate token.
+
+133
+00:10:59,960 --> 00:11:03,370
+Now, make sure to copy this token because
+
+134
+00:11:03,370 --> 00:11:05,960
+as the message says here you won't be able to see it again.
+
+135
+00:11:05,960 --> 00:11:09,655
+So click on this Copy icon. Now, it's copied.
+
+136
+00:11:09,655 --> 00:11:15,000
+Now, go back to your Watson Studio account and paste the token.
+
+137
+00:11:15,220 --> 00:11:24,430
+Now, click Save and your GitHub account is now linked to your Watson Studio account.
+
+138
+00:11:26,240 --> 00:11:33,210
+So the next thing we have to do is to link the project to a GitHub repository.
+
+139
+00:11:33,210 --> 00:11:38,260
+Now, you can either link it to an existing repository or to start
+
+140
+00:11:38,260 --> 00:11:44,880
+a new and clean repository and use it exclusively for this Capstone course.
+
+141
+00:11:44,880 --> 00:11:47,730
+This is the option that I recommend.
+
+142
+00:11:48,920 --> 00:11:55,860
+You can easily do that by simply going into your GitHub account and by clicking on
+
+143
+00:11:55,860 --> 00:11:58,795
+the Add sign next to your profile image or
+
+144
+00:11:58,795 --> 00:12:03,900
+icon and selecting New repository from the dropdown menu.
+
+145
+00:12:04,010 --> 00:12:06,645
+Now, give it a name. I'm going to name it
+
+146
+00:12:06,645 --> 00:12:12,960
+Coursera capstone project and
+
+147
+00:12:12,960 --> 00:12:17,470
+make sure to check the box to initialize the repository with a README file.
+
+148
+00:12:17,470 --> 00:12:19,525
+It's always a good practice to do that,
+
+149
+00:12:19,525 --> 00:12:22,950
+and then click Create repository.
+
+150
+00:12:24,140 --> 00:12:27,810
+Awesome. So now that the repository is created,
+
+151
+00:12:27,810 --> 00:12:30,075
+let's link our project to it.
+
+152
+00:12:30,075 --> 00:12:33,450
+So let's go back to our Watson Studio account.
+
+153
+00:12:33,450 --> 00:12:35,715
+Click on Projects.
+
+154
+00:12:35,715 --> 00:12:41,700
+Now, you should be able to find your project in the dropdown menu so click on it.
+
+155
+00:12:41,700 --> 00:12:44,955
+Then go to the settings tab.
+
+156
+00:12:44,955 --> 00:12:49,215
+Now, scroll down to this section that says connect to
+
+157
+00:12:49,215 --> 00:12:56,260
+a GitHub repository and now enter the address to the repository. So, mine,
+
+158
+00:13:07,940 --> 00:13:12,825
+Cousera capstone project.
+
+159
+00:13:12,825 --> 00:13:19,690
+Once you're done hit Connect and now your project is linked to the GitHub repository.
+
+160
+00:13:19,690 --> 00:13:23,170
+Now, we should be able to simply push any work that we do,
+
+161
+00:13:23,170 --> 00:13:27,410
+any code, any notebooks that we create to this GitHub repository.
+
+162
+00:13:27,410 --> 00:13:29,090
+So let's go back to the notebook.
+
+163
+00:13:29,090 --> 00:13:30,910
+So we close this,
+
+164
+00:13:30,910 --> 00:13:34,140
+and I'll just go to the Assets tab.
+
+165
+00:13:34,140 --> 00:13:38,260
+You should find your notebook under the Notebooks section.
+
+166
+00:13:41,480 --> 00:13:45,160
+Click the Edit icon.
+
+167
+00:13:50,060 --> 00:13:52,455
+Then to publish this notebook,
+
+168
+00:13:52,455 --> 00:13:59,800
+click on the Publish icon and select Publish on GitHub.
+
+169
+00:14:00,370 --> 00:14:04,410
+Now, make sure that all the settings here are
+
+170
+00:14:04,410 --> 00:14:08,105
+the ones that you're comfortable with so make sure that all the content is
+
+171
+00:14:08,105 --> 00:14:17,350
+published except for hidden code cells and then click publish, and that's it.
+
+172
+00:14:18,290 --> 00:14:23,110
+Now, you can go to your repository and view the notebook.
+
+173
+00:14:24,380 --> 00:14:28,090
+Let's go to your GitHub account,
+
+174
+00:14:28,670 --> 00:14:33,115
+refresh the page and there you go.
+
+175
+00:14:33,115 --> 00:14:35,080
+Now, note two things.
+
+176
+00:14:35,080 --> 00:14:42,515
+First, the commit comment says that the notebook was published from datascience.ibm.com.
+
+177
+00:14:42,515 --> 00:14:48,595
+This means that you're Watson Studio account was used to publish this notebook.
+
+178
+00:14:48,595 --> 00:14:51,740
+Now, if you try to view the notebook,
+
+179
+00:14:51,740 --> 00:14:58,690
+the hidden cell now shows the code was removed by DSX for sharing.
+
+180
+00:14:58,690 --> 00:15:02,420
+This is super convenient because instead of
+
+181
+00:15:02,420 --> 00:15:05,985
+worrying about deleting cells with sensitive information,
+
+182
+00:15:05,985 --> 00:15:10,300
+you can simply add the hidden cell comment and that will prevent
+
+183
+00:15:10,300 --> 00:15:16,395
+the content from being revealed to your peers or collaborators, and that's it for now.
+
+184
+00:15:16,395 --> 00:15:18,700
+I'll see you in the next video.

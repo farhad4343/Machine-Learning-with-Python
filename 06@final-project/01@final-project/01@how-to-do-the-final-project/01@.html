@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How to do the final project?</title>
+  <script src="../../../resource/jquery.js"></script>
+  <script>
+    $(function () {
+      var math_spans = $('span[hasMath="true"]');
+      if (math_spans.length > 0) {
+        load_css('../../../resource/katex/katex.min.css');
+        load_js('../../../resource/katex/katex.min.js', function () {
+          math_spans.each(function () {
+            katex.render($(this).text(), this, { throwOnError: false });
+          });
+        });
+      }
+    });
+
+    function load_css(url) {
+      $('<link>')
+        .appendTo('head')
+        .attr({
+          type: 'text/css',
+          rel: 'stylesheet',
+          href: url
+        });
+    }
+
+    function load_js(url, func) {
+      $('<script>')
+        .appendTo('head')
+        .attr({
+          src: url
+        })
+        .on('load', func);
+    }
+  </script>
+  <style>
+    .content-container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    pre, p.asset {
+      padding: 1em;
+      background: #f5f2f0;
+      overflow: auto;
+    }
+
+    p, h1, h2, h3, h4, h5, h6 {
+      font-family: OpenSans,Arial,sans-serif;
+      overflow-wrap: break-word;
+    }
+
+    img {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    table, th, td {
+      border: 1px gray solid;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-container">
+<h3><strong>A- Create an account in Watson Studio if you don't have (If you already have it, jump to step B).</strong></h3><ol type="1"><li><p>Browse into <a href="https://cocl.us/Watson_Studio_ML0101EN_Coursera">IBM Watson Studio</a></p></li><li><p>Click on '<strong>Start your free trial</strong>'</p></li><li><p>Enter your email, and click '<strong>Next</strong>'</p></li><li><p>Enter your Name, and choose a Password. Then click on '<strong>Create Account</strong>'</p></li><li><p>Go to your email, and confirm your account.</p></li><li><p>Click on '<strong>Proceed</strong>'</p></li><li><p>In "<strong>Select Organization and Space</strong>" form, leave everything as default, and click on '<strong>Continue</strong>'</p></li><li><p>It is done. Click on '<strong>Get started!</strong>'</p></li></ol><p><strong>Notice 1:</strong> In case that you cannot sign-up for the IBM Cloud, when signing up for the IBM Cloud account specify your country/region as United States or Canada. This is a temporary workaround to access the free version of the service.</p><p><strong>Notice 2:</strong> If you already have an IBM Cloud account (perhaps you created it for another course) which you created by specifying your country as United States or Canada, and you reached to the usage limit, you have 2 options: 1) Create a new IBM Cloud account with a different email address and country as US or Canada. 2) Use the promo code that gives you 6 months of trial. The details about how to get the promo code is provided in the next section.</p><p></p><p><strong>B- Sign in into Watson Studio and import your notebook</strong></p><ol type="1"><li><p>Sign in into  <a href="https://cocl.us/Watson_Studio_ML0101EN_Coursera">IBM Watson Studio</a></p></li><li><p>Click on '<strong>New Project</strong>'</p></li><li><p>Select '<strong>Data Science</strong>' as type of project.</p></li><li><p>Give a name to your project, and a description for your reference, then setup your project as following and click "<strong>Create</strong>". </p></li></ol><p><strong>Notice 1:</strong> because you are going to share this project with your peer for evaluation, please make sure you have unchecked `<strong>Restrict who can be a collaborator</strong>`</p><p><strong>Notice 2:</strong> You have to create an IBM Object Storage, if you don't have any IBM Object Storage (you can use the free Lite plan)</p><p>5. From the top-right, Click on '<strong>Add to project</strong>', and then select '<strong>Notebook</strong>'. </p><p>6. In the '<strong>New notebook</strong>' form, click on '<strong>From URL</strong>', and enter this Notebook URL: <strong>https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/ML0101ENv3/labs/ML0101EN-Proj-Loan-py-v1.ipynb</strong></p><p>7. Give the notebook a proper name and description and click on `<strong>Create Notebook</strong>` to initialize the notebook</p><h3><strong>C. Complete the notebook</strong></h3><ol type="1"><li><p>Start running the notebook</p></li><li><p>Complete the notebook based on the description in the notebook.</p></li></ol><h3><strong>D. Share the notebook</strong></h3><ol type="1"><li><p>Click on the share icon on the top-right side of your page</p></li><li><p>Activate the `<strong>Share with anyone who has the link</strong>`</p></li><li><p>Select `<strong>All content excluding sensitive code cells</strong>`</p></li><li><p>Copy the link from `<strong>Permalink to view notebook</strong>`</p></li><li><p>Paste the link into the peer-evaluation form.</p></li></ol><h3><strong>Notice:</strong> You can watch the next videos for more details.</h3><p></p><p><strong>Notice: </strong>You can watch the next video for more info about Watson Studio, how to create a project and share it.</p>
+  </div>
+</body>
+</html>
