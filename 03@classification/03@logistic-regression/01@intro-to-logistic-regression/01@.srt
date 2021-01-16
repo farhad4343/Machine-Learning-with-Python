@@ -1,0 +1,471 @@
+1
+00:00:00,350 --> 00:00:04,250
+Hello and welcome. In this video,
+
+2
+00:00:04,250 --> 00:00:06,370
+we'll learn a machine learning method called
+
+3
+00:00:06,370 --> 00:00:09,895
+Logistic Regression which is used for classification.
+
+4
+00:00:09,895 --> 00:00:11,855
+In examining this method,
+
+5
+00:00:11,855 --> 00:00:15,160
+we'll specifically answer these three questions.
+
+6
+00:00:15,160 --> 00:00:17,595
+What is logistic regression?
+
+7
+00:00:17,595 --> 00:00:21,530
+What kind of problems can be solved by logistic regression?
+
+8
+00:00:21,530 --> 00:00:27,240
+In which situations do we use logistic regression? So let's get started.
+
+9
+00:00:27,240 --> 00:00:32,200
+Logistic regression is a statistical and machine learning technique for
+
+10
+00:00:32,200 --> 00:00:37,600
+classifying records of a dataset based on the values of the input fields.
+
+11
+00:00:37,600 --> 00:00:41,390
+Let's say we have a telecommunication dataset that we'd like to
+
+12
+00:00:41,390 --> 00:00:46,085
+analyze in order to understand which customers might leave us next month.
+
+13
+00:00:46,085 --> 00:00:52,130
+This is historical customer data where each row represents one customer.
+
+14
+00:00:52,130 --> 00:00:55,085
+Imagine that you're an analyst at this company
+
+15
+00:00:55,085 --> 00:00:58,605
+and you have to find out who is leaving and why?
+
+16
+00:00:58,605 --> 00:01:01,970
+You'll use the dataset to build a model based on
+
+17
+00:01:01,970 --> 00:01:07,225
+historical records and use it to predict the future churn within the customer group.
+
+18
+00:01:07,225 --> 00:01:10,835
+The dataset includes information about services that
+
+19
+00:01:10,835 --> 00:01:14,965
+each customer has signed up for, customer account information,
+
+20
+00:01:14,965 --> 00:01:19,065
+demographic information about customers like gender and
+
+21
+00:01:19,065 --> 00:01:23,650
+age range and also customers who've left the company within the last month.
+
+22
+00:01:23,650 --> 00:01:26,070
+The column is called churn.
+
+23
+00:01:26,070 --> 00:01:29,460
+We can use logistic regression to build a model for
+
+24
+00:01:29,460 --> 00:01:33,160
+predicting customer churn using the given features.
+
+25
+00:01:33,160 --> 00:01:38,790
+In logistic regression, we use one or more independent variables such as tenure,
+
+26
+00:01:38,790 --> 00:01:43,075
+age and income to predict an outcome, such as churn,
+
+27
+00:01:43,075 --> 00:01:45,330
+which we call the dependent variable
+
+28
+00:01:45,330 --> 00:01:49,390
+representing whether or not customers will stop using the service.
+
+29
+00:01:49,390 --> 00:01:53,350
+Logistic regression is analogous to linear regression,
+
+30
+00:01:53,350 --> 00:01:58,940
+but tries to predict a categorical or discrete target field instead of a numeric one.
+
+31
+00:01:58,940 --> 00:02:02,035
+In linear regression, we might try to predict
+
+32
+00:02:02,035 --> 00:02:06,010
+a continuous value of variables such as the price of a house,
+
+33
+00:02:06,010 --> 00:02:07,485
+blood pressure of a patient,
+
+34
+00:02:07,485 --> 00:02:09,740
+or fuel consumption of a car.
+
+35
+00:02:09,740 --> 00:02:12,005
+But in logistic regression,
+
+36
+00:02:12,005 --> 00:02:17,320
+we predict a variable which is binary such as yes/no, true/false,
+
+37
+00:02:17,320 --> 00:02:21,450
+successful or not successful, pregnant/not pregnant,
+
+38
+00:02:21,450 --> 00:02:26,165
+and so on, all of which can be coded as zero or one.
+
+39
+00:02:26,165 --> 00:02:31,095
+In logistic regression dependent variables should be continuous.
+
+40
+00:02:31,095 --> 00:02:35,530
+If categorical, they should be dummy or indicator coded.
+
+41
+00:02:35,530 --> 00:02:40,375
+This means we have to transform them to some continuous value.
+
+42
+00:02:40,375 --> 00:02:43,390
+Please note that logistic regression can be used for
+
+43
+00:02:43,390 --> 00:02:47,830
+both binary classification and multi-class classification.
+
+44
+00:02:47,830 --> 00:02:50,485
+But for simplicity in this video,
+
+45
+00:02:50,485 --> 00:02:53,605
+we'll focus on binary classification.
+
+46
+00:02:53,605 --> 00:02:59,790
+Let's examine some applications of logistic regression before we explain how they work.
+
+47
+00:02:59,790 --> 00:03:04,910
+As mentioned, logistic regression is a type of classification algorithm,
+
+48
+00:03:04,910 --> 00:03:07,570
+so it can be used in different situations.
+
+49
+00:03:07,570 --> 00:03:10,810
+For example, to predict the probability of a person
+
+50
+00:03:10,810 --> 00:03:14,080
+having a heart attack within a specified time period,
+
+51
+00:03:14,080 --> 00:03:16,510
+based on our knowledge of the person's age,
+
+52
+00:03:16,510 --> 00:03:18,825
+sex and body mass index.
+
+53
+00:03:18,825 --> 00:03:21,940
+Or to predict the chance of mortality and
+
+54
+00:03:21,940 --> 00:03:25,120
+an injured patient or to predict whether a patient has
+
+55
+00:03:25,120 --> 00:03:28,510
+a given disease such as diabetes based on
+
+56
+00:03:28,510 --> 00:03:32,295
+observed characteristics of that patient such as weight,
+
+57
+00:03:32,295 --> 00:03:37,510
+height, blood pressure and results of various blood tests and so on.
+
+58
+00:03:37,510 --> 00:03:39,525
+In a marketing context,
+
+59
+00:03:39,525 --> 00:03:42,730
+we can use it to predict the likelihood of a customer purchasing
+
+60
+00:03:42,730 --> 00:03:47,640
+a product or halting a subscription as we've done in our churn example.
+
+61
+00:03:47,640 --> 00:03:50,440
+We can also use logistic regression to predict
+
+62
+00:03:50,440 --> 00:03:54,665
+the probability of failure of a given process, system or product.
+
+63
+00:03:54,665 --> 00:03:59,575
+We can even use it to predict the likelihood of a homeowner defaulting on a mortgage.
+
+64
+00:03:59,575 --> 00:04:04,975
+These are all good examples of problems that can be solved using logistic regression.
+
+65
+00:04:04,975 --> 00:04:10,420
+Notice that in all these examples not only do we predict the class of each case,
+
+66
+00:04:10,420 --> 00:04:15,635
+we also measure the probability of a case belonging to a specific class.
+
+67
+00:04:15,635 --> 00:04:21,520
+There are different machine algorithms which can classify or estimate a variable.
+
+68
+00:04:21,520 --> 00:04:25,650
+The question is, when should we use logistic regression?
+
+69
+00:04:25,650 --> 00:04:30,629
+Here are four situations in which logistic regression is a good candidate.
+
+70
+00:04:30,629 --> 00:04:37,725
+First, when the target field in your data is categorical or specifically is binary.
+
+71
+00:04:37,725 --> 00:04:40,280
+Such as zero/one, yes/no,
+
+72
+00:04:40,280 --> 00:04:44,595
+churn or no churn, positive/negative and so on.
+
+73
+00:04:44,595 --> 00:04:48,120
+Second, you need the probability of your prediction.
+
+74
+00:04:48,120 --> 00:04:53,775
+For example, if you want to know what the probability is of a customer buying a product.
+
+75
+00:04:53,775 --> 00:04:56,940
+Logistic regression returns a probability score
+
+76
+00:04:56,940 --> 00:05:00,755
+between zero and one for a given sample of data.
+
+77
+00:05:00,755 --> 00:05:04,980
+In fact, logistic regression predicts the probability of
+
+78
+00:05:04,980 --> 00:05:10,595
+that sample and we map the cases to a discrete class based on that probability.
+
+79
+00:05:10,595 --> 00:05:14,280
+Third, if your data is linearly separable.
+
+80
+00:05:14,280 --> 00:05:20,520
+The decision boundary of logistic regression is a line or a plane or a hyper plane.
+
+81
+00:05:20,520 --> 00:05:23,640
+A classifier will classify all the points on
+
+82
+00:05:23,640 --> 00:05:27,450
+one side of the decision boundary as belonging to one class,
+
+83
+00:05:27,450 --> 00:05:31,375
+and all those on the other side as belonging to the other class.
+
+84
+00:05:31,375 --> 00:05:35,530
+For example, if we have just two features and they're
+
+85
+00:05:35,530 --> 00:05:39,520
+not applying any polynomial processing we can obtain
+
+86
+00:05:39,520 --> 00:05:47,710
+an inequality like Theta zero plus Theta 1x1 plus theta 2x2 is greater than zero,
+
+87
+00:05:47,710 --> 00:05:51,070
+which is a half-plane easily plotable.
+
+88
+00:05:51,070 --> 00:05:54,040
+Please note that in using logistic regression,
+
+89
+00:05:54,040 --> 00:06:00,130
+we can also achieve a complex decision boundary using polynomial processing as well,
+
+90
+00:06:00,130 --> 00:06:03,760
+which is out of scope here you'll get more insight from
+
+91
+00:06:03,760 --> 00:06:08,375
+decision boundaries when you understand how logistic regression works.
+
+92
+00:06:08,375 --> 00:06:12,410
+Fourth, you need to understand the impact of a feature.
+
+93
+00:06:12,410 --> 00:06:14,910
+You can select the best features based on
+
+94
+00:06:14,910 --> 00:06:20,230
+the statistical significance of the logistic regression model coefficients or parameters.
+
+95
+00:06:20,230 --> 00:06:23,825
+That is, after finding the optimum parameters,
+
+96
+00:06:23,825 --> 00:06:28,110
+a feature X with the weight Theta one close to zero has
+
+97
+00:06:28,110 --> 00:06:33,785
+a smaller effect on the prediction than features with large absolute values of Theta one.
+
+98
+00:06:33,785 --> 00:06:38,640
+Indeed, it allows us to understand the impact an independent variable
+
+99
+00:06:38,640 --> 00:06:43,940
+has on the dependent variable while controlling other independent variables.
+
+100
+00:06:43,940 --> 00:06:46,650
+Let's look at our dataset again.
+
+101
+00:06:46,650 --> 00:06:52,115
+We defined the independent variables as X and dependent variable as Y.
+
+102
+00:06:52,115 --> 00:06:55,690
+Notice, that for the sake of simplicity we can code
+
+103
+00:06:55,690 --> 00:06:59,415
+the target or dependent values to zero or one.
+
+104
+00:06:59,415 --> 00:07:03,640
+The goal of logistic regression is to build a model to predict
+
+105
+00:07:03,640 --> 00:07:07,420
+the class of each sample which in this case is a customer,
+
+106
+00:07:07,420 --> 00:07:11,270
+as well as the probability of each sample belonging to a class.
+
+107
+00:07:11,270 --> 00:07:15,010
+Given that, let's start to formalize the problem.
+
+108
+00:07:15,010 --> 00:07:21,430
+X is our dataset in the space of real numbers of m by n. That is,
+
+109
+00:07:21,430 --> 00:07:25,385
+of m dimensions or features and n records.
+
+110
+00:07:25,385 --> 00:07:27,935
+Y is the class that we want to predict,
+
+111
+00:07:27,935 --> 00:07:30,890
+which can be either zero or one.
+
+112
+00:07:30,890 --> 00:07:35,395
+Ideally, a logistic regression model so-called Y hat
+
+113
+00:07:35,395 --> 00:07:38,840
+can predict that the class of the customer is one,
+
+114
+00:07:38,840 --> 00:07:40,885
+given its features X.
+
+115
+00:07:40,885 --> 00:07:43,310
+It can also be shown quite easily that
+
+116
+00:07:43,310 --> 00:07:46,620
+the probability of a customer being in class zero can
+
+117
+00:07:46,620 --> 00:07:52,625
+be calculated as one minus the probability that the class of the customer is one.
+
+118
+00:07:52,625 --> 00:07:55,730
+Thanks for watching this video.

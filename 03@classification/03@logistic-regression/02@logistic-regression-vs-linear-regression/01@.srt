@@ -1,0 +1,927 @@
+1
+00:00:00,000 --> 00:00:04,050
+Hello and welcome. In this video,
+
+2
+00:00:04,050 --> 00:00:08,300
+we will learn the difference between linear regression and logistic regression.
+
+3
+00:00:08,300 --> 00:00:11,520
+We go over linear regression and see why it
+
+4
+00:00:11,520 --> 00:00:15,545
+cannot be used properly for some binary classification problems.
+
+5
+00:00:15,545 --> 00:00:18,105
+We also look at the sigmoid function,
+
+6
+00:00:18,105 --> 00:00:22,505
+which is the main part of logistic regression. Let's start.
+
+7
+00:00:22,505 --> 00:00:26,570
+Let's look at the telecommunication dataset again.
+
+8
+00:00:26,570 --> 00:00:31,020
+The goal of logistic regression is to build a model to predict the class of
+
+9
+00:00:31,020 --> 00:00:36,290
+each customer and also the probability of each sample belonging to a class.
+
+10
+00:00:36,290 --> 00:00:39,675
+Ideally, we want to build a model, y hat,
+
+11
+00:00:39,675 --> 00:00:44,460
+that can estimate that the class of a customer is one given its feature is
+
+12
+00:00:44,460 --> 00:00:49,370
+x. I want to emphasize that y is the label's vector,
+
+13
+00:00:49,370 --> 00:00:51,765
+also called actual values,
+
+14
+00:00:51,765 --> 00:00:54,705
+that we would like to predict and y hat
+
+15
+00:00:54,705 --> 00:00:58,460
+is the vector of the predicted values by our model.
+
+16
+00:00:58,460 --> 00:01:01,560
+Mapping the class labels to integer numbers,
+
+17
+00:01:01,560 --> 00:01:05,130
+can we use linear regression to solve this problem?
+
+18
+00:01:05,130 --> 00:01:11,445
+First, let's recall how linear regression works to better understand logistic regression.
+
+19
+00:01:11,445 --> 00:01:14,550
+Forget about the churn prediction for a minute and assume
+
+20
+00:01:14,550 --> 00:01:18,435
+our goal is to predict the income of customers in the dataset.
+
+21
+00:01:18,435 --> 00:01:21,145
+This means that instead of predicting churn,
+
+22
+00:01:21,145 --> 00:01:23,060
+which is a categorical value,
+
+23
+00:01:23,060 --> 00:01:26,610
+let's predict income, which is a continuous value.
+
+24
+00:01:26,610 --> 00:01:28,845
+So, how can we do this?
+
+25
+00:01:28,845 --> 00:01:31,620
+Let's select an independent variable such as
+
+26
+00:01:31,620 --> 00:01:36,205
+customer age and predict the dependent variable such as income.
+
+27
+00:01:36,205 --> 00:01:40,250
+Of course, we can have more features but for the sake of simplicity,
+
+28
+00:01:40,250 --> 00:01:42,355
+let's just take one feature here.
+
+29
+00:01:42,355 --> 00:01:44,490
+We can plot it and show age as
+
+30
+00:01:44,490 --> 00:01:49,335
+an independent variable and income as the target value we would like to predict.
+
+31
+00:01:49,335 --> 00:01:54,595
+With linear regression, you can fit a line or polynomial through the data.
+
+32
+00:01:54,595 --> 00:01:58,200
+We can find this line through training our model or
+
+33
+00:01:58,200 --> 00:02:02,050
+calculating it mathematically based on the sample sets.
+
+34
+00:02:02,050 --> 00:02:05,735
+We'll say, this is a straight line through the samples set.
+
+35
+00:02:05,735 --> 00:02:10,840
+This line has an equation shown as a plus bx1.
+
+36
+00:02:10,840 --> 00:02:15,615
+Now, use this line to predict the continuous value, y.
+
+37
+00:02:15,615 --> 00:02:18,940
+That is, use this line to predict the income of
+
+38
+00:02:18,940 --> 00:02:24,510
+an unknown customer based on his or her age, and it is done.
+
+39
+00:02:24,510 --> 00:02:27,395
+What if we want to predict churn?
+
+40
+00:02:27,395 --> 00:02:29,830
+Can we use the same technique to predict
+
+41
+00:02:29,830 --> 00:02:33,615
+a categorical field such as churn? Okay, let's see.
+
+42
+00:02:33,615 --> 00:02:37,150
+Say, we're given data on customer churn and our goal
+
+43
+00:02:37,150 --> 00:02:40,805
+this time is to predict the churn of customers based on their age.
+
+44
+00:02:40,805 --> 00:02:42,590
+We have a feature,
+
+45
+00:02:42,590 --> 00:02:44,819
+age, denoted as x1,
+
+46
+00:02:44,819 --> 00:02:47,425
+and a categorical feature, churn,
+
+47
+00:02:47,425 --> 00:02:51,700
+with two classes, churn is yes and churn is no.
+
+48
+00:02:51,700 --> 00:02:57,400
+As mentioned, we can map yes and no to integer values zero and one.
+
+49
+00:02:57,400 --> 00:02:59,740
+How can we model it now?
+
+50
+00:02:59,740 --> 00:03:04,429
+Well, graphically, we could represent our data with a scatterplot,
+
+51
+00:03:04,429 --> 00:03:08,530
+but this time, we have only two values for the y-axis.
+
+52
+00:03:08,530 --> 00:03:15,015
+In this plot, class zero is denoted in red and class one is denoted in blue.
+
+53
+00:03:15,015 --> 00:03:18,160
+Our goal here is to make a model based on
+
+54
+00:03:18,160 --> 00:03:22,915
+existing data to predict if a new customer is red or blue.
+
+55
+00:03:22,915 --> 00:03:27,520
+Let's do the same technique that we used for linear regression here to
+
+56
+00:03:27,520 --> 00:03:32,610
+see if we can solve the problem for a categorical attribute such as churn.
+
+57
+00:03:32,610 --> 00:03:38,445
+With linear regression, you again can fit a polynomial through the data,
+
+58
+00:03:38,445 --> 00:03:43,195
+which is shown traditionally as a plus bx.
+
+59
+00:03:43,195 --> 00:03:50,990
+This polynomial can also be shown traditionally as Theta0 plus Theta1 x1.
+
+60
+00:03:50,990 --> 00:03:54,630
+This line has two parameters which are shown with
+
+61
+00:03:54,630 --> 00:03:59,925
+vector Theta where the values of the vector are Theta0 and Theta1.
+
+62
+00:03:59,925 --> 00:04:06,380
+We can also show the equation of this line formally as Theta transpose x.
+
+63
+00:04:06,380 --> 00:04:13,515
+Generally, we can show the equation for a multidimensional space as Theta transpose x,
+
+64
+00:04:13,515 --> 00:04:16,470
+where Theta is the parameters of the line in
+
+65
+00:04:16,470 --> 00:04:22,880
+two-dimensional space or parameters of a plane in three-dimensional space, and so on.
+
+66
+00:04:22,880 --> 00:04:28,360
+As Theta is a vector of parameters and is supposed to be multiplied by x,
+
+67
+00:04:28,360 --> 00:04:32,645
+it is shown conventionally as transpose Theta.
+
+68
+00:04:32,645 --> 00:04:38,840
+Theta is also called the weights factor or confidences of the equation,
+
+69
+00:04:38,840 --> 00:04:40,640
+with both these terms used
+
+70
+00:04:40,640 --> 00:04:46,345
+interchangeably and X is the feature set which represents a customer.
+
+71
+00:04:46,345 --> 00:04:49,035
+Anyway, given a dataset,
+
+72
+00:04:49,035 --> 00:04:53,150
+all the feature sets x Theta parameters can be
+
+73
+00:04:53,150 --> 00:04:57,700
+calculated through an optimization algorithm or mathematically,
+
+74
+00:04:57,700 --> 00:05:00,660
+which results in the equation of the fitting line.
+
+75
+00:05:00,660 --> 00:05:07,295
+For example, the parameters of this line are minus one and 0.1
+
+76
+00:05:07,295 --> 00:05:14,635
+and the equation for the line is minus one plus 0.1 x1.
+
+77
+00:05:14,635 --> 00:05:19,655
+Now, we can use this regression line to predict the churn of a new customer.
+
+78
+00:05:19,655 --> 00:05:23,440
+For example, for our customer or, let's say,
+
+79
+00:05:23,440 --> 00:05:27,275
+a data point with x value of age equals 13,
+
+80
+00:05:27,275 --> 00:05:30,295
+we can plug the value into the line formula
+
+81
+00:05:30,295 --> 00:05:34,150
+and the y value is calculated and returns a number.
+
+82
+00:05:34,150 --> 00:05:36,795
+For instance, for p_1 point,
+
+83
+00:05:36,795 --> 00:05:44,430
+we have Theta transpose x equals minus 1 plus 0.1 times x1,
+
+84
+00:05:44,430 --> 00:05:52,075
+equals minus 1 plus 0.1 times 13, equals 0.3.
+
+85
+00:05:52,075 --> 00:05:54,455
+We can show it on our graph.
+
+86
+00:05:54,455 --> 00:05:57,240
+Now, we can define a threshold here,
+
+87
+00:05:57,240 --> 00:06:01,615
+for example, at 0.5 to define the class.
+
+88
+00:06:01,615 --> 00:06:05,015
+So, we write a rule here for our model,
+
+89
+00:06:05,015 --> 00:06:09,630
+y hat, which allows us to separate class zero from class one.
+
+90
+00:06:09,630 --> 00:06:14,160
+If the value of Theta transpose x is less than 0.5,
+
+91
+00:06:14,160 --> 00:06:16,005
+then the class is zero.
+
+92
+00:06:16,005 --> 00:06:21,190
+Otherwise, if the value of Theta transpose x is more than 0.5,
+
+93
+00:06:21,190 --> 00:06:23,270
+then the class is one.
+
+94
+00:06:23,270 --> 00:06:27,605
+Because our customers y value is less than the threshold,
+
+95
+00:06:27,605 --> 00:06:31,490
+we can say it belongs to class zero based on our model.
+
+96
+00:06:31,490 --> 00:06:33,725
+But there is one problem here.
+
+97
+00:06:33,725 --> 00:06:38,040
+What is the probability that this customer belongs to class zero?
+
+98
+00:06:38,040 --> 00:06:42,270
+As you can see, it's not the best model to solve this problem.
+
+99
+00:06:42,270 --> 00:06:46,280
+Also, there are some other issues which verify that
+
+100
+00:06:46,280 --> 00:06:51,264
+linear regression is not the proper method for classification problems.
+
+101
+00:06:51,264 --> 00:06:56,870
+So, as mentioned, if we use the regression line to calculate the class of a point,
+
+102
+00:06:56,870 --> 00:07:02,590
+it always returns a number such as three or negative two, and so on.
+
+103
+00:07:02,590 --> 00:07:05,660
+Then, we should use a threshold, for example,
+
+104
+00:07:05,660 --> 00:07:11,150
+0.5, to assign that point to either class of zero or one.
+
+105
+00:07:11,150 --> 00:07:14,835
+This threshold works as a step function that
+
+106
+00:07:14,835 --> 00:07:19,435
+outputs zero or one regardless of how big or small,
+
+107
+00:07:19,435 --> 00:07:22,480
+positive or negative the input is.
+
+108
+00:07:22,480 --> 00:07:24,955
+So, using the threshold,
+
+109
+00:07:24,955 --> 00:07:27,510
+we can find the class of a record.
+
+110
+00:07:27,510 --> 00:07:29,610
+Notice that in the step function,
+
+111
+00:07:29,610 --> 00:07:31,850
+no matter how big the value is,
+
+112
+00:07:31,850 --> 00:07:34,320
+as long as it's greater than 0.5,
+
+113
+00:07:34,320 --> 00:07:38,075
+it simply equals one and vice versa.
+
+114
+00:07:38,075 --> 00:07:41,650
+Regardless of how small the value y is,
+
+115
+00:07:41,650 --> 00:07:45,605
+the output would be zero if it is less than 0.5.
+
+116
+00:07:45,605 --> 00:07:48,650
+In other words, there is no difference between
+
+117
+00:07:48,650 --> 00:07:52,125
+a customer who has a value of one or 1,000.
+
+118
+00:07:52,125 --> 00:07:54,395
+The outcome would be one.
+
+119
+00:07:54,395 --> 00:07:57,110
+Instead of having this step function,
+
+120
+00:07:57,110 --> 00:08:00,260
+wouldn't it be nice if we had a smoother line,
+
+121
+00:08:00,260 --> 00:08:04,025
+one that would project these values between zero and one?
+
+122
+00:08:04,025 --> 00:08:07,070
+Indeed, the existing method does not really
+
+123
+00:08:07,070 --> 00:08:10,395
+give us the probability of a customer belonging to a class,
+
+124
+00:08:10,395 --> 00:08:12,344
+which is very desirable.
+
+125
+00:08:12,344 --> 00:08:17,160
+We need a method that can give us the probability of falling in the class as well.
+
+126
+00:08:17,160 --> 00:08:20,855
+So, what is the scientific solution here?
+
+127
+00:08:20,855 --> 00:08:24,930
+Well, if instead of using Theta transpose x,
+
+128
+00:08:24,930 --> 00:08:28,064
+we use a specific function called sigmoid,
+
+129
+00:08:28,064 --> 00:08:32,910
+then sigmoid of Theta transpose x gives us the probability of
+
+130
+00:08:32,910 --> 00:08:38,055
+a point belonging to a class instead of the value of y directly.
+
+131
+00:08:38,055 --> 00:08:41,200
+I'll explain this sigmoid function in a second,
+
+132
+00:08:41,200 --> 00:08:44,845
+but for now, please except that it will do the trick.
+
+133
+00:08:44,845 --> 00:08:49,540
+Instead of calculating the value of Theta transpose x directly,
+
+134
+00:08:49,540 --> 00:08:56,180
+it returns the probability that a Theta transpose x is very big or very small.
+
+135
+00:08:56,180 --> 00:08:59,830
+It always returns a value between 0 and 1,
+
+136
+00:08:59,830 --> 00:09:04,610
+depending on how large the Theta transpose x actually is.
+
+137
+00:09:04,610 --> 00:09:08,990
+Now, our model is sigmoid of Theta transpose x,
+
+138
+00:09:08,990 --> 00:09:13,570
+which represents the probability that the output is 1 given x.
+
+139
+00:09:13,570 --> 00:09:15,685
+Now, the question is,
+
+140
+00:09:15,685 --> 00:09:18,285
+what is the sigmoid function?
+
+141
+00:09:18,285 --> 00:09:22,500
+Let me explain in detail what sigmoid really is.
+
+142
+00:09:22,500 --> 00:09:26,540
+The sigmoid function, also called the logistic function,
+
+143
+00:09:26,540 --> 00:09:29,230
+resembles the step function and is used by
+
+144
+00:09:29,230 --> 00:09:32,730
+the following expression in the logistic regression.
+
+145
+00:09:32,730 --> 00:09:36,675
+The sigmoid function looks a bit complicated at first,
+
+146
+00:09:36,675 --> 00:09:39,490
+but don't worry about remembering this equation,
+
+147
+00:09:39,490 --> 00:09:42,175
+it'll make sense to you after working with it.
+
+148
+00:09:42,175 --> 00:09:44,925
+Notice that in the sigmoid equation,
+
+149
+00:09:44,925 --> 00:09:48,270
+when Theta transpose x gets very big,
+
+150
+00:09:48,270 --> 00:09:53,385
+the e power minus Theta transpose x in the denominator of the fraction
+
+151
+00:09:53,385 --> 00:09:58,960
+becomes almost 0 and the value of the sigmoid function gets closer to 1.
+
+152
+00:09:58,960 --> 00:10:02,490
+If Theta transpose x is very small,
+
+153
+00:10:02,490 --> 00:10:05,770
+the sigmoid function gets closer to 0.
+
+154
+00:10:05,770 --> 00:10:08,870
+Depicting on the in sigmoid plot,
+
+155
+00:10:08,870 --> 00:10:11,600
+when Theta transpose x gets bigger,
+
+156
+00:10:11,600 --> 00:10:15,320
+the value of the sigmoid function gets closer to 1.
+
+157
+00:10:15,320 --> 00:10:19,419
+Also, if the Theta transpose x is very small,
+
+158
+00:10:19,419 --> 00:10:22,265
+the sigmoid function gets closer to 0.
+
+159
+00:10:22,265 --> 00:10:27,820
+So, the sigmoid functions output is always between 0 and 1,
+
+160
+00:10:27,820 --> 00:10:31,915
+which makes it proper to interpret the results as probabilities.
+
+161
+00:10:31,915 --> 00:10:36,875
+It is obvious that when the outcome of the sigmoid function gets closer to 1,
+
+162
+00:10:36,875 --> 00:10:41,650
+the probability of y equals 1 given x goes up.
+
+163
+00:10:41,650 --> 00:10:45,890
+In contrast, when the sigmoid value is closer to 0,
+
+164
+00:10:45,890 --> 00:10:50,830
+the probability of y equals 1 given x is very small.
+
+165
+00:10:50,830 --> 00:10:55,660
+So what is the output of our model when we use the sigmoid function?
+
+166
+00:10:55,660 --> 00:11:01,105
+In logistic regression, we model the probability that an input, x,
+
+167
+00:11:01,105 --> 00:11:04,530
+belongs to the default class y equals 1,
+
+168
+00:11:04,530 --> 00:11:10,125
+and we can write this formally as probability of y equals 1 given x.
+
+169
+00:11:10,125 --> 00:11:13,880
+We can also write probability of y belongs to
+
+170
+00:11:13,880 --> 00:11:20,650
+class 0 given x is 1 minus probability of y equals 1 given x.
+
+171
+00:11:20,650 --> 00:11:25,770
+For example, the probability of a customer staying with the company can be
+
+172
+00:11:25,770 --> 00:11:31,220
+shown as probability of churn equals 1 given a customer's income and age,
+
+173
+00:11:31,220 --> 00:11:34,630
+which can be, for instance, 0.8.
+
+174
+00:11:34,630 --> 00:11:40,475
+The probability of churn is 0 for the same customer given a customer's income and
+
+175
+00:11:40,475 --> 00:11:47,020
+age can be calculated as 1 minus 0.8 equals 0.2.
+
+176
+00:11:47,020 --> 00:11:52,630
+So, now our job is to train the model to set its parameter values in
+
+177
+00:11:52,630 --> 00:11:59,085
+such a way that our model is a good estimate of probability of y equals 1 given x.
+
+178
+00:11:59,085 --> 00:12:02,525
+In fact, this is what a good classifier model
+
+179
+00:12:02,525 --> 00:12:06,415
+built by logistic regression is supposed to do for us.
+
+180
+00:12:06,415 --> 00:12:10,960
+Also, it should be a good estimate of probability of y belongs to
+
+181
+00:12:10,960 --> 00:12:17,520
+class 0 given x that can be shown as 1 minus sigmoid of Theta transpose x.
+
+182
+00:12:17,520 --> 00:12:19,415
+Now, the question is,
+
+183
+00:12:19,415 --> 00:12:21,495
+how can we achieve this?
+
+184
+00:12:21,495 --> 00:12:24,535
+We can find Theta through the training process.
+
+185
+00:12:24,535 --> 00:12:27,660
+So, let's see what the training process is.
+
+186
+00:12:27,660 --> 00:12:31,230
+Step one, initialize Theta vector
+
+187
+00:12:31,230 --> 00:12:34,800
+with random values as with most machine learning algorithms.
+
+188
+00:12:34,800 --> 00:12:37,995
+For example, minus 1 or 2.
+
+189
+00:12:37,995 --> 00:12:41,235
+Step two, calculate the model output,
+
+190
+00:12:41,235 --> 00:12:44,035
+which is sigmoid of Theta transpose x.
+
+191
+00:12:44,035 --> 00:12:46,525
+For example, customer in your training set.
+
+192
+00:12:46,525 --> 00:12:51,105
+X and Theta transpose x is the feature vector values.
+
+193
+00:12:51,105 --> 00:12:55,075
+For example, the age and income of the customer, for instance,
+
+194
+00:12:55,075 --> 00:13:01,430
+2 and 5, and Theta is the confidence or weight that you've set in the previous step.
+
+195
+00:13:01,430 --> 00:13:05,045
+The output of this equation is the prediction value,
+
+196
+00:13:05,045 --> 00:13:09,840
+in other words, the probability that the customer belongs to class 1.
+
+197
+00:13:09,840 --> 00:13:13,530
+Step three, compare the output of our model,
+
+198
+00:13:13,530 --> 00:13:16,015
+y hat, which could be a value of,
+
+199
+00:13:16,015 --> 00:13:20,395
+let's say, 0.7, with the actual label of the customer,
+
+200
+00:13:20,395 --> 00:13:23,435
+which is for example, 1, for churn.
+
+201
+00:13:23,435 --> 00:13:27,930
+Then, record the difference as our model's error for this customer,
+
+202
+00:13:27,930 --> 00:13:31,075
+which would be 1 minus 0.7,
+
+203
+00:13:31,075 --> 00:13:33,880
+which of course, equals 0.3.
+
+204
+00:13:33,880 --> 00:13:40,160
+This is the error for only one customer out of all the customers in the training set.
+
+205
+00:13:40,160 --> 00:13:43,720
+Step four, calculate the error for
+
+206
+00:13:43,720 --> 00:13:48,700
+all customers as we did in the previous steps and add up these errors.
+
+207
+00:13:48,700 --> 00:13:54,925
+The total error is the cost of your model and is calculated by the models cost function.
+
+208
+00:13:54,925 --> 00:13:57,245
+The cost function, by the way,
+
+209
+00:13:57,245 --> 00:14:01,320
+basically represents how to calculate the error of the model which is
+
+210
+00:14:01,320 --> 00:14:06,255
+the difference between the actual and the models predicted values.
+
+211
+00:14:06,255 --> 00:14:11,565
+So, the cost shows how poorly the model is estimating the customers labels.
+
+212
+00:14:11,565 --> 00:14:14,075
+Therefore, the lower the cost,
+
+213
+00:14:14,075 --> 00:14:18,585
+the better the model is at estimating the customers labels correctly.
+
+214
+00:14:18,585 --> 00:14:23,025
+So, what we want to do is to try to minimize this cost.
+
+215
+00:14:23,025 --> 00:14:28,745
+Step five, but because the initial values for Theta were chosen randomly,
+
+216
+00:14:28,745 --> 00:14:32,330
+it's very likely that the cost function is very high,
+
+217
+00:14:32,330 --> 00:14:37,385
+so we change the Theta in such a way to hopefully reduce the total cost.
+
+218
+00:14:37,385 --> 00:14:41,470
+Step six, after changing the values of Theta,
+
+219
+00:14:41,470 --> 00:14:43,520
+we go back to step two,
+
+220
+00:14:43,520 --> 00:14:48,840
+then we start another iteration and calculate the cost of the model again.
+
+221
+00:14:48,840 --> 00:14:51,925
+We keep doing those steps over and over,
+
+222
+00:14:51,925 --> 00:14:56,390
+changing the values of Theta each time until the cost is low enough.
+
+223
+00:14:56,390 --> 00:14:59,715
+So, this brings up two questions.
+
+224
+00:14:59,715 --> 00:15:02,250
+First, how can we change the values of
+
+225
+00:15:02,250 --> 00:15:05,640
+Theta so that the cost is reduced across iterations?
+
+226
+00:15:05,640 --> 00:15:09,430
+Second, when should we stop the iterations?
+
+227
+00:15:09,430 --> 00:15:12,740
+There are different ways to change the values of Theta,
+
+228
+00:15:12,740 --> 00:15:16,460
+but one of the most popular ways is gradient descent.
+
+229
+00:15:16,460 --> 00:15:20,550
+Also, there are various ways to stop iterations,
+
+230
+00:15:20,550 --> 00:15:23,870
+but essentially you stop training by calculating
+
+231
+00:15:23,870 --> 00:15:27,975
+the accuracy of your model and stop it when it's satisfactory.
+
+232
+00:15:27,975 --> 00:15:30,930
+Thanks for watching this video.

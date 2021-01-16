@@ -1,0 +1,231 @@
+1
+00:00:00,000 --> 00:00:02,290
+Hello, in this video,
+
+2
+00:00:02,290 --> 00:00:04,860
+we'll give you an introduction to classification.
+
+3
+00:00:04,860 --> 00:00:06,380
+So let's get started.
+
+4
+00:00:06,380 --> 00:00:09,420
+In machine learning, classification is
+
+5
+00:00:09,420 --> 00:00:12,930
+a supervised learning approach which can be thought of as
+
+6
+00:00:12,930 --> 00:00:19,605
+a means of categorizing or classifying some unknown items into a discrete set of classes.
+
+7
+00:00:19,605 --> 00:00:23,460
+Classification attempts to learn the relationship between a set
+
+8
+00:00:23,460 --> 00:00:27,410
+of feature variables and a target variable of interest.
+
+9
+00:00:27,410 --> 00:00:34,030
+The target attribute in classification is a categorical variable with discrete values.
+
+10
+00:00:34,030 --> 00:00:38,715
+So, how does classification and classifiers work?
+
+11
+00:00:38,715 --> 00:00:42,835
+Given a set of training data points along with the target labels,
+
+12
+00:00:42,835 --> 00:00:47,700
+classification determines the class label for an unlabeled test case.
+
+13
+00:00:47,700 --> 00:00:50,200
+Let's explain this with an example.
+
+14
+00:00:50,200 --> 00:00:55,000
+A good sample of classification is the loan default prediction.
+
+15
+00:00:55,000 --> 00:01:00,190
+Suppose a bank is concerned about the potential for loans not to be repaid?
+
+16
+00:01:00,190 --> 00:01:04,440
+If previous loan default data can be used to predict
+
+17
+00:01:04,440 --> 00:01:08,505
+which customers are likely to have problems repaying loans,
+
+18
+00:01:08,505 --> 00:01:11,460
+these bad risk customers can either have
+
+19
+00:01:11,460 --> 00:01:16,015
+their loan application declined or offered alternative products.
+
+20
+00:01:16,015 --> 00:01:19,455
+The goal of a loan default predictor is to use
+
+21
+00:01:19,455 --> 00:01:26,430
+existing loan default data which has information about the customers such as age, income,
+
+22
+00:01:26,430 --> 00:01:30,210
+education et cetera, to build a classifier,
+
+23
+00:01:30,210 --> 00:01:35,155
+pass a new customer or potential future default to the model,
+
+24
+00:01:35,155 --> 00:01:41,815
+and then label it, i.e the data points as defaulter or not defaulter.
+
+25
+00:01:41,815 --> 00:01:44,610
+Or for example zero or one.
+
+26
+00:01:44,610 --> 00:01:48,870
+This is how a classifier predicts an unlabeled test case.
+
+27
+00:01:48,870 --> 00:01:55,020
+Please notice that this specific example was about a binary classifier with two values.
+
+28
+00:01:55,020 --> 00:01:58,140
+We can also build classifier models for
+
+29
+00:01:58,140 --> 00:02:02,665
+both binary classification and multi-class classification.
+
+30
+00:02:02,665 --> 00:02:07,830
+For example, imagine that you've collected data about a set of patients,
+
+31
+00:02:07,830 --> 00:02:10,620
+all of whom suffered from the same illness.
+
+32
+00:02:10,620 --> 00:02:12,460
+During their course of treatment,
+
+33
+00:02:12,460 --> 00:02:15,880
+each patient responded to one of three medications.
+
+34
+00:02:15,880 --> 00:02:18,810
+You can use this labeled dataset with
+
+35
+00:02:18,810 --> 00:02:23,110
+a classification algorithm to build a classification model.
+
+36
+00:02:23,110 --> 00:02:26,180
+Then you can use it to find out which drug might be
+
+37
+00:02:26,180 --> 00:02:29,515
+appropriate for a future patient with the same illness.
+
+38
+00:02:29,515 --> 00:02:34,465
+As you can see, it is a sample of multi-class classification.
+
+39
+00:02:34,465 --> 00:02:38,590
+Classification has different business use cases as well.
+
+40
+00:02:38,590 --> 00:02:43,350
+For example, to predict the category to which a customer belongs,
+
+41
+00:02:43,350 --> 00:02:46,130
+for churn detection where we predict whether
+
+42
+00:02:46,130 --> 00:02:49,180
+a customer switches to another provider or brand,
+
+43
+00:02:49,180 --> 00:02:55,365
+or to predict whether or not a customer responds to a particular advertising campaign.
+
+44
+00:02:55,365 --> 00:03:00,760
+Data classification has several applications in a wide variety of industries.
+
+45
+00:03:00,760 --> 00:03:03,940
+Essentially, many problems can be expressed as
+
+46
+00:03:03,940 --> 00:03:07,315
+associations between feature and target variables,
+
+47
+00:03:07,315 --> 00:03:10,255
+especially when labelled data is available.
+
+48
+00:03:10,255 --> 00:03:14,375
+This provides a broad range of applicability for classification.
+
+49
+00:03:14,375 --> 00:03:20,310
+For example, classification can be used for email filtering, speech recognition,
+
+50
+00:03:20,310 --> 00:03:24,340
+handwriting recognition, biometric identification,
+
+51
+00:03:24,340 --> 00:03:27,510
+document classification and much more.
+
+52
+00:03:27,510 --> 00:03:32,255
+Here we have the types of classification algorithms and machine learning.
+
+53
+00:03:32,255 --> 00:03:34,300
+They include decision trees,
+
+54
+00:03:34,300 --> 00:03:38,385
+naive bayes, linear discriminant analysis,
+
+55
+00:03:38,385 --> 00:03:41,865
+k-nearest neighbor, logistic regression,
+
+56
+00:03:41,865 --> 00:03:45,485
+neural networks, and support vector machines.
+
+57
+00:03:45,485 --> 00:03:48,915
+There are many types of classification algorithms.
+
+58
+00:03:48,915 --> 00:03:53,800
+We will only cover a few in this course. Thanks for watching.

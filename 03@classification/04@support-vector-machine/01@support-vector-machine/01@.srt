@@ -1,0 +1,581 @@
+1
+00:00:00,580 --> 00:00:02,520
+Hello and welcome.
+
+2
+00:00:02,520 --> 00:00:05,950
+In this video, we will learn
+a machine learning method called,
+
+3
+00:00:05,950 --> 00:00:11,580
+Support Vector Machine, or SVM,
+which is used for classification.
+
+4
+00:00:11,580 --> 00:00:12,450
+So let's get started.
+
+5
+00:00:13,490 --> 00:00:17,310
+Imagine that you've obtained
+a dataset containing characteristics
+
+6
+00:00:17,310 --> 00:00:19,980
+of thousands of human cell samples
+
+7
+00:00:19,980 --> 00:00:24,130
+extracted from patients who were believed
+to be at risk of developing cancer.
+
+8
+00:00:25,250 --> 00:00:29,910
+Analysis of the original data showed that
+many of the characteristics differed
+
+9
+00:00:29,910 --> 00:00:34,740
+significantly between benign and
+malignant samples.
+
+10
+00:00:34,740 --> 00:00:38,180
+You can use the values of
+these cell characteristics
+
+11
+00:00:38,180 --> 00:00:40,430
+in samples from other patients,
+
+12
+00:00:40,430 --> 00:00:46,425
+to give an early indication of whether
+a new sample might be benign or malignant.
+
+13
+00:00:46,425 --> 00:00:49,515
+You can use Support Vector Machine, or
+
+14
+00:00:49,515 --> 00:00:53,415
+SVM, as a classifier
+to train your model to
+
+15
+00:00:53,415 --> 00:00:58,289
+understand patterns within the data that
+might show, benign or malignant cells.
+
+16
+00:00:59,370 --> 00:01:03,820
+Once the model has been trained,
+it can be used to predict your new or
+
+17
+00:01:03,820 --> 00:01:07,550
+unknown cell with rather high accuracy.
+
+18
+00:01:07,550 --> 00:01:10,900
+Now, let me give you
+a formal definition of SVM.
+
+19
+00:01:12,290 --> 00:01:16,175
+A Support Vector Machine
+is a supervised algorithm
+
+20
+00:01:16,175 --> 00:01:19,886
+that can classify cases
+by finding a separator.
+
+21
+00:01:19,886 --> 00:01:25,248
+SVM works by first mapping data to a high
+dimensional feature space so that data
+
+22
+00:01:25,248 --> 00:01:31,850
+points can be categorized, even when the
+data are not otherwise linearly separable.
+
+23
+00:01:31,850 --> 00:01:35,860
+Then, a separator is estimated for
+the data.
+
+24
+00:01:35,860 --> 00:01:38,670
+The data should be
+transformed in such a way
+
+25
+00:01:38,670 --> 00:01:42,350
+that a separator could be
+drawn as a hyperplane.
+
+26
+00:01:42,350 --> 00:01:47,060
+For example, consider the following
+figure, which shows the distribution of
+
+27
+00:01:47,060 --> 00:01:52,910
+a small set of cells only based on
+their unit size and clump thickness.
+
+28
+00:01:52,910 --> 00:01:57,920
+As you can see, the data points
+fall into two different categories.
+
+29
+00:01:57,920 --> 00:02:02,240
+It represents a linearly
+non separable data set.
+
+30
+00:02:02,240 --> 00:02:07,220
+The two categories can be separated
+with a curve but not a line.
+
+31
+00:02:07,220 --> 00:02:11,640
+That is, it represents a linearly
+non separable data set,
+
+32
+00:02:11,640 --> 00:02:15,340
+which is the case for
+most real world data sets.
+
+33
+00:02:15,340 --> 00:02:18,840
+We can transfer this data to
+a higher-dimensional space, for
+
+34
+00:02:18,840 --> 00:02:23,080
+example, mapping it to
+a three-dimensional space.
+
+35
+00:02:23,080 --> 00:02:24,780
+After the transformation,
+
+36
+00:02:24,780 --> 00:02:29,830
+the boundary between the two categories
+can be defined by a hyperplane.
+
+37
+00:02:29,830 --> 00:02:35,590
+As we are now in three-dimensional space,
+the separator is shown as a plane.
+
+38
+00:02:35,590 --> 00:02:40,520
+This plane can be used to classify new or
+unknown cases.
+
+39
+00:02:40,520 --> 00:02:43,590
+Therefore, the SVM algorithm
+
+40
+00:02:43,590 --> 00:02:49,370
+outputs an optimal hyperplane
+that categorizes new examples.
+
+41
+00:02:49,370 --> 00:02:53,550
+Now, there are two challenging
+questions to consider.
+
+42
+00:02:53,550 --> 00:02:57,210
+First, how do we transfer
+data in such a way
+
+43
+00:02:57,210 --> 00:03:00,860
+that a separator could be
+drawn as a hyperplane?
+
+44
+00:03:00,860 --> 00:03:03,840
+And two, how can we find the best or
+
+45
+00:03:03,840 --> 00:03:07,780
+optimized hyperplane separator
+after transformation?
+
+46
+00:03:08,920 --> 00:03:13,220
+Let's first look at transforming
+data to see how it works.
+
+47
+00:03:13,220 --> 00:03:18,160
+For the sake of simplicity, imagine that
+our dataset is one-dimensional data.
+
+48
+00:03:18,160 --> 00:03:21,400
+This means we have only one feature x.
+
+49
+00:03:21,400 --> 00:03:24,960
+As you can see,
+it is not linearly separable.
+
+50
+00:03:24,960 --> 00:03:27,700
+So what can we do here?
+
+51
+00:03:27,700 --> 00:03:32,000
+Well, we can transfer it into
+a two-dimensional space.
+
+52
+00:03:32,000 --> 00:03:36,820
+For example, you can increase
+the dimension of data by mapping x into
+
+53
+00:03:36,820 --> 00:03:42,460
+a new space using a function
+with outputs x and x squared.
+
+54
+00:03:42,460 --> 00:03:45,100
+Now the data is linearly separable, right?
+
+55
+00:03:46,160 --> 00:03:51,350
+Notice that as we are in a two-dimensional
+space, the hyperplane is a line
+
+56
+00:03:51,350 --> 00:03:57,150
+dividing a plane into two parts where
+each class lays on either side.
+
+57
+00:03:57,150 --> 00:04:01,090
+Now we can use this line
+to classify new cases.
+
+58
+00:04:01,090 --> 00:04:05,425
+Basically, mapping data into
+a higher-dimensional space is called,
+
+59
+00:04:05,425 --> 00:04:06,760
+kernelling.
+
+60
+00:04:06,760 --> 00:04:11,190
+The mathematical function used for
+the transformation is known as the kernel
+
+61
+00:04:11,190 --> 00:04:15,410
+function, and can be of different types,
+such as linear,
+
+62
+00:04:15,410 --> 00:04:21,200
+polynomial, Radial Basis Function,
+or RBF, and sigmoid.
+
+63
+00:04:21,200 --> 00:04:25,820
+Each of these functions has its own
+characteristics, its pros and cons, and
+
+64
+00:04:25,820 --> 00:04:27,080
+its equation.
+
+65
+00:04:27,080 --> 00:04:31,710
+But the good news is that you don't
+need to know them as most of them
+
+66
+00:04:31,710 --> 00:04:36,749
+are already implemented in libraries
+of data science programming languages.
+
+67
+00:04:37,790 --> 00:04:42,480
+Also, as there's no easy way of knowing
+which function performs best with any
+
+68
+00:04:42,480 --> 00:04:48,050
+given dataset, we usually choose different
+functions in turn and compare the results.
+
+69
+00:04:49,250 --> 00:04:51,600
+Now we get to another question.
+
+70
+00:04:51,600 --> 00:04:57,380
+Specifically, how do we find the right or
+optimized separator after transformation?
+
+71
+00:04:58,430 --> 00:05:03,560
+Basically, SVMs are based on
+the idea of finding a hyperplane
+
+72
+00:05:03,560 --> 00:05:07,960
+that best divides a data set
+into two classes as shown here.
+
+73
+00:05:09,030 --> 00:05:13,520
+As we're in a two-dimensional space,
+you can think of the hyperplane
+
+74
+00:05:13,520 --> 00:05:17,710
+as a line that linearly separates
+the blue points from the red points.
+
+75
+00:05:18,750 --> 00:05:23,040
+One reasonable choice as the best
+hyperplane is the one that represents
+
+76
+00:05:23,040 --> 00:05:28,450
+the largest separation or
+margin between the two classes.
+
+77
+00:05:28,450 --> 00:05:34,435
+So the goal is to choose a hyperplane
+with as big a margin as possible.
+
+78
+00:05:34,435 --> 00:05:39,125
+Examples closest to the hyperplane
+are support vectors.
+
+79
+00:05:39,125 --> 00:05:43,850
+It is intuitive that only support
+vectors matter for achieving our goal.
+
+80
+00:05:43,850 --> 00:05:47,910
+And thus,
+other trending examples can be ignored.
+
+81
+00:05:47,910 --> 00:05:50,860
+We tried to find the hyperplane
+in such a way that
+
+82
+00:05:50,860 --> 00:05:54,730
+it has the maximum distance
+to support vectors.
+
+83
+00:05:54,730 --> 00:05:58,650
+Please note that the hyperplane and
+boundary decision lines,
+
+84
+00:05:58,650 --> 00:06:00,239
+have their own equations.
+
+85
+00:06:01,410 --> 00:06:07,000
+So finding the optimized hyperplane can
+be formalized using an equation which
+
+86
+00:06:07,000 --> 00:06:11,800
+involves quite a bit more math, so I'm not
+going to go through it here in detail.
+
+87
+00:06:12,980 --> 00:06:16,880
+That said, the hyperplane is
+learned from training data
+
+88
+00:06:16,880 --> 00:06:21,620
+using an optimization procedure
+that maximizes the margin.
+
+89
+00:06:21,620 --> 00:06:25,600
+And like many other problems,
+this optimization problem can
+
+90
+00:06:25,600 --> 00:06:31,080
+also be solved by gradient descent,
+which is out of scope of this video.
+
+91
+00:06:31,080 --> 00:06:37,720
+Therefore, the output of the algorithm
+is the values w and b for the line.
+
+92
+00:06:37,720 --> 00:06:42,210
+You can make classifications
+using this estimated line.
+
+93
+00:06:42,210 --> 00:06:46,680
+It is enough to plug in input
+values into the line equation.
+
+94
+00:06:46,680 --> 00:06:52,520
+Then, you can calculate whether an unknown
+point is above or below the line.
+
+95
+00:06:52,520 --> 00:06:55,750
+If the equation returns
+a value greater than 0,
+
+96
+00:06:55,750 --> 00:07:02,050
+then the point belongs to the first class
+which is above the line, and vice-versa.
+
+97
+00:07:02,050 --> 00:07:06,070
+The two main advantages of support
+vector machines are that they're
+
+98
+00:07:06,070 --> 00:07:08,970
+accurate in high-dimensional spaces.
+
+99
+00:07:08,970 --> 00:07:13,620
+And they use a subset of training
+points in the decision function called,
+
+100
+00:07:13,620 --> 00:07:17,030
+support vectors, so
+it's also memory efficient.
+
+101
+00:07:18,090 --> 00:07:21,320
+The disadvantages of
+Support Vector Machines
+
+102
+00:07:21,320 --> 00:07:24,135
+include the fact that
+the algorithm is prone for
+
+103
+00:07:24,135 --> 00:07:30,570
+over-fitting if the number of features is
+much greater than the number of samples.
+
+104
+00:07:30,570 --> 00:07:35,560
+Also, SVMs do not directly
+provide probability estimates,
+
+105
+00:07:35,560 --> 00:07:40,070
+which are desirable in most
+classification problems.
+
+106
+00:07:40,070 --> 00:07:44,910
+And finally, SVMs are not very
+efficient computationally
+
+107
+00:07:44,910 --> 00:07:49,660
+if your dataset is very big, such as
+when you have more than 1,000 rows.
+
+108
+00:07:50,950 --> 00:07:55,860
+And now our final question is,
+in which situation should I use SVM?
+
+109
+00:07:57,380 --> 00:08:01,340
+Well, SVM is good for
+image analysis tasks,
+
+110
+00:08:01,340 --> 00:08:06,600
+such as image classification and
+hand written digit recognition.
+
+111
+00:08:06,600 --> 00:08:11,070
+Also, SVM is very effective
+in text mining tasks,
+
+112
+00:08:11,070 --> 00:08:16,100
+particularly due to its effectiveness
+in dealing with high-dimensional data.
+
+113
+00:08:16,100 --> 00:08:17,820
+For example, it is used for
+
+114
+00:08:17,820 --> 00:08:22,980
+detecting spam, text category
+assignment and sentiment analysis.
+
+115
+00:08:23,980 --> 00:08:29,580
+Another application of SVM is in
+gene expression data classification,
+
+116
+00:08:29,580 --> 00:08:34,597
+again, because of its power in
+high-dimensional data classification.
+
+117
+00:08:34,597 --> 00:08:39,050
+SVM can also be used for
+other types of machine learning problems,
+
+118
+00:08:39,050 --> 00:08:43,540
+such as regression,
+outlier detection and clustering.
+
+119
+00:08:43,540 --> 00:08:47,310
+I'll leave it to you to explore more
+about these particular problems.
+
+120
+00:08:48,390 --> 00:08:51,490
+This concludes this video,
+thanks for watching.

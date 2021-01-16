@@ -1,0 +1,267 @@
+1
+00:00:00,000 --> 00:00:02,195
+Hello and welcome.
+
+2
+00:00:02,195 --> 00:00:03,555
+In this video,
+
+3
+00:00:03,555 --> 00:00:07,080
+we're going to introduce an examine decision trees.
+
+4
+00:00:07,080 --> 00:00:08,775
+So let's get started.
+
+5
+00:00:08,775 --> 00:00:11,975
+What exactly is a decision tree?
+
+6
+00:00:11,975 --> 00:00:14,825
+How do we use them to help us classify?
+
+7
+00:00:14,825 --> 00:00:17,790
+How can I grow my own decision tree?
+
+8
+00:00:17,790 --> 00:00:20,370
+These may be some of the questions that you have in
+
+9
+00:00:20,370 --> 00:00:23,570
+mind from hearing the term decision tree.
+
+10
+00:00:23,570 --> 00:00:26,280
+Hopefully, you'll soon be able to answer
+
+11
+00:00:26,280 --> 00:00:30,420
+these questions and many more by watching this video.
+
+12
+00:00:30,420 --> 00:00:35,370
+Imagine that you're a medical researcher compiling data for a study.
+
+13
+00:00:35,370 --> 00:00:38,190
+You've already collected data about a set of
+
+14
+00:00:38,190 --> 00:00:42,270
+patients all of whom suffered from the same illness.
+
+15
+00:00:42,270 --> 00:00:44,390
+During their course of treatment,
+
+16
+00:00:44,390 --> 00:00:47,640
+each patient responded to one of two medications.
+
+17
+00:00:47,640 --> 00:00:50,820
+We call them drug A and drug B.
+
+18
+00:00:50,820 --> 00:00:55,090
+Part of your job is to build a model to find out which drug
+
+19
+00:00:55,090 --> 00:00:59,485
+might be appropriate for a future patient with the same illness.
+
+20
+00:00:59,485 --> 00:01:04,455
+The feature sets of this dataset are age, gender,
+
+21
+00:01:04,455 --> 00:01:07,540
+blood pressure and cholesterol of our group of
+
+22
+00:01:07,540 --> 00:01:13,145
+patients and the target is the drug that each patient responded to.
+
+23
+00:01:13,145 --> 00:01:17,380
+It is a sample of binary classifiers and you can
+
+24
+00:01:17,380 --> 00:01:21,550
+use the training part of the data set to build a decision tree.
+
+25
+00:01:21,550 --> 00:01:26,210
+Then use it to predict the class of unknown patient.
+
+26
+00:01:26,210 --> 00:01:32,480
+In essence, to come up with a decision on which drug to prescribe to a new patient.
+
+27
+00:01:32,480 --> 00:01:36,865
+Let's see how a decision tree is built for this dataset.
+
+28
+00:01:36,865 --> 00:01:42,110
+Decision trees are built by splitting the training set into distinct nodes,
+
+29
+00:01:42,110 --> 00:01:48,045
+where one node contains all of or most of one category of the data.
+
+30
+00:01:48,045 --> 00:01:50,660
+If we look at the diagram here,
+
+31
+00:01:50,660 --> 00:01:53,510
+we can see that it's a patient's classifier.
+
+32
+00:01:53,510 --> 00:01:58,245
+So as mentioned, we want to prescribe a drug to a new patient,
+
+33
+00:01:58,245 --> 00:02:05,210
+but the decision to choose drug A or B will be influenced by the patient's situation.
+
+34
+00:02:05,210 --> 00:02:07,165
+We start with age,
+
+35
+00:02:07,165 --> 00:02:10,850
+which can be young, middle aged or senior.
+
+36
+00:02:10,850 --> 00:02:13,320
+If the patient is middle aged,
+
+37
+00:02:13,320 --> 00:02:15,805
+then we'll definitely go for drug B.
+
+38
+00:02:15,805 --> 00:02:19,795
+On the other hand, if he has a young or a senior patient,
+
+39
+00:02:19,795 --> 00:02:24,140
+will need more details to help us determine which drug to prescribe.
+
+40
+00:02:24,140 --> 00:02:29,445
+The additional decision variables can be things such as cholesterol levels,
+
+41
+00:02:29,445 --> 00:02:31,720
+gender or blood pressure.
+
+42
+00:02:31,720 --> 00:02:34,955
+For example, if the patient is female,
+
+43
+00:02:34,955 --> 00:02:37,475
+then we will recommend drug A,
+
+44
+00:02:37,475 --> 00:02:39,970
+but if the patient is male,
+
+45
+00:02:39,970 --> 00:02:42,115
+then will go for drug B.
+
+46
+00:02:42,115 --> 00:02:43,800
+As you can see,
+
+47
+00:02:43,800 --> 00:02:47,020
+decision trees are about testing an attribute and
+
+48
+00:02:47,020 --> 00:02:50,630
+branching the cases based on the result of the test.
+
+49
+00:02:50,630 --> 00:02:54,530
+Each internal node corresponds to a test,
+
+50
+00:02:54,530 --> 00:02:58,660
+and each branch corresponds to a result of the test,
+
+51
+00:02:58,660 --> 00:03:03,414
+and each leaf node assigns a patient to a class.
+
+52
+00:03:03,414 --> 00:03:05,310
+Now the question is,
+
+53
+00:03:05,310 --> 00:03:08,010
+how can we build such a decision tree?
+
+54
+00:03:08,010 --> 00:03:11,250
+Here is the way that a decision tree is build.
+
+55
+00:03:11,250 --> 00:03:17,205
+A decision tree can be constructed by considering the attributes one by one.
+
+56
+00:03:17,205 --> 00:03:21,234
+First, choose an attribute from our dataset.
+
+57
+00:03:21,234 --> 00:03:26,100
+Calculate the significance of the attribute in the splitting of the data.
+
+58
+00:03:26,100 --> 00:03:27,600
+In the next video,
+
+59
+00:03:27,600 --> 00:03:30,400
+we will explain how to calculate the significance of
+
+60
+00:03:30,400 --> 00:03:34,395
+an attribute to see if it's an effective attribute or not.
+
+61
+00:03:34,395 --> 00:03:39,790
+Next, split the data based on the value of the best attribute,
+
+62
+00:03:39,790 --> 00:03:44,990
+then go to each branch and repeat it for the rest of the attributes.
+
+63
+00:03:44,990 --> 00:03:46,990
+After building this tree,
+
+64
+00:03:46,990 --> 00:03:52,179
+you can use it to predict the class of unknown cases or in our case,
+
+65
+00:03:52,179 --> 00:03:57,610
+the proper drug for a new patient based on his or her characteristics.
+
+66
+00:03:57,610 --> 00:04:00,030
+This concludes this video.
+
+67
+00:04:00,030 --> 00:04:02,000
+Thanks for watching.

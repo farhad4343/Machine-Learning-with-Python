@@ -1,0 +1,591 @@
+1
+00:00:00,000 --> 00:00:03,230
+Hello and welcome. In this video,
+
+2
+00:00:03,230 --> 00:00:06,270
+we'll be covering the process of building decision trees.
+
+3
+00:00:06,270 --> 00:00:08,160
+So, let's get started.
+
+4
+00:00:08,160 --> 00:00:11,330
+Consider the drug data set again.
+
+5
+00:00:11,330 --> 00:00:17,035
+The question is, how do we build a decision tree based on that data set?
+
+6
+00:00:17,035 --> 00:00:22,605
+Decision trees are built using recursive partitioning to classify the data.
+
+7
+00:00:22,605 --> 00:00:26,230
+Let's say we have 14 patients in our data set,
+
+8
+00:00:26,230 --> 00:00:30,650
+the algorithm chooses the most predictive feature to split the data on.
+
+9
+00:00:30,650 --> 00:00:34,320
+What is important in making a decision tree,
+
+10
+00:00:34,320 --> 00:00:37,110
+is to determine which attribute is the best or more
+
+11
+00:00:37,110 --> 00:00:41,055
+predictive to split data based on the feature.
+
+12
+00:00:41,055 --> 00:00:45,830
+Let's say we pick cholesterol as the first attribute to split data,
+
+13
+00:00:45,830 --> 00:00:49,490
+it will split our data into two branches.
+
+14
+00:00:49,490 --> 00:00:50,980
+As you can see,
+
+15
+00:00:50,980 --> 00:00:54,600
+if the patient has high cholesterol we cannot say
+
+16
+00:00:54,600 --> 00:00:58,775
+with high confidence that drug B might be suitable for him.
+
+17
+00:00:58,775 --> 00:01:02,310
+Also, if the patient's cholesterol is normal,
+
+18
+00:01:02,310 --> 00:01:06,090
+we still don't have sufficient evidence or information to
+
+19
+00:01:06,090 --> 00:01:11,175
+determine if either drug A or drug B is in fact suitable.
+
+20
+00:01:11,175 --> 00:01:16,055
+It is a sample of bad attributes selection for splitting data.
+
+21
+00:01:16,055 --> 00:01:19,380
+So, let's try another attribute.
+
+22
+00:01:19,380 --> 00:01:22,885
+Again, we have our 14 cases,
+
+23
+00:01:22,885 --> 00:01:27,225
+this time we picked the sex attribute of patients.
+
+24
+00:01:27,225 --> 00:01:32,280
+It will split our data into two branches, male and female.
+
+25
+00:01:32,280 --> 00:01:35,430
+As you can see, if the patient is female,
+
+26
+00:01:35,430 --> 00:01:39,980
+we can say drug B might be suitable for her with high certainty.
+
+27
+00:01:39,980 --> 00:01:42,440
+But if the patient is male,
+
+28
+00:01:42,440 --> 00:01:44,640
+we don't have sufficient evidence or
+
+29
+00:01:44,640 --> 00:01:49,640
+information to determine if drug A or drug B is suitable.
+
+30
+00:01:49,640 --> 00:01:53,430
+However, it is still a better choice in comparison with
+
+31
+00:01:53,430 --> 00:01:58,485
+the cholesterol attribute because the result in the nodes are more pure.
+
+32
+00:01:58,485 --> 00:02:04,105
+It means nodes that are either mostly drug A or drug B.
+
+33
+00:02:04,105 --> 00:02:10,335
+So, we can say the sex attribute is more significant than cholesterol,
+
+34
+00:02:10,335 --> 00:02:15,175
+or in other words it's more predictive than the other attributes.
+
+35
+00:02:15,175 --> 00:02:21,435
+Indeed, predictiveness is based on decrease in impurity of nodes.
+
+36
+00:02:21,435 --> 00:02:27,850
+We're looking for the best feature to decrease the impurity of patients in the leaves,
+
+37
+00:02:27,850 --> 00:02:30,875
+after splitting them up based on that feature.
+
+38
+00:02:30,875 --> 00:02:34,480
+So, the sex feature is a good candidate in
+
+39
+00:02:34,480 --> 00:02:39,230
+the following case because it almost found the pure patients.
+
+40
+00:02:39,230 --> 00:02:41,720
+Let's go one step further.
+
+41
+00:02:41,720 --> 00:02:43,890
+For the male patient branch,
+
+42
+00:02:43,890 --> 00:02:47,955
+we again test other attributes to split the sub-tree.
+
+43
+00:02:47,955 --> 00:02:51,270
+We test cholesterol again here,
+
+44
+00:02:51,270 --> 00:02:55,845
+as you can see it results in even more pure leaves.
+
+45
+00:02:55,845 --> 00:02:58,955
+So we can easily make a decision here.
+
+46
+00:02:58,955 --> 00:03:03,910
+For example, if a patient is male and his cholesterol is high,
+
+47
+00:03:03,910 --> 00:03:06,810
+we can certainly prescribe drug A,
+
+48
+00:03:06,810 --> 00:03:08,545
+but if it is normal,
+
+49
+00:03:08,545 --> 00:03:12,310
+we can prescribe drug B with high confidence.
+
+50
+00:03:12,310 --> 00:03:14,280
+As you might notice,
+
+51
+00:03:14,280 --> 00:03:17,260
+the choice of attribute to split data is very
+
+52
+00:03:17,260 --> 00:03:22,425
+important and it is all about purity of the leaves after the split.
+
+53
+00:03:22,425 --> 00:03:28,480
+A node in the tree is considered pure if in 100 percent of the cases,
+
+54
+00:03:28,480 --> 00:03:33,490
+the nodes fall into a specific category of the target field.
+
+55
+00:03:33,490 --> 00:03:38,200
+In fact, the method uses recursive partitioning to split
+
+56
+00:03:38,200 --> 00:03:44,070
+the trading records into segments by minimizing the impurity at each step.
+
+57
+00:03:44,070 --> 00:03:49,505
+Impurity of nodes is calculated by entropy of data in the node.
+
+58
+00:03:49,505 --> 00:03:52,920
+So, what is entropy?
+
+59
+00:03:52,920 --> 00:04:00,160
+Entropy is the amount of information disorder or the amount of randomness in the data.
+
+60
+00:04:00,160 --> 00:04:02,830
+The entropy in the node depends on
+
+61
+00:04:02,830 --> 00:04:08,195
+how much random data is in that node and is calculated for each node.
+
+62
+00:04:08,195 --> 00:04:14,435
+In decision trees, we're looking for trees that have the smallest entropy in their nodes.
+
+63
+00:04:14,435 --> 00:04:20,000
+The entropy is used to calculate the homogeneity of the samples in that node.
+
+64
+00:04:20,000 --> 00:04:22,890
+If the samples are completely homogeneous,
+
+65
+00:04:22,890 --> 00:04:29,355
+the entropy is zero and if the samples are equally divided it has an entropy of one.
+
+66
+00:04:29,355 --> 00:04:35,010
+This means if all the data in a node are either drug A or drug B,
+
+67
+00:04:35,010 --> 00:04:37,055
+then the entropy is zero,
+
+68
+00:04:37,055 --> 00:04:44,070
+but if half of the data or drug A and other half or B then the entropy is one.
+
+69
+00:04:44,070 --> 00:04:49,530
+You can easily calculate the entropy of a node using the frequency table of
+
+70
+00:04:49,530 --> 00:04:53,010
+the attribute through the entropy formula where
+
+71
+00:04:53,010 --> 00:04:56,610
+P is for the proportion or ratio of a category,
+
+72
+00:04:56,610 --> 00:04:59,340
+such as drug A or B.
+
+73
+00:04:59,340 --> 00:05:03,660
+Please remember though that you don't have to calculate these as
+
+74
+00:05:03,660 --> 00:05:08,600
+it's easily calculated by the libraries or packages that you use.
+
+75
+00:05:08,600 --> 00:05:14,270
+As an example, let's calculate the entropy of the data set before splitting it.
+
+76
+00:05:14,270 --> 00:05:19,555
+We have nine occurrences of drug B and five of drug A.
+
+77
+00:05:19,555 --> 00:05:23,380
+You can embed these numbers into the entropy formula to
+
+78
+00:05:23,380 --> 00:05:27,745
+calculate the impurity of the target attribute before splitting it.
+
+79
+00:05:27,745 --> 00:05:31,550
+In this case, it is 0.94.
+
+80
+00:05:31,550 --> 00:05:35,375
+So, what is entropy after splitting?
+
+81
+00:05:35,375 --> 00:05:40,590
+Now, we can test different attributes to find the one with the most predictiveness,
+
+82
+00:05:40,590 --> 00:05:44,115
+which results in two more pure branches.
+
+83
+00:05:44,115 --> 00:05:47,660
+Let's first select the cholesterol of the patient and
+
+84
+00:05:47,660 --> 00:05:51,330
+see how the data gets split based on its values.
+
+85
+00:05:51,330 --> 00:05:56,065
+For example, when it is normal we have six for drug B,
+
+86
+00:05:56,065 --> 00:05:57,885
+and two for drug A.
+
+87
+00:05:57,885 --> 00:06:01,730
+We can calculate the entropy of this node based on
+
+88
+00:06:01,730 --> 00:06:07,335
+the distribution of drug A and B which is 0.8 in this case.
+
+89
+00:06:07,335 --> 00:06:10,380
+But, when cholesterol is high,
+
+90
+00:06:10,380 --> 00:06:15,765
+the data is split into three for drug B and three for drug A.
+
+91
+00:06:15,765 --> 00:06:21,015
+Calculating it's entropy, we can see it would be 1.0.
+
+92
+00:06:21,015 --> 00:06:25,125
+We should go through all the attributes and calculate the entropy
+
+93
+00:06:25,125 --> 00:06:29,775
+after the split and then choose the best attribute.
+
+94
+00:06:29,775 --> 00:06:32,820
+Okay. Let's try another field.
+
+95
+00:06:32,820 --> 00:06:36,470
+Let's choose the sex attribute for the next check.
+
+96
+00:06:36,470 --> 00:06:41,195
+As you can see, when we use the sex attribute to split the data,
+
+97
+00:06:41,195 --> 00:06:43,235
+when its value is female,
+
+98
+00:06:43,235 --> 00:06:45,480
+we have three patients that responded to
+
+99
+00:06:45,480 --> 00:06:50,040
+drug B and four patients that responded to drug A.
+
+100
+00:06:50,040 --> 00:06:56,180
+The entropy for this node is 0.98 which is not very promising.
+
+101
+00:06:56,180 --> 00:06:59,325
+However, on the other side of the branch,
+
+102
+00:06:59,325 --> 00:07:02,400
+when the value of the sex attribute is male,
+
+103
+00:07:02,400 --> 00:07:07,890
+the result is more pure with sex for drug B and only one for drug A.
+
+104
+00:07:07,890 --> 00:07:12,365
+The entropy for this group is 0.59.
+
+105
+00:07:12,365 --> 00:07:15,470
+Now, the question is between
+
+106
+00:07:15,470 --> 00:07:20,270
+the cholesterol and sex attributes which one is a better choice?
+
+107
+00:07:20,270 --> 00:07:27,075
+Which one is better at the first attribute to divide the data-set into two branches?
+
+108
+00:07:27,075 --> 00:07:28,935
+Or in other words,
+
+109
+00:07:28,935 --> 00:07:33,535
+which attribute results in more pure nodes for our drugs?
+
+110
+00:07:33,535 --> 00:07:40,385
+Or in which tree do we have less entropy after splitting rather than before splitting?
+
+111
+00:07:40,385 --> 00:07:47,190
+The sex attribute with entropy of 0.98 and 0.59 or
+
+112
+00:07:47,190 --> 00:07:54,535
+the cholesterol attribute with entropy of 0.81 and 1.0 in it's branches.
+
+113
+00:07:54,535 --> 00:08:00,535
+The answer is the tree with the higher information gain after splitting.
+
+114
+00:08:00,535 --> 00:08:04,300
+So, what is information gain?
+
+115
+00:08:04,300 --> 00:08:07,250
+Information gain is the information that can
+
+116
+00:08:07,250 --> 00:08:10,435
+increase the level of certainty after splitting.
+
+117
+00:08:10,435 --> 00:08:14,060
+It is the entropy of a tree before the split
+
+118
+00:08:14,060 --> 00:08:18,215
+minus the weighted entropy after the split by an attribute.
+
+119
+00:08:18,215 --> 00:08:23,165
+We can think of information gain and entropy as opposites.
+
+120
+00:08:23,165 --> 00:08:27,585
+As entropy or the amount of randomness decreases,
+
+121
+00:08:27,585 --> 00:08:33,270
+the information gain or amount of certainty increases and vice versa.
+
+122
+00:08:33,270 --> 00:08:36,955
+So, constructing a decision tree is all about
+
+123
+00:08:36,955 --> 00:08:41,565
+finding attributes that return the highest information gain.
+
+124
+00:08:41,565 --> 00:08:46,590
+Let's see how information gain is calculated for the sex attribute.
+
+125
+00:08:46,590 --> 00:08:50,785
+As mentioned, the information gained is the entropy of the tree
+
+126
+00:08:50,785 --> 00:08:55,380
+before the split minus the weighted entropy after the split.
+
+127
+00:08:55,380 --> 00:09:00,715
+The entropy of the tree before the split is 0.94,
+
+128
+00:09:00,715 --> 00:09:08,770
+the portion of female patients is seven out of 14 and its entropy is 0.985.
+
+129
+00:09:08,770 --> 00:09:18,115
+Also, the portion of men is seven out of 14 and the entropy of the male node is 0.592.
+
+130
+00:09:18,115 --> 00:09:24,165
+The result of a square bracket here is the weighted entropy after the split.
+
+131
+00:09:24,165 --> 00:09:27,920
+So, the information gain of the tree if we use
+
+132
+00:09:27,920 --> 00:09:33,695
+the sex attribute to split the data set is 0.151.
+
+133
+00:09:33,695 --> 00:09:36,950
+As you could see, we will consider the entropy
+
+134
+00:09:36,950 --> 00:09:40,115
+over the distribution of samples falling under
+
+135
+00:09:40,115 --> 00:09:43,760
+each leaf node and we'll take a weighted average of
+
+136
+00:09:43,760 --> 00:09:49,240
+that entropy weighted by the proportion of samples falling under that leave.
+
+137
+00:09:49,240 --> 00:09:54,990
+We can calculate the information gain of the tree if we use cholesterol as well.
+
+138
+00:09:54,990 --> 00:09:57,505
+It is 0.48.
+
+139
+00:09:57,505 --> 00:09:59,790
+Now, the question is,
+
+140
+00:09:59,790 --> 00:10:02,415
+which attribute is more suitable?
+
+141
+00:10:02,415 --> 00:10:08,140
+Well, as mentioned, the tree with the higher information gained after splitting,
+
+142
+00:10:08,140 --> 00:10:10,670
+this means the sex attribute.
+
+143
+00:10:10,670 --> 00:10:16,065
+So, we select the sex attribute as the first splitter.
+
+144
+00:10:16,065 --> 00:10:21,385
+Now, what is the next attribute after branching by the sex attribute?
+
+145
+00:10:21,385 --> 00:10:23,340
+Well, as you can guess,
+
+146
+00:10:23,340 --> 00:10:27,450
+we should repeat the process for each branch and test each of
+
+147
+00:10:27,450 --> 00:10:31,860
+the other attributes to continue to reach the most pure leaves.
+
+148
+00:10:31,860 --> 00:10:37,000
+This is the way you build a decision tree. Thanks for watching.
