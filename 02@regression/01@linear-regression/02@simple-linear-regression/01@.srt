@@ -1,0 +1,820 @@
+1
+00:00:00,540 --> 00:00:02,470
+Hello and welcome.
+
+2
+00:00:02,470 --> 00:00:06,090
+In this video,
+we'll be covering linear regression.
+
+3
+00:00:06,090 --> 00:00:11,722
+You don't need to know any linear algebra
+to understand topics in linear regression.
+
+4
+00:00:11,722 --> 00:00:16,577
+This high-level introduction will give you
+enough background information on linear
+
+5
+00:00:16,577 --> 00:00:20,770
+regression to be able to use it
+effectively on your own problems.
+
+6
+00:00:20,770 --> 00:00:22,240
+So let's get started.
+
+7
+00:00:23,320 --> 00:00:25,760
+Let's take a look at this data set.
+
+8
+00:00:25,760 --> 00:00:29,240
+It's related to the Co2
+emission of different cars.
+
+9
+00:00:29,240 --> 00:00:33,420
+It includes engine size,
+cylinders, fuel consumption and
+
+10
+00:00:33,420 --> 00:00:36,830
+Co2 emissions for various car models.
+
+11
+00:00:36,830 --> 00:00:39,870
+The question is, given this data set,
+
+12
+00:00:39,870 --> 00:00:46,010
+can we predict the Co2 emission of a car
+using another field such as engine size?
+
+13
+00:00:46,010 --> 00:00:48,120
+Quite simply, yes.
+
+14
+00:00:48,120 --> 00:00:52,200
+We can use linear regression
+to predict a continuous value
+
+15
+00:00:52,200 --> 00:00:56,450
+such as Co2 emission by
+using other variables.
+
+16
+00:00:56,450 --> 00:01:00,170
+Linear regression is
+the approximation of a linear model
+
+17
+00:01:00,170 --> 00:01:04,920
+used to describe the relationship
+between two or more variables.
+
+18
+00:01:04,920 --> 00:01:08,600
+In simple linear regression,
+there are two variables,
+
+19
+00:01:08,600 --> 00:01:13,270
+a dependent variable and
+an independent variable.
+
+20
+00:01:13,270 --> 00:01:15,770
+The key point in the linear regression
+
+21
+00:01:15,770 --> 00:01:21,180
+is that our dependent value should be
+continuous and cannot be a discrete value.
+
+22
+00:01:21,180 --> 00:01:26,550
+However, the independent variables can
+be measured on either a categorical or
+
+23
+00:01:26,550 --> 00:01:29,430
+continuous measurement scale.
+
+24
+00:01:29,430 --> 00:01:32,670
+There are two types of
+linear regression models.
+
+25
+00:01:32,670 --> 00:01:36,800
+They are simple regression and
+multiple regression.
+
+26
+00:01:36,800 --> 00:01:40,900
+Simple linear regression is when
+one independent variable is used
+
+27
+00:01:40,900 --> 00:01:43,190
+to estimate a dependent variable.
+
+28
+00:01:43,190 --> 00:01:48,516
+For example, predicting Co2 emission
+using the engine size variable.
+
+29
+00:01:48,516 --> 00:01:53,234
+When more than one independent variable
+is present the process is called
+
+30
+00:01:53,234 --> 00:01:56,173
+multiple linear regression, for example,
+
+31
+00:01:56,173 --> 00:02:01,340
+predicting Co2 emission using
+engine size and cylinders of cars.
+
+32
+00:02:01,340 --> 00:02:05,850
+Our focus in this video is
+on simple linear regression.
+
+33
+00:02:05,850 --> 00:02:08,870
+Now let's see how linear regression works.
+
+34
+00:02:10,040 --> 00:02:13,330
+Okay, so let's look at our data set again.
+
+35
+00:02:13,330 --> 00:02:17,930
+To understand linear regression,
+we can plot our variables here.
+
+36
+00:02:17,930 --> 00:02:21,630
+We show engine size as
+an independent variable and
+
+37
+00:02:21,630 --> 00:02:25,590
+emission as the target value
+that we would like to predict.
+
+38
+00:02:25,590 --> 00:02:30,160
+A scatter plot clearly shows the relation
+between variables where changes in
+
+39
+00:02:30,160 --> 00:02:35,950
+one variable explain or possibly
+cause changes in the other variable.
+
+40
+00:02:35,950 --> 00:02:39,959
+Also, it indicates that these
+variables are linearly related.
+
+41
+00:02:41,190 --> 00:02:45,350
+With linear regression you can
+fit a line through the data.
+
+42
+00:02:45,350 --> 00:02:50,670
+For instance, as the engine size
+increases, so do the emissions.
+
+43
+00:02:50,670 --> 00:02:55,370
+With linear regression you can model
+the relationship of these variables.
+
+44
+00:02:55,370 --> 00:03:00,220
+A good model can be used to predict what
+the approximate emission of each car is.
+
+45
+00:03:01,220 --> 00:03:03,510
+How do we use this line for
+prediction now?
+
+46
+00:03:04,750 --> 00:03:09,280
+Let us assume for a moment that
+the line is a good fit of the data.
+
+47
+00:03:09,280 --> 00:03:12,870
+We can use it to predict
+the emission of an unknown car.
+
+48
+00:03:12,870 --> 00:03:17,685
+For example, for
+a sample car with engine size 2.4,
+
+49
+00:03:17,685 --> 00:03:20,870
+you can find the emission is 214.
+
+50
+00:03:22,140 --> 00:03:25,940
+Now, let's talk about what
+the fitting line actually is.
+
+51
+00:03:27,010 --> 00:03:30,150
+We're going to predict the target value y.
+
+52
+00:03:30,150 --> 00:03:37,871
+In our case using the independent
+variable engine size represented by x1.
+
+53
+00:03:37,871 --> 00:03:42,114
+The fit line is shown
+traditionally as a polynomial.
+
+54
+00:03:42,114 --> 00:03:46,465
+In a simple regression problem,
+a single x,
+
+55
+00:03:46,465 --> 00:03:51,857
+the form of the model would
+be theta 0 plus theta 1 x1.
+
+56
+00:03:51,857 --> 00:03:58,140
+In this equation, y hat is the dependent
+variable of the predicted value.
+
+57
+00:03:58,140 --> 00:04:01,035
+And x1 is the independent variable.
+
+58
+00:04:02,115 --> 00:04:08,405
+Theta 0 and theta 1 are the parameters
+of the line that we must adjust.
+
+59
+00:04:08,405 --> 00:04:11,055
+Theta 1 is known as the slope or
+
+60
+00:04:11,055 --> 00:04:15,690
+gradient of the fitting line and
+theta 0 is known as the intercept.
+
+61
+00:04:16,700 --> 00:04:22,420
+Theta 0 and theta 1 are also called
+the coefficients of the linear equation.
+
+62
+00:04:23,490 --> 00:04:28,562
+You can interpret this
+equation as y hat being
+
+63
+00:04:28,562 --> 00:04:34,760
+a function of x1, or
+y hat being dependent of x1.
+
+64
+00:04:34,760 --> 00:04:37,730
+How would you draw a line
+through the points?
+
+65
+00:04:37,730 --> 00:04:41,300
+And how do you determine
+which line fits best?
+
+66
+00:04:42,400 --> 00:04:46,460
+Linear regression estimates
+the coefficients of the line.
+
+67
+00:04:46,460 --> 00:04:49,680
+This means we must calculate theta 0 and
+
+68
+00:04:49,680 --> 00:04:54,570
+theta 1 to find the best
+line to fit the data.
+
+69
+00:04:54,570 --> 00:05:00,060
+This line would best estimate
+the emission of the unknown data points.
+
+70
+00:05:00,060 --> 00:05:04,390
+Let's see how we can find this line or,
+to be more precise,
+
+71
+00:05:04,390 --> 00:05:09,070
+how we can adjust the parameters to
+make the line the best fit for the data.
+
+72
+00:05:10,140 --> 00:05:15,570
+For a moment, let's assume we've already
+found the best fit line for our data.
+
+73
+00:05:15,570 --> 00:05:21,410
+Now, let's go through all the points and
+check how well they align with this line.
+
+74
+00:05:21,410 --> 00:05:25,030
+Best fit here means that if we have,
+for instance,
+
+75
+00:05:25,030 --> 00:05:30,140
+a car with engine size x1 = 5.4 and
+
+76
+00:05:30,140 --> 00:05:33,800
+actual Co2 = 250,
+
+77
+00:05:33,800 --> 00:05:38,870
+its Co2 should be predicted
+very close to the actual value,
+
+78
+00:05:38,870 --> 00:05:44,440
+which is y = 250 based on historical data.
+
+79
+00:05:44,440 --> 00:05:48,410
+But if we use the fit line,
+or better to say
+
+80
+00:05:48,410 --> 00:05:53,770
+using our polynomial with known
+parameters to predict the Co2 emission,
+
+81
+00:05:53,770 --> 00:05:58,080
+it will return y hat = 340.
+
+82
+00:05:58,080 --> 00:06:03,180
+Now if you compare the actual value
+of the emission of the car with what
+
+83
+00:06:03,180 --> 00:06:09,860
+we've predicted using our model, you will
+find out that we have a 90 unit error.
+
+84
+00:06:09,860 --> 00:06:13,700
+This means our prediction
+line is not accurate.
+
+85
+00:06:13,700 --> 00:06:17,460
+This error is also called
+the residual error.
+
+86
+00:06:17,460 --> 00:06:21,880
+So we can say the error is
+the distance from the data point
+
+87
+00:06:21,880 --> 00:06:23,610
+to the fitted regression line.
+
+88
+00:06:24,840 --> 00:06:28,860
+The mean of all residual errors
+shows how poorly the line
+
+89
+00:06:28,860 --> 00:06:31,350
+fits with the whole data set.
+
+90
+00:06:31,350 --> 00:06:38,800
+Mathematically it can be shown by the
+equation Mean Squared Error, shown as MSE.
+
+91
+00:06:38,800 --> 00:06:43,890
+Our objective is to find a line where
+the mean of all these errors is minimized.
+
+92
+00:06:43,890 --> 00:06:44,980
+In other words,
+
+93
+00:06:44,980 --> 00:06:49,250
+the mean error of the prediction using
+the fit line should be minimized.
+
+94
+00:06:50,420 --> 00:06:53,060
+Let's reword it more technically.
+
+95
+00:06:53,060 --> 00:06:58,770
+The objective of linear regression,
+is to minimize this MSE equation and
+
+96
+00:06:58,770 --> 00:07:04,640
+to minimize it, we should find the best
+parameters theta 0 and theta 1.
+
+97
+00:07:04,640 --> 00:07:08,540
+Now the question is,
+how to find theta 0 and
+
+98
+00:07:08,540 --> 00:07:12,540
+theta 1 In such a way that
+it minimizes this error?
+
+99
+00:07:13,580 --> 00:07:16,520
+How can we find such a perfect line?
+
+100
+00:07:16,520 --> 00:07:22,390
+Or said another way, how should we
+find the best parameters for our line?
+
+101
+00:07:22,390 --> 00:07:25,300
+Should we move the line a lot randomly and
+
+102
+00:07:25,300 --> 00:07:29,690
+calculate the MSE value every time and
+choose the minimum one?
+
+103
+00:07:29,690 --> 00:07:31,100
+Not really.
+
+104
+00:07:31,100 --> 00:07:33,730
+Actually, we have two options here.
+
+105
+00:07:33,730 --> 00:07:37,720
+Option one,
+we can use a mathematic approach, or
+
+106
+00:07:37,720 --> 00:07:41,060
+option two,
+we can use an optimization approach.
+
+107
+00:07:42,310 --> 00:07:47,592
+Let's see how we could easily use a
+mathematic formula to find the theta 0 and
+
+108
+00:07:47,592 --> 00:07:48,330
+theta 1.
+
+109
+00:07:49,330 --> 00:07:51,740
+As mentioned before, theta 0 and
+
+110
+00:07:51,740 --> 00:07:58,200
+theta 1 in the simple linear regression
+are the coefficients of the fit line.
+
+111
+00:07:58,200 --> 00:08:02,310
+We can use a simple equation to
+estimate these coefficients.
+
+112
+00:08:02,310 --> 00:08:07,570
+That is, given that it's a simple linear
+regression with only two parameters,
+
+113
+00:08:07,570 --> 00:08:11,860
+and knowing that theta 0 and
+theta 1 are the intercept and
+
+114
+00:08:11,860 --> 00:08:16,230
+slope of the line, we can estimate
+them directly from our data.
+
+115
+00:08:17,430 --> 00:08:22,250
+It requires that we calculate the mean
+of the independent and dependent or
+
+116
+00:08:22,250 --> 00:08:25,690
+target columns from the data set.
+
+117
+00:08:25,690 --> 00:08:29,290
+Notice that all of the data must
+be available to traverse and
+
+118
+00:08:29,290 --> 00:08:30,780
+calculate the parameters.
+
+119
+00:08:31,860 --> 00:08:34,080
+It can be shown that the intercept and
+
+120
+00:08:34,080 --> 00:08:37,100
+slope can be calculated
+using these equations.
+
+121
+00:08:38,320 --> 00:08:41,960
+We can start off by estimating
+the value for theta 1.
+
+122
+00:08:41,960 --> 00:08:45,560
+This is how you can find the slope
+of a line based on the data.
+
+123
+00:08:46,670 --> 00:08:52,150
+X bar is the average value for
+the engine size in our data set.
+
+124
+00:08:52,150 --> 00:08:57,882
+Please consider that we have
+nine rows here, rows 0 to 8.
+
+125
+00:08:57,882 --> 00:09:02,780
+First we calculate the average of x1 and
+average of y,
+
+126
+00:09:02,780 --> 00:09:07,794
+then we plug it into the slope
+equation to find theta 1.
+
+127
+00:09:08,850 --> 00:09:13,690
+The xi and yi in the equation
+refer to the fact that we
+
+128
+00:09:13,690 --> 00:09:18,690
+need to repeat these calculations
+across all values in our data set.
+
+129
+00:09:18,690 --> 00:09:23,380
+And i refers to the ith value of x or y.
+
+130
+00:09:24,780 --> 00:09:29,473
+Applying all values,
+we find theta 1 equals 39.
+
+131
+00:09:29,473 --> 00:09:32,000
+It is our second parameter.
+
+132
+00:09:32,000 --> 00:09:34,730
+It is used to calculate
+the first parameter
+
+133
+00:09:34,730 --> 00:09:36,550
+which is the intercept of the line.
+
+134
+00:09:37,570 --> 00:09:43,278
+Now we can plug theta 1 into
+the line equation to find theta 0.
+
+135
+00:09:43,278 --> 00:09:50,723
+It is easily calculated
+that theta 0 equals 125.74.
+
+136
+00:09:50,723 --> 00:09:54,182
+So these are the two parameters for
+the line,
+
+137
+00:09:54,182 --> 00:09:58,460
+where theta 0 is also called
+the bias coefficient, and
+
+138
+00:09:58,460 --> 00:10:02,935
+theta 1 is the coefficient for
+the Co2 emission column.
+
+139
+00:10:04,125 --> 00:10:07,945
+As a side note, you really don't
+need to remember the formula for
+
+140
+00:10:07,945 --> 00:10:13,200
+calculating these parameters, as most of
+the libraries used for machine learning
+
+141
+00:10:13,200 --> 00:10:19,050
+in Python, R and Scala can easily
+find these parameters for you.
+
+142
+00:10:19,050 --> 00:10:22,570
+But it's always good to
+understand how it works.
+
+143
+00:10:22,570 --> 00:10:26,280
+Now, we can write down
+the polynomial of the line.
+
+144
+00:10:27,510 --> 00:10:32,700
+So we know how to find the best fit for
+our data and its equation.
+
+145
+00:10:32,700 --> 00:10:37,660
+Now the question is how can we use it
+to predict the emission of a new car
+
+146
+00:10:37,660 --> 00:10:39,210
+based on its engine size?
+
+147
+00:10:40,640 --> 00:10:43,910
+After we found the parameters
+of the linear equation,
+
+148
+00:10:43,910 --> 00:10:48,760
+making predictions is as simple as solving
+the equation for a specific set of inputs.
+
+149
+00:10:49,960 --> 00:10:54,031
+Imagine we are predicting Co2 emission,
+or y,
+
+150
+00:10:54,031 --> 00:10:59,312
+from engine size, or x for
+the automobile in record number 9.
+
+151
+00:10:59,312 --> 00:11:04,116
+Our linear regression
+model representation for
+
+152
+00:11:04,116 --> 00:11:09,400
+this problem would be y hat
+= theta 0 + theta 1 x1.
+
+153
+00:11:09,400 --> 00:11:12,226
+Or if we map it to our data set,
+
+154
+00:11:12,226 --> 00:11:18,011
+it would be Co2Emission =
+theta 0 + theta 1 EngineSize.
+
+155
+00:11:19,490 --> 00:11:21,998
+As we saw, we can find theta 0,
+
+156
+00:11:21,998 --> 00:11:26,540
+theta 1 using the equations
+that we just talked about.
+
+157
+00:11:26,540 --> 00:11:31,000
+Once found, we can plug in
+the equation of the linear model.
+
+158
+00:11:31,000 --> 00:11:38,794
+For example, let's use theta 0 = 125 and
+theta 1 = 39.
+
+159
+00:11:38,794 --> 00:11:44,301
+So we can rewrite the linear
+model as Co2Emission
+
+160
+00:11:44,301 --> 00:11:48,510
+equals 125 plus 39 EngineSize.
+
+161
+00:11:48,510 --> 00:11:52,390
+Now let's plug in the 9th
+row of our data set and
+
+162
+00:11:52,390 --> 00:11:58,430
+calculate the Co2 emission for
+a car with an engine size of 2.4.
+
+163
+00:11:58,430 --> 00:12:05,806
+So Co2Emission = 125 + 39 x 2.4.
+
+164
+00:12:05,806 --> 00:12:11,343
+Therefore, we can predict
+that the Co2Emission for
+
+165
+00:12:11,343 --> 00:12:15,534
+this specific car would be 218.6.
+
+166
+00:12:15,534 --> 00:12:20,070
+Let's talk a bit about why
+linear regression is so useful.
+
+167
+00:12:20,070 --> 00:12:24,820
+Quite simply it is the most basic
+regression to use and understand.
+
+168
+00:12:24,820 --> 00:12:30,630
+In fact, one reason why linear regression
+is so useful is that it's fast.
+
+169
+00:12:30,630 --> 00:12:33,740
+It also doesn't require
+tuning of parameters.
+
+170
+00:12:33,740 --> 00:12:38,470
+So something like tuning the K
+parameter and K nearest neighbors, or
+
+171
+00:12:38,470 --> 00:12:43,170
+the learning rate in neural networks
+isn't something to worry about.
+
+172
+00:12:43,170 --> 00:12:47,410
+Linear regression is also easy to
+understand, and highly interpretable.
+
+173
+00:12:48,460 --> 00:12:50,000
+Thanks for watching this video.

@@ -1,0 +1,799 @@
+1
+00:00:00,000 --> 00:00:02,200
+Hello, and welcome.
+
+2
+00:00:02,200 --> 00:00:03,485
+In this video,
+
+3
+00:00:03,485 --> 00:00:06,355
+we'll be covering multiple linear regression.
+
+4
+00:00:06,355 --> 00:00:10,300
+As you know, there are two types of linear regression models,
+
+5
+00:00:10,300 --> 00:00:13,475
+simple regression and multiple regression.
+
+6
+00:00:13,475 --> 00:00:16,050
+Simple linear regression is when
+
+7
+00:00:16,050 --> 00:00:20,335
+one independent variable is used to estimate a dependent variable.
+
+8
+00:00:20,335 --> 00:00:25,955
+For example, predicting CO_2 emission using the variable of engine size.
+
+9
+00:00:25,955 --> 00:00:31,330
+In reality, there are multiple variables that predict the CO_2 emission.
+
+10
+00:00:31,330 --> 00:00:34,520
+When multiple independent variables are present,
+
+11
+00:00:34,520 --> 00:00:38,005
+the process is called multiple linear regression.
+
+12
+00:00:38,005 --> 00:00:41,755
+For example, predicting CO_2 emission using
+
+13
+00:00:41,755 --> 00:00:45,820
+engine size and the number of cylinders in the car's engine.
+
+14
+00:00:45,820 --> 00:00:50,460
+Our focus in this video is on multiple linear regression.
+
+15
+00:00:50,460 --> 00:00:53,694
+The good thing is that multiple linear regression
+
+16
+00:00:53,694 --> 00:00:57,425
+is the extension of the simple linear regression model.
+
+17
+00:00:57,425 --> 00:00:59,680
+So, I suggest you go through
+
+18
+00:00:59,680 --> 00:01:04,775
+the simple linear regression video first if you haven't watched it already.
+
+19
+00:01:04,775 --> 00:01:10,910
+Before we dive into a sample dataset and see how multiple linear regression works,
+
+20
+00:01:10,910 --> 00:01:13,865
+I want to tell you what kind of problems it can solve,
+
+21
+00:01:13,865 --> 00:01:16,390
+when we should use it, and specifically,
+
+22
+00:01:16,390 --> 00:01:19,530
+what kind of questions we can answer using it.
+
+23
+00:01:19,530 --> 00:01:24,640
+Basically, there are two applications for multiple linear regression.
+
+24
+00:01:24,640 --> 00:01:28,640
+First, it can be used when we would like to identify the strength of
+
+25
+00:01:28,640 --> 00:01:34,110
+the effect that the independent variables have on the dependent variable.
+
+26
+00:01:34,110 --> 00:01:38,360
+For example, does revision time, test anxiety,
+
+27
+00:01:38,360 --> 00:01:44,320
+lecture attendance and gender have any effect on exam performance of students?
+
+28
+00:01:44,320 --> 00:01:49,530
+Second, it can be used to predict the impact of changes, that is,
+
+29
+00:01:49,530 --> 00:01:52,784
+to understand how the dependent variable changes
+
+30
+00:01:52,784 --> 00:01:55,775
+when we change the independent variables.
+
+31
+00:01:55,775 --> 00:02:00,120
+For example, if we were reviewing a person's health data,
+
+32
+00:02:00,120 --> 00:02:03,330
+a multiple linear regression can tell you how much
+
+33
+00:02:03,330 --> 00:02:06,660
+that person's blood pressure goes up or down for
+
+34
+00:02:06,660 --> 00:02:09,480
+every unit increase or decrease in
+
+35
+00:02:09,480 --> 00:02:14,195
+a patient's body mass index holding other factors constant.
+
+36
+00:02:14,195 --> 00:02:17,690
+As is the case with simple linear regression,
+
+37
+00:02:17,690 --> 00:02:22,750
+multiple linear regression is a method of predicting a continuous variable.
+
+38
+00:02:22,750 --> 00:02:28,820
+It uses multiple variables called independent variables or predictors
+
+39
+00:02:28,820 --> 00:02:31,250
+that best predict the value of the target
+
+40
+00:02:31,250 --> 00:02:35,420
+variable which is also called the dependent variable.
+
+41
+00:02:35,420 --> 00:02:37,800
+In multiple linear regression,
+
+42
+00:02:37,800 --> 00:02:40,355
+the target value Y,
+
+43
+00:02:40,355 --> 00:02:45,320
+is a linear combination of independent variables X.
+
+44
+00:02:45,320 --> 00:02:49,330
+For example, you can predict how much CO_2 a car might
+
+45
+00:02:49,330 --> 00:02:54,200
+admit due to independent variables such as the car's engine size,
+
+46
+00:02:54,200 --> 00:02:57,505
+number of cylinders, and fuel consumption.
+
+47
+00:02:57,505 --> 00:03:01,990
+Multiple linear regression is very useful because you can examine
+
+48
+00:03:01,990 --> 00:03:06,455
+which variables are significant predictors of the outcome variable.
+
+49
+00:03:06,455 --> 00:03:12,325
+Also, you can find out how each feature impacts the outcome variable.
+
+50
+00:03:12,325 --> 00:03:16,570
+Again, as is the case in simple linear regression,
+
+51
+00:03:16,570 --> 00:03:19,780
+if you manage to build such a regression model,
+
+52
+00:03:19,780 --> 00:03:22,870
+you can use it to predict the emission amount of
+
+53
+00:03:22,870 --> 00:03:26,540
+an unknown case such as record number nine.
+
+54
+00:03:26,540 --> 00:03:32,450
+Generally, the model is of the form y hat equals theta zero,
+
+55
+00:03:32,450 --> 00:03:34,780
+plus theta one x_1,
+
+56
+00:03:34,780 --> 00:03:37,960
+plus theta two x_2 and so on,
+
+57
+00:03:37,960 --> 00:03:40,545
+up to theta n x_n.
+
+58
+00:03:40,545 --> 00:03:44,675
+Mathematically, we can show it as a vector form as well.
+
+59
+00:03:44,675 --> 00:03:48,585
+This means it can be shown as a dot product of two vectors;
+
+60
+00:03:48,585 --> 00:03:52,000
+the parameters vector and the feature set vector.
+
+61
+00:03:52,000 --> 00:03:58,670
+Generally, we can show the equation for a multidimensional space as theta transpose x,
+
+62
+00:03:58,670 --> 00:04:05,275
+where theta is an n by one vector of unknown parameters in a multi-dimensional space,
+
+63
+00:04:05,275 --> 00:04:08,950
+and x is the vector of the featured sets,
+
+64
+00:04:08,950 --> 00:04:11,650
+as theta is a vector of coefficients and is
+
+65
+00:04:11,650 --> 00:04:15,210
+supposed to be multiplied by x. Conventionally,
+
+66
+00:04:15,210 --> 00:04:17,925
+it is shown as transpose theta.
+
+67
+00:04:17,925 --> 00:04:24,535
+Theta is also called the parameters or weight vector of the regression equation.
+
+68
+00:04:24,535 --> 00:04:27,880
+Both these terms can be used interchangeably,
+
+69
+00:04:27,880 --> 00:04:31,930
+and x is the feature set which represents a car.
+
+70
+00:04:31,930 --> 00:04:37,565
+For example, x_1 for engine size or x_2 for cylinders, and so on.
+
+71
+00:04:37,565 --> 00:04:41,570
+The first element of the feature set would be set to one,
+
+72
+00:04:41,570 --> 00:04:45,770
+because it turns that theta zero into the intercept or biased
+
+73
+00:04:45,770 --> 00:04:50,200
+parameter when the vector is multiplied by the parameter vector.
+
+74
+00:04:50,200 --> 00:04:53,950
+Please notice that theta transpose x in
+
+75
+00:04:53,950 --> 00:04:57,970
+a one-dimensional space is the equation of a line,
+
+76
+00:04:57,970 --> 00:05:01,775
+it is what we use in simple linear regression.
+
+77
+00:05:01,775 --> 00:05:05,965
+In higher dimensions when we have more than one input
+
+78
+00:05:05,965 --> 00:05:10,405
+or x the line is called a plane or a hyperplane,
+
+79
+00:05:10,405 --> 00:05:14,045
+and this is what we use for multiple linear regression.
+
+80
+00:05:14,045 --> 00:05:20,015
+So, the whole idea is to find the best fit hyperplane for our data.
+
+81
+00:05:20,015 --> 00:05:23,890
+To this end and as is the case in linear regression,
+
+82
+00:05:23,890 --> 00:05:27,200
+we should estimate the values for theta vector that
+
+83
+00:05:27,200 --> 00:05:30,795
+best predict the value of the target field in each row.
+
+84
+00:05:30,795 --> 00:05:32,550
+To achieve this goal,
+
+85
+00:05:32,550 --> 00:05:35,570
+we have to minimize the error of the prediction.
+
+86
+00:05:35,570 --> 00:05:37,610
+Now, the question is,
+
+87
+00:05:37,610 --> 00:05:40,515
+how do we find the optimized parameters?
+
+88
+00:05:40,515 --> 00:05:43,820
+To find the optimized parameters for our model,
+
+89
+00:05:43,820 --> 00:05:47,585
+we should first understand what the optimized parameters are,
+
+90
+00:05:47,585 --> 00:05:51,060
+then we will find a way to optimize the parameters.
+
+91
+00:05:51,060 --> 00:05:57,385
+In short, optimized parameters are the ones which lead to a model with the fewest errors.
+
+92
+00:05:57,385 --> 00:06:02,710
+Let's assume for a moment that we have already found the parameter vector of our model,
+
+93
+00:06:02,710 --> 00:06:07,170
+it means we already know the values of theta vector.
+
+94
+00:06:07,170 --> 00:06:11,240
+Now we can use the model and the feature set of the first row of
+
+95
+00:06:11,240 --> 00:06:16,595
+our dataset to predict the CO_2 emission for the first car, correct?
+
+96
+00:06:16,595 --> 00:06:20,860
+If we plug the feature set values into the model equation,
+
+97
+00:06:20,860 --> 00:06:22,580
+we find y hat.
+
+98
+00:06:22,580 --> 00:06:24,105
+Let's say for example,
+
+99
+00:06:24,105 --> 00:06:28,790
+it returns 140 as the predicted value for this specific row,
+
+100
+00:06:28,790 --> 00:06:31,065
+what is the actual value?
+
+101
+00:06:31,065 --> 00:06:33,970
+Y equals 196.
+
+102
+00:06:33,970 --> 00:06:39,360
+How different is the predicted value from the actual value of 196?
+
+103
+00:06:39,360 --> 00:06:46,050
+Well, we can calculate it quite simply as 196 subtract 140,
+
+104
+00:06:46,050 --> 00:06:49,010
+which of course equals 56.
+
+105
+00:06:49,010 --> 00:06:55,740
+This is the error of our model only for one row or one car in our case.
+
+106
+00:06:55,740 --> 00:06:58,505
+As is the case in linear regression,
+
+107
+00:06:58,505 --> 00:07:01,420
+we can say the error here is the distance from
+
+108
+00:07:01,420 --> 00:07:04,770
+the data point to the fitted regression model.
+
+109
+00:07:04,770 --> 00:07:11,050
+The mean of all residual errors shows how bad the model is representing the data set,
+
+110
+00:07:11,050 --> 00:07:15,720
+it is called the mean squared error, or MSE.
+
+111
+00:07:15,720 --> 00:07:19,690
+Mathematically, MSE can be shown by an equation.
+
+112
+00:07:19,690 --> 00:07:25,840
+While this is not the only way to expose the error of a multiple linear regression model,
+
+113
+00:07:25,840 --> 00:07:28,790
+it is one of the most popular ways to do so.
+
+114
+00:07:28,790 --> 00:07:35,590
+The best model for our data set is the one with minimum error for all prediction values.
+
+115
+00:07:35,590 --> 00:07:42,520
+So, the objective of multiple linear regression is to minimize the MSE equation.
+
+116
+00:07:42,520 --> 00:07:48,135
+To minimize it, we should find the best parameters theta, but how?
+
+117
+00:07:48,135 --> 00:07:54,400
+Okay, how do we find the parameter or coefficients for multiple linear regression?
+
+118
+00:07:54,400 --> 00:07:58,420
+There are many ways to estimate the value of these coefficients.
+
+119
+00:07:58,420 --> 00:08:01,190
+However, the most common methods are
+
+120
+00:08:01,190 --> 00:08:05,565
+the ordinary least squares and optimization approach.
+
+121
+00:08:05,565 --> 00:08:09,770
+Ordinary least squares tries to estimate the values of
+
+122
+00:08:09,770 --> 00:08:13,910
+the coefficients by minimizing the mean square error.
+
+123
+00:08:13,910 --> 00:08:17,900
+This approach uses the data as a matrix and uses
+
+124
+00:08:17,900 --> 00:08:23,205
+linear algebra operations to estimate the optimal values for the theta.
+
+125
+00:08:23,205 --> 00:08:27,370
+The problem with this technique is the time complexity of calculating
+
+126
+00:08:27,370 --> 00:08:31,600
+matrix operations as it can take a very long time to finish.
+
+127
+00:08:31,600 --> 00:08:36,040
+When the number of rows in your data set is less than 10,000,
+
+128
+00:08:36,040 --> 00:08:38,545
+you can think of this technique as an option.
+
+129
+00:08:38,545 --> 00:08:40,695
+However, for greater values,
+
+130
+00:08:40,695 --> 00:08:43,520
+you should try other faster approaches.
+
+131
+00:08:43,520 --> 00:08:50,115
+The second option is to use an optimization algorithm to find the best parameters.
+
+132
+00:08:50,115 --> 00:08:54,220
+That is, you can use a process of optimizing the values of
+
+133
+00:08:54,220 --> 00:09:00,285
+the coefficients by iteratively minimizing the error of the model on your training data.
+
+134
+00:09:00,285 --> 00:09:04,060
+For example, you can use gradient descent which
+
+135
+00:09:04,060 --> 00:09:08,320
+starts optimization with random values for each coefficient,
+
+136
+00:09:08,320 --> 00:09:12,220
+then calculates the errors and tries to minimize it
+
+137
+00:09:12,220 --> 00:09:16,830
+through y's changing of the coefficients in multiple iterations.
+
+138
+00:09:16,830 --> 00:09:22,035
+Gradient descent is a proper approach if you have a large data set.
+
+139
+00:09:22,035 --> 00:09:26,260
+Please understand however, that there are other approaches to estimate
+
+140
+00:09:26,260 --> 00:09:31,375
+the parameters of the multiple linear regression that you can explore on your own.
+
+141
+00:09:31,375 --> 00:09:34,630
+After you find the best parameters for your model,
+
+142
+00:09:34,630 --> 00:09:36,840
+you can go to the prediction phase.
+
+143
+00:09:36,840 --> 00:09:40,420
+After we found the parameters of the linear equation,
+
+144
+00:09:40,420 --> 00:09:46,080
+making predictions is as simple as solving the equation for a specific set of inputs.
+
+145
+00:09:46,080 --> 00:09:50,055
+Imagine we are predicting CO_2 emission or Y
+
+146
+00:09:50,055 --> 00:09:54,430
+from other variables for the automobile in record number nine.
+
+147
+00:09:54,430 --> 00:09:57,600
+Our linear regression model representation for
+
+148
+00:09:57,600 --> 00:10:02,950
+this problem would be y hat equals theta transpose x.
+
+149
+00:10:02,950 --> 00:10:05,320
+Once we find the parameters,
+
+150
+00:10:05,320 --> 00:10:08,815
+we can plug them into the equation of the linear model.
+
+151
+00:10:08,815 --> 00:10:13,395
+For example, let's use theta zero equals 125,
+
+152
+00:10:13,395 --> 00:10:16,080
+theta one equals 6.2,
+
+153
+00:10:16,080 --> 00:10:19,585
+theta two equals 14, and so on.
+
+154
+00:10:19,585 --> 00:10:22,160
+If we map it to our data set,
+
+155
+00:10:22,160 --> 00:10:27,005
+we can rewrite the linear model as CO_2 emissions equals
+
+156
+00:10:27,005 --> 00:10:32,460
+125 plus 6.2 multiplied by engine size,
+
+157
+00:10:32,460 --> 00:10:36,700
+plus 14 multiplied by cylinder, and so on.
+
+158
+00:10:36,700 --> 00:10:40,295
+As you can see, multiple linear regression
+
+159
+00:10:40,295 --> 00:10:43,550
+estimates the relative importance of predictors.
+
+160
+00:10:43,550 --> 00:10:47,900
+For example, it shows cylinder has higher impact
+
+161
+00:10:47,900 --> 00:10:52,605
+on CO_2 emission amounts in comparison with engine size.
+
+162
+00:10:52,605 --> 00:10:57,590
+Now, let's plug in the ninth row of our data set and calculate
+
+163
+00:10:57,590 --> 00:11:02,490
+the CO_2 emission for a car with the engine size of 2.4.
+
+164
+00:11:02,490 --> 00:11:10,745
+So, CO_2 emission equals 125 plus 6.2 times 2.4,
+
+165
+00:11:10,745 --> 00:11:14,935
+plus 14 times four, and so on.
+
+166
+00:11:14,935 --> 00:11:22,395
+We can predict the CO_2 emission for this specific car would be 214.1.
+
+167
+00:11:22,395 --> 00:11:25,365
+Now, let me address some concerns that you might
+
+168
+00:11:25,365 --> 00:11:28,915
+already be having regarding multiple linear regression.
+
+169
+00:11:28,915 --> 00:11:31,140
+As you saw, you can use
+
+170
+00:11:31,140 --> 00:11:36,675
+multiple independent variables to predict a target value in multiple linear regression.
+
+171
+00:11:36,675 --> 00:11:40,680
+It sometimes results in a better model compared to using
+
+172
+00:11:40,680 --> 00:11:43,140
+a simple linear regression which uses
+
+173
+00:11:43,140 --> 00:11:47,985
+only one independent variable to predict the dependent variable.
+
+174
+00:11:47,985 --> 00:11:50,669
+Now the question is how,
+
+175
+00:11:50,669 --> 00:11:54,435
+many independent variable should we use for the prediction?
+
+176
+00:11:54,435 --> 00:11:57,690
+Should we use all the fields in our data set?
+
+177
+00:11:57,690 --> 00:12:00,530
+Does adding independent variables to
+
+178
+00:12:00,530 --> 00:12:05,635
+a multiple linear regression model always increase the accuracy of the model?
+
+179
+00:12:05,635 --> 00:12:09,830
+Basically, adding too many independent variables without
+
+180
+00:12:09,830 --> 00:12:15,140
+any theoretical justification may result in an overfit model.
+
+181
+00:12:15,140 --> 00:12:19,520
+An overfit model is a real problem because it is too
+
+182
+00:12:19,520 --> 00:12:24,820
+complicated for your data set and not general enough to be used for prediction.
+
+183
+00:12:24,820 --> 00:12:30,475
+So, it is recommended to avoid using many variables for prediction.
+
+184
+00:12:30,475 --> 00:12:34,755
+There are different ways to avoid overfitting a model in regression,
+
+185
+00:12:34,755 --> 00:12:38,145
+however that is outside the scope of this video.
+
+186
+00:12:38,145 --> 00:12:39,965
+The next question is,
+
+187
+00:12:39,965 --> 00:12:43,260
+should independent variables be continuous?
+
+188
+00:12:43,260 --> 00:12:47,920
+Basically, categorical independent variables can be incorporated
+
+189
+00:12:47,920 --> 00:12:53,015
+into a regression model by converting them into numerical variables.
+
+190
+00:12:53,015 --> 00:12:57,535
+For example, given a binary variables such as car type,
+
+191
+00:12:57,535 --> 00:13:02,955
+the code dummy zero for manual and one for automatic cars.
+
+192
+00:13:02,955 --> 00:13:04,590
+As a last point,
+
+193
+00:13:04,590 --> 00:13:10,110
+remember that multiple linear regression is a specific type of linear regression.
+
+194
+00:13:10,110 --> 00:13:14,160
+So, there needs to be a linear relationship between
+
+195
+00:13:14,160 --> 00:13:18,530
+the dependent variable and each of your independent variables.
+
+196
+00:13:18,530 --> 00:13:22,525
+There are a number of ways to check for linear relationship.
+
+197
+00:13:22,525 --> 00:13:27,875
+For example, you can use scatter plots and then visually checked for linearity.
+
+198
+00:13:27,875 --> 00:13:32,020
+If the relationship displayed in your scatter plot is not linear,
+
+199
+00:13:32,020 --> 00:13:35,620
+then you need to use non-linear regression.
+
+200
+00:13:35,620 --> 00:13:39,400
+This concludes our video. Thanks for watching.

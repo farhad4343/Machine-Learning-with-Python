@@ -1,0 +1,523 @@
+1
+00:00:00,000 --> 00:00:02,220
+Hello and welcome.
+
+2
+00:00:02,220 --> 00:00:03,495
+In this video,
+
+3
+00:00:03,495 --> 00:00:05,730
+we'll be covering model evaluation.
+
+4
+00:00:05,730 --> 00:00:07,470
+So let's get started.
+
+5
+00:00:07,470 --> 00:00:13,405
+The goal of regression is to build a model to accurately predict an unknown case.
+
+6
+00:00:13,405 --> 00:00:19,205
+To this end, we have to perform regression evaluation after building the model.
+
+7
+00:00:19,205 --> 00:00:23,040
+In this video, we'll introduce and discuss two types of
+
+8
+00:00:23,040 --> 00:00:27,180
+evaluation approaches that can be used to achieve this goal.
+
+9
+00:00:27,180 --> 00:00:34,845
+These approaches are train and test on the same dataset and train/test split.
+
+10
+00:00:34,845 --> 00:00:37,660
+We'll talk about what each of these are,
+
+11
+00:00:37,660 --> 00:00:41,755
+as well as the pros and cons of using each of these models.
+
+12
+00:00:41,755 --> 00:00:46,845
+Also, we'll introduce some metrics for accuracy of regression models.
+
+13
+00:00:46,845 --> 00:00:49,355
+Let's look at the first approach.
+
+14
+00:00:49,355 --> 00:00:52,520
+When considering evaluation models,
+
+15
+00:00:52,520 --> 00:00:56,680
+we clearly want to choose the one that will give us the most accurate results.
+
+16
+00:00:56,680 --> 00:00:58,845
+So, the question is,
+
+17
+00:00:58,845 --> 00:01:02,040
+how can we calculate the accuracy of our model?
+
+18
+00:01:02,040 --> 00:01:06,020
+In other words, how much can we trust this model for prediction of
+
+19
+00:01:06,020 --> 00:01:07,940
+an unknown sample using
+
+20
+00:01:07,940 --> 00:01:12,850
+a given dataset and having built a model such as linear regression?
+
+21
+00:01:12,850 --> 00:01:18,045
+One of the solutions is to select a portion of our dataset for testing.
+
+22
+00:01:18,045 --> 00:01:22,740
+For instance, assume that we have 10 records in our dataset.
+
+23
+00:01:22,740 --> 00:01:25,770
+We use the entire dataset for training,
+
+24
+00:01:25,770 --> 00:01:29,025
+and we build a model using this training set.
+
+25
+00:01:29,025 --> 00:01:33,015
+Now, we select a small portion of the dataset,
+
+26
+00:01:33,015 --> 00:01:35,825
+such as row number six to nine,
+
+27
+00:01:35,825 --> 00:01:37,675
+but without the labels.
+
+28
+00:01:37,675 --> 00:01:40,170
+This set is called a test set,
+
+29
+00:01:40,170 --> 00:01:41,530
+which has the labels,
+
+30
+00:01:41,530 --> 00:01:46,580
+but the labels are not used for prediction and is used only as ground truth.
+
+31
+00:01:46,580 --> 00:01:50,840
+The labels are called actual values of the test set.
+
+32
+00:01:50,840 --> 00:01:54,200
+Now we pass the feature set of the testing portion
+
+33
+00:01:54,200 --> 00:01:58,105
+to our built model and predict the target values.
+
+34
+00:01:58,105 --> 00:02:01,810
+Finally, we compare the predicted values by
+
+35
+00:02:01,810 --> 00:02:05,640
+our model with the actual values in the test set.
+
+36
+00:02:05,640 --> 00:02:10,035
+This indicates how accurate our model actually is.
+
+37
+00:02:10,035 --> 00:02:13,960
+There are different metrics to report the accuracy of the model,
+
+38
+00:02:13,960 --> 00:02:16,450
+but most of them work generally based on
+
+39
+00:02:16,450 --> 00:02:19,975
+the similarity of the predicted and actual values.
+
+40
+00:02:19,975 --> 00:02:22,840
+Let's look at one of the simplest metrics to
+
+41
+00:02:22,840 --> 00:02:26,090
+calculate the accuracy of our regression model.
+
+42
+00:02:26,090 --> 00:02:32,350
+As mentioned, we just compare the actual values y with the predicted values,
+
+43
+00:02:32,350 --> 00:02:35,250
+which is noted as y hat for the testing set.
+
+44
+00:02:35,250 --> 00:02:39,250
+The error of the model is calculated as the average difference
+
+45
+00:02:39,250 --> 00:02:43,435
+between the predicted and actual values for all the rows.
+
+46
+00:02:43,435 --> 00:02:46,380
+We can write this error as an equation.
+
+47
+00:02:46,380 --> 00:02:51,710
+So, the first evaluation approach we just talked about is the simplest one,
+
+48
+00:02:51,710 --> 00:02:54,890
+train and test on the same dataset.
+
+49
+00:02:54,890 --> 00:02:58,555
+Essentially, the name of this approach says it all.
+
+50
+00:02:58,555 --> 00:03:01,310
+You train the model on the entire dataset,
+
+51
+00:03:01,310 --> 00:03:05,230
+then you test it using a portion of the same dataset.
+
+52
+00:03:05,230 --> 00:03:06,730
+In a general sense,
+
+53
+00:03:06,730 --> 00:03:11,570
+when you test with a dataset in which you know the target value for each data point,
+
+54
+00:03:11,570 --> 00:03:16,120
+you're able to obtain a percentage of accurate predictions for the model.
+
+55
+00:03:16,120 --> 00:03:21,350
+This evaluation approach would most likely have a high training accuracy and
+
+56
+00:03:21,350 --> 00:03:24,435
+the low out-of-sample accuracy since
+
+57
+00:03:24,435 --> 00:03:28,470
+the model knows all of the testing data points from the training.
+
+58
+00:03:28,470 --> 00:03:33,455
+What is training accuracy and out-of-sample accuracy?
+
+59
+00:03:33,455 --> 00:03:39,455
+We said that training and testing on the same dataset produces a high training accuracy,
+
+60
+00:03:39,455 --> 00:03:42,815
+but what exactly is training accuracy?
+
+61
+00:03:42,815 --> 00:03:45,950
+Training accuracy is the percentage of
+
+62
+00:03:45,950 --> 00:03:50,600
+correct predictions that the model makes when using the test dataset.
+
+63
+00:03:50,600 --> 00:03:56,195
+However, a high training accuracy isn't necessarily a good thing.
+
+64
+00:03:56,195 --> 00:04:02,775
+For instance, having a high training accuracy may result in an over-fit the data.
+
+65
+00:04:02,775 --> 00:04:06,535
+This means that the model is overly trained to the dataset,
+
+66
+00:04:06,535 --> 00:04:10,850
+which may capture noise and produce a non-generalized model.
+
+67
+00:04:10,850 --> 00:04:15,200
+Out-of-sample accuracy is the percentage of correct predictions that
+
+68
+00:04:15,200 --> 00:04:19,900
+the model makes on data that the model has not been trained on.
+
+69
+00:04:19,900 --> 00:04:24,520
+Doing a train and test on the same dataset will most likely have
+
+70
+00:04:24,520 --> 00:04:29,620
+low out-of-sample accuracy due to the likelihood of being over-fit.
+
+71
+00:04:29,620 --> 00:04:31,720
+It's important that our models have
+
+72
+00:04:31,720 --> 00:04:35,840
+high out-of-sample accuracy because the purpose of our model is,
+
+73
+00:04:35,840 --> 00:04:40,075
+of course, to make correct predictions on unknown data.
+
+74
+00:04:40,075 --> 00:04:44,230
+So, how can we improve out-of-sample accuracy?
+
+75
+00:04:44,230 --> 00:04:49,935
+One way is to use another evaluation approach called train/test split.
+
+76
+00:04:49,935 --> 00:04:54,935
+In this approach, we select a portion of our dataset for training, for example,
+
+77
+00:04:54,935 --> 00:04:56,680
+row zero to five,
+
+78
+00:04:56,680 --> 00:04:58,920
+and the rest is used for testing,
+
+79
+00:04:58,920 --> 00:05:01,425
+for example, row six to nine.
+
+80
+00:05:01,425 --> 00:05:03,985
+The model is built on the training set.
+
+81
+00:05:03,985 --> 00:05:08,315
+Then, the test feature set is passed to the model for prediction.
+
+82
+00:05:08,315 --> 00:05:11,140
+Finally, the predicted values for
+
+83
+00:05:11,140 --> 00:05:15,670
+the test set are compared with the actual values of the testing set.
+
+84
+00:05:15,670 --> 00:05:20,740
+The second evaluation approach is called train/test split.
+
+85
+00:05:20,740 --> 00:05:24,175
+Train/test split involves splitting the dataset
+
+86
+00:05:24,175 --> 00:05:27,185
+into training and testing sets respectively,
+
+87
+00:05:27,185 --> 00:05:29,215
+which are mutually exclusive.
+
+88
+00:05:29,215 --> 00:05:34,190
+After which, you train with the training set and test with the testing set.
+
+89
+00:05:34,190 --> 00:05:39,100
+This will provide a more accurate evaluation on out-of-sample accuracy because
+
+90
+00:05:39,100 --> 00:05:44,470
+the testing dataset is not part of the dataset that has been used to train the data.
+
+91
+00:05:44,470 --> 00:05:48,009
+It is more realistic for real-world problems.
+
+92
+00:05:48,009 --> 00:05:52,430
+This means that we know the outcome of each data point in the dataset,
+
+93
+00:05:52,430 --> 00:05:54,730
+making it great to test with.
+
+94
+00:05:54,730 --> 00:05:58,140
+Since this data has not been used to train the model,
+
+95
+00:05:58,140 --> 00:06:01,860
+the model has no knowledge of the outcome of these data points.
+
+96
+00:06:01,860 --> 00:06:05,850
+So, in essence, it's truly out-of-sample testing.
+
+97
+00:06:05,850 --> 00:06:11,175
+However, please ensure that you train your model with the testing set afterwards,
+
+98
+00:06:11,175 --> 00:06:14,790
+as you don't want to lose potentially valuable data.
+
+99
+00:06:14,790 --> 00:06:18,280
+The issue with train/test split is that it's highly
+
+100
+00:06:18,280 --> 00:06:22,990
+dependent on the datasets on which the data was trained and tested.
+
+101
+00:06:22,990 --> 00:06:27,520
+The variation of this causes train/test split to have
+
+102
+00:06:27,520 --> 00:06:32,520
+a better out-of-sample prediction than training and testing on the same dataset,
+
+103
+00:06:32,520 --> 00:06:36,160
+but it still has some problems due to this dependency.
+
+104
+00:06:36,160 --> 00:06:40,780
+Another evaluation model, called K-fold cross-validation,
+
+105
+00:06:40,780 --> 00:06:43,300
+resolves most of these issues.
+
+106
+00:06:43,300 --> 00:06:47,725
+How do you fix a high variation that results from a dependency?
+
+107
+00:06:47,725 --> 00:06:50,110
+Well, you average it.
+
+108
+00:06:50,110 --> 00:06:52,930
+Let me explain the basic concept of K-fold
+
+109
+00:06:52,930 --> 00:06:56,905
+cross-validation to see how we can solve this problem.
+
+110
+00:06:56,905 --> 00:07:02,380
+The entire dataset is represented by the points in the image at the top left.
+
+111
+00:07:02,380 --> 00:07:05,205
+If we have K equals four folds,
+
+112
+00:07:05,205 --> 00:07:08,260
+then we split up this dataset as shown here.
+
+113
+00:07:08,260 --> 00:07:10,899
+In the first fold for example,
+
+114
+00:07:10,899 --> 00:07:16,360
+we use the first 25 percent of the dataset for testing and the rest for training.
+
+115
+00:07:16,360 --> 00:07:22,000
+The model is built using the training set and is evaluated using the test set.
+
+116
+00:07:22,000 --> 00:07:25,860
+Then, in the next round or in the second fold,
+
+117
+00:07:25,860 --> 00:07:28,990
+the second 25 percent of the dataset is
+
+118
+00:07:28,990 --> 00:07:32,455
+used for testing and the rest for training the model.
+
+119
+00:07:32,455 --> 00:07:36,395
+Again, the accuracy of the model is calculated.
+
+120
+00:07:36,395 --> 00:07:39,135
+We continue for all folds.
+
+121
+00:07:39,135 --> 00:07:43,675
+Finally, the result of all four evaluations are averaged.
+
+122
+00:07:43,675 --> 00:07:47,920
+That is, the accuracy of each fold is then averaged,
+
+123
+00:07:47,920 --> 00:07:50,200
+keeping in mind that each fold is distinct,
+
+124
+00:07:50,200 --> 00:07:54,595
+where no training data in one fold is used in another.
+
+125
+00:07:54,595 --> 00:08:01,310
+K-fold cross-validation in its simplest form performs multiple train/test splits,
+
+126
+00:08:01,310 --> 00:08:05,300
+using the same dataset where each split is different.
+
+127
+00:08:05,300 --> 00:08:11,310
+Then, the result is average to produce a more consistent out-of-sample accuracy.
+
+128
+00:08:11,310 --> 00:08:14,520
+We wanted to show you an evaluation model that
+
+129
+00:08:14,520 --> 00:08:18,219
+addressed some of the issues we've described in the previous approaches.
+
+130
+00:08:18,219 --> 00:08:22,575
+However, going in-depth with K-fold cross-validation model
+
+131
+00:08:22,575 --> 00:08:27,400
+is out of the scope for this course. Thanks for watching.
