@@ -1,0 +1,315 @@
+1
+00:00:00,000 --> 00:00:01,965
+Hello, and welcome.
+
+2
+00:00:01,965 --> 00:00:03,305
+In this video,
+
+3
+00:00:03,305 --> 00:00:08,395
+we'll be covering Content-Based Recommender Systems. So let's get started.
+
+4
+00:00:08,395 --> 00:00:12,060
+A Content-based recommendation system tries
+
+5
+00:00:12,060 --> 00:00:15,740
+to recommend items to users based on their profile.
+
+6
+00:00:15,740 --> 00:00:21,125
+The user's profile revolves around that user's preferences and tastes.
+
+7
+00:00:21,125 --> 00:00:23,815
+It is shaped based on user ratings,
+
+8
+00:00:23,815 --> 00:00:26,730
+including the number of times that user has clicked on
+
+9
+00:00:26,730 --> 00:00:30,850
+different items or perhaps even liked those items.
+
+10
+00:00:30,850 --> 00:00:36,205
+The recommendation process is based on the similarity between those items.
+
+11
+00:00:36,205 --> 00:00:39,450
+Similarity or closeness of items is
+
+12
+00:00:39,450 --> 00:00:43,510
+measured based on the similarity in the content of those items.
+
+13
+00:00:43,510 --> 00:00:45,480
+When we say content,
+
+14
+00:00:45,480 --> 00:00:48,695
+we're talking about things like the items category,
+
+15
+00:00:48,695 --> 00:00:51,690
+tag, genre, and so on.
+
+16
+00:00:51,690 --> 00:00:54,775
+For example, if we have four movies,
+
+17
+00:00:54,775 --> 00:00:58,355
+and if the user likes or rates the first two items,
+
+18
+00:00:58,355 --> 00:01:02,920
+and if Item 3 is similar to Item 1 in terms of their genre,
+
+19
+00:01:02,920 --> 00:01:06,870
+the engine will also recommend Item 3 to the user.
+
+20
+00:01:06,870 --> 00:01:12,105
+In essence, this is what content-based recommender system engines do.
+
+21
+00:01:12,105 --> 00:01:18,210
+Now, let's dive into a content-based recommender system to see how it works.
+
+22
+00:01:18,210 --> 00:01:22,210
+Let's assume we have a data set of only six movies.
+
+23
+00:01:22,210 --> 00:01:25,300
+This data set shows movies that our user has
+
+24
+00:01:25,300 --> 00:01:28,825
+watched and also the genre of each of the movies.
+
+25
+00:01:28,825 --> 00:01:33,320
+For example, Batman versus Superman is in the Adventure,
+
+26
+00:01:33,320 --> 00:01:38,215
+Super Hero genre and Guardians of the Galaxy is in the Comedy,
+
+27
+00:01:38,215 --> 00:01:42,275
+Adventure, Super Hero and Science-fiction genres.
+
+28
+00:01:42,275 --> 00:01:45,740
+Let's say the user has watched and rated three movies so
+
+29
+00:01:45,740 --> 00:01:50,460
+far and she has given a rating of two out of 10 to the first movie,
+
+30
+00:01:50,460 --> 00:01:54,980
+10 out of 10 to the second movie and eight out of 10 to the third.
+
+31
+00:01:54,980 --> 00:01:58,820
+The task of the recommender engine is to recommend one of
+
+32
+00:01:58,820 --> 00:02:02,435
+the three candidate movies to this user, or in other,
+
+33
+00:02:02,435 --> 00:02:05,945
+words we want to predict what the user's possible rating would
+
+34
+00:02:05,945 --> 00:02:10,205
+be of the three candidate movies if she were to watch them.
+
+35
+00:02:10,205 --> 00:02:14,365
+To achieve this, we have to build the user profile.
+
+36
+00:02:14,365 --> 00:02:16,920
+First, we create a vector to show
+
+37
+00:02:16,920 --> 00:02:20,420
+the user's ratings for the movies that she's already watched.
+
+38
+00:02:20,420 --> 00:02:23,390
+We call it Input User Ratings.
+
+39
+00:02:23,390 --> 00:02:28,360
+Then, we encode the movies through the one-hot encoding approach.
+
+40
+00:02:28,360 --> 00:02:32,140
+Genre of movies are used here as a feature set.
+
+41
+00:02:32,140 --> 00:02:35,910
+We use the first three movies to make this matrix,
+
+42
+00:02:35,910 --> 00:02:39,290
+which represents the movie feature set matrix.
+
+43
+00:02:39,290 --> 00:02:45,720
+If we multiply these two matrices we can get the weighted feature set for the movies.
+
+44
+00:02:45,720 --> 00:02:47,655
+Let's take a look at the result.
+
+45
+00:02:47,655 --> 00:02:52,410
+This matrix is also called the Weighted Genre matrix and represents
+
+46
+00:02:52,410 --> 00:02:57,895
+the interests of the user for each genre based on the movies that she's watched.
+
+47
+00:02:57,895 --> 00:03:01,380
+Now, given the Weighted Genre Matrix,
+
+48
+00:03:01,380 --> 00:03:04,570
+we can shape the profile of our active user.
+
+49
+00:03:04,570 --> 00:03:06,920
+Essentially, we can aggregate
+
+50
+00:03:06,920 --> 00:03:11,580
+the weighted genres and then normalize them to find the user profile.
+
+51
+00:03:11,580 --> 00:03:16,940
+It clearly indicates that she likes superhero movies more than other genres.
+
+52
+00:03:16,940 --> 00:03:22,875
+We use this profile to figure out what movie is proper to recommend to this user.
+
+53
+00:03:22,875 --> 00:03:25,950
+Recall that we also had three candidate movies for
+
+54
+00:03:25,950 --> 00:03:29,425
+recommendation that haven't been watched by the user,
+
+55
+00:03:29,425 --> 00:03:32,000
+we encode these movies as well.
+
+56
+00:03:32,000 --> 00:03:34,950
+Now we're in the position where we have to figure out
+
+57
+00:03:34,950 --> 00:03:38,445
+which of them is most suited to be recommended to the user.
+
+58
+00:03:38,445 --> 00:03:44,915
+To do this, we simply multiply the User Profile matrix by the candidate Movie Matrix,
+
+59
+00:03:44,915 --> 00:03:48,250
+which results in the Weighted Movies Matrix.
+
+60
+00:03:48,250 --> 00:03:53,505
+It shows the weight of each genre with respect to the User Profile.
+
+61
+00:03:53,505 --> 00:03:57,240
+Now, if we aggregate these weighted ratings,
+
+62
+00:03:57,240 --> 00:04:02,190
+we get the active user's possible interest level in these three movies.
+
+63
+00:04:02,190 --> 00:04:05,490
+In essence, it's our recommendation lists,
+
+64
+00:04:05,490 --> 00:04:09,900
+which we can sort to rank the movies and recommend them to the user.
+
+65
+00:04:09,900 --> 00:04:14,655
+For example, we can say that the Hitchhiker's Guide to the Galaxy
+
+66
+00:04:14,655 --> 00:04:19,320
+has the highest score in our list and it's proper to recommend to the user.
+
+67
+00:04:19,320 --> 00:04:24,100
+Now, you can come back and fill the predicted ratings for the user.
+
+68
+00:04:24,100 --> 00:04:27,735
+So, to recap what we've discussed so far,
+
+69
+00:04:27,735 --> 00:04:31,850
+the recommendation in a content-based system is based on
+
+70
+00:04:31,850 --> 00:04:36,345
+user's taste and the content or feature set items.
+
+71
+00:04:36,345 --> 00:04:38,765
+Such a model is very efficient.
+
+72
+00:04:38,765 --> 00:04:42,080
+However, in some cases, it doesn't work.
+
+73
+00:04:42,080 --> 00:04:46,580
+For example, assume that we have a movie in the drama genre,
+
+74
+00:04:46,580 --> 00:04:48,575
+which the user has never watch.
+
+75
+00:04:48,575 --> 00:04:52,505
+So, this genre would not be in her profile.
+
+76
+00:04:52,505 --> 00:04:57,920
+Therefore, shall only get recommendations related to genres that are already in
+
+77
+00:04:57,920 --> 00:05:04,729
+her profile and the recommender engine may never recommend any movie within other genres.
+
+78
+00:05:04,729 --> 00:05:07,610
+This problem can be solved by other types of
+
+79
+00:05:07,610 --> 00:05:12,800
+recommender systems such as collaborative filtering. Thanks for watching.

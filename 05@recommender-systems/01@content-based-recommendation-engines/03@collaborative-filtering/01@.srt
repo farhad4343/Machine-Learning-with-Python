@@ -1,0 +1,415 @@
+1
+00:00:00,000 --> 00:00:02,370
+Hello, and welcome.
+
+2
+00:00:02,370 --> 00:00:03,805
+In this video,
+
+3
+00:00:03,805 --> 00:00:08,339
+we'll be covering a recommender system technique called collaborative filtering.
+
+4
+00:00:08,339 --> 00:00:09,955
+So let's get started.
+
+5
+00:00:09,955 --> 00:00:12,930
+Collaborative filtering is based on the fact that
+
+6
+00:00:12,930 --> 00:00:17,624
+relationships exist between products and people's interests.
+
+7
+00:00:17,624 --> 00:00:23,520
+Many recommendation systems use collaborative filtering to find these relationships
+
+8
+00:00:23,520 --> 00:00:25,860
+and to give an accurate recommendation of
+
+9
+00:00:25,860 --> 00:00:30,020
+a product that the user might like or be interested in.
+
+10
+00:00:30,020 --> 00:00:36,490
+Collaborative filtering has basically two approaches; user-based, and item-based.
+
+11
+00:00:36,490 --> 00:00:42,310
+User-based collaborative filtering is based on the user similarity or neighborhood.
+
+12
+00:00:42,310 --> 00:00:47,950
+Item-based collaborative filtering is based on similarity among items.
+
+13
+00:00:47,950 --> 00:00:52,460
+Let's first look at the intuition behind the user-based approach.
+
+14
+00:00:52,460 --> 00:00:55,315
+In user-based collaborative filtering,
+
+15
+00:00:55,315 --> 00:00:59,450
+we have an active user for whom the recommendation is aimed.
+
+16
+00:00:59,450 --> 00:01:04,320
+The collaborative filtering engine first looks for users who are similar.
+
+17
+00:01:04,320 --> 00:01:08,975
+That is users who share the active users rating patterns.
+
+18
+00:01:08,975 --> 00:01:14,085
+Collaborative filtering basis this similarity on things like history,
+
+19
+00:01:14,085 --> 00:01:18,130
+preference, and choices that users make when buying,
+
+20
+00:01:18,130 --> 00:01:20,255
+watching, or enjoying something.
+
+21
+00:01:20,255 --> 00:01:24,930
+For example, movies that similar users have rated highly.
+
+22
+00:01:24,930 --> 00:01:29,070
+Then it uses the ratings from these similar users to predict
+
+23
+00:01:29,070 --> 00:01:34,935
+the possible ratings by the active user for a movie that she had not previously watched.
+
+24
+00:01:34,935 --> 00:01:38,940
+For instance, if two users are similar or
+
+25
+00:01:38,940 --> 00:01:42,540
+are neighbors in terms of their interested movies,
+
+26
+00:01:42,540 --> 00:01:47,725
+we can recommend a movie to the active user that her neighbor has already seen.
+
+27
+00:01:47,725 --> 00:01:53,040
+Now, let's dive into the algorithm to see how all of this works.
+
+28
+00:01:53,040 --> 00:01:56,760
+Assume that we have a simple user item matrix,
+
+29
+00:01:56,760 --> 00:02:01,275
+which shows the ratings of four users for five different movies.
+
+30
+00:02:01,275 --> 00:02:04,710
+Let's also assume that our active user has
+
+31
+00:02:04,710 --> 00:02:08,790
+watched and rated three out of these five movies.
+
+32
+00:02:08,790 --> 00:02:11,640
+Let's find out which of the two movies that
+
+33
+00:02:11,640 --> 00:02:15,750
+our active user hasn't watched should be recommended to her.
+
+34
+00:02:15,750 --> 00:02:18,720
+The first step is to discover how similar
+
+35
+00:02:18,720 --> 00:02:23,045
+the active user is to the other users. How do we do this?
+
+36
+00:02:23,045 --> 00:02:25,070
+Well, this can be done through
+
+37
+00:02:25,070 --> 00:02:29,060
+several different statistical and vectorial techniques such as
+
+38
+00:02:29,060 --> 00:02:33,515
+distance or similarity measurements including Euclidean Distance,
+
+39
+00:02:33,515 --> 00:02:38,080
+Pearson Correlation, Cosine Similarity, and so on.
+
+40
+00:02:38,080 --> 00:02:42,290
+To calculate the level of similarity between two users,
+
+41
+00:02:42,290 --> 00:02:46,700
+we use the three movies that both the users have rated in the past.
+
+42
+00:02:46,700 --> 00:02:49,960
+Regardless of what we use for similarity measurement,
+
+43
+00:02:49,960 --> 00:02:51,565
+let's say for example,
+
+44
+00:02:51,565 --> 00:02:55,325
+the similarity could be 0.7,
+
+45
+00:02:55,325 --> 00:03:02,450
+0.9, and 0.4 between the active user and other users.
+
+46
+00:03:02,450 --> 00:03:05,925
+These numbers represent similarity weights or
+
+47
+00:03:05,925 --> 00:03:10,910
+proximity of the active user to other users in the dataset.
+
+48
+00:03:10,910 --> 00:03:15,250
+The next step is to create a weighted rating matrix.
+
+49
+00:03:15,250 --> 00:03:21,035
+We just calculated the similarity of users to our active user in the previous slide.
+
+50
+00:03:21,035 --> 00:03:24,510
+Now, we can use it to calculate the possible opinion
+
+51
+00:03:24,510 --> 00:03:28,440
+of the active user about our two target movies.
+
+52
+00:03:28,440 --> 00:03:34,010
+This is achieved by multiplying the similarity weights to the user ratings.
+
+53
+00:03:34,010 --> 00:03:37,465
+It results in a weighted ratings matrix,
+
+54
+00:03:37,465 --> 00:03:40,810
+which represents the user's neighbors opinion
+
+55
+00:03:40,810 --> 00:03:44,615
+about are two candidate movies for recommendation.
+
+56
+00:03:44,615 --> 00:03:49,390
+In fact, it incorporates the behavior of other users and gives
+
+57
+00:03:49,390 --> 00:03:54,675
+more weight to the ratings of those users who are more similar to the active user.
+
+58
+00:03:54,675 --> 00:04:00,960
+Now, we can generate the recommendation matrix by aggregating all of the weighted rates.
+
+59
+00:04:00,960 --> 00:04:03,770
+However, as three users rated
+
+60
+00:04:03,770 --> 00:04:08,180
+the first potential movie and two users rated the second movie,
+
+61
+00:04:08,180 --> 00:04:11,520
+we have to normalize the weighted rating values.
+
+62
+00:04:11,520 --> 00:04:17,580
+We do this by dividing it by the sum of the similarity index for users.
+
+63
+00:04:17,580 --> 00:04:21,950
+The result is the potential rating that our active user will
+
+64
+00:04:21,950 --> 00:04:26,435
+give to these movies based on her similarity to other users.
+
+65
+00:04:26,435 --> 00:04:29,600
+It is obvious that we can use it to rank
+
+66
+00:04:29,600 --> 00:04:33,720
+the movies for providing recommendation to our active user.
+
+67
+00:04:33,720 --> 00:04:36,750
+Now, let's examine what's different
+
+68
+00:04:36,750 --> 00:04:40,780
+between user-based and item-based collaborative filtering.
+
+69
+00:04:40,780 --> 00:04:42,930
+In the user-based approach,
+
+70
+00:04:42,930 --> 00:04:45,030
+the recommendation is based on users of
+
+71
+00:04:45,030 --> 00:04:49,850
+the same neighborhood with whom he or she shares common preferences.
+
+72
+00:04:49,850 --> 00:04:56,565
+For example, as User 1 and User 3 both liked Item 3 and Item 4,
+
+73
+00:04:56,565 --> 00:05:00,715
+we consider them as similar or neighbor users,
+
+74
+00:05:00,715 --> 00:05:07,340
+and recommend Item 1 which is positively rated by User 1 to User 3.
+
+75
+00:05:07,340 --> 00:05:09,660
+In the item-based approach,
+
+76
+00:05:09,660 --> 00:05:13,820
+similar items build neighborhoods on the behavior of users.
+
+77
+00:05:13,820 --> 00:05:18,380
+Please note however, that it is not based on their contents.
+
+78
+00:05:18,380 --> 00:05:22,220
+For example, Item 1 and Item 3 are considered
+
+79
+00:05:22,220 --> 00:05:27,625
+neighbors as they were positively rated by both User 1 and User 2.
+
+80
+00:05:27,625 --> 00:05:34,735
+So, Item 1 can be recommended to User 3 as he has already shown interest in Item 3.
+
+81
+00:05:34,735 --> 00:05:38,040
+Therefore, the recommendations here are based on
+
+82
+00:05:38,040 --> 00:05:41,845
+the items in the neighborhood that a user might prefer.
+
+83
+00:05:41,845 --> 00:05:46,320
+Collaborative filtering is a very effective recommendation system.
+
+84
+00:05:46,320 --> 00:05:49,790
+However, there are some challenges with it as well.
+
+85
+00:05:49,790 --> 00:05:52,440
+One of them is data sparsity.
+
+86
+00:05:52,440 --> 00:05:55,800
+Data sparsity happens when you have a large data set of
+
+87
+00:05:55,800 --> 00:05:59,865
+users who generally rate only a limited number of items.
+
+88
+00:05:59,865 --> 00:06:04,110
+As mentioned, collaborative based recommenders can only
+
+89
+00:06:04,110 --> 00:06:08,400
+predict scoring of an item if there are other users who have rated it.
+
+90
+00:06:08,400 --> 00:06:12,810
+Due to sparsity, we might not have enough ratings in the user item
+
+91
+00:06:12,810 --> 00:06:17,610
+dataset which makes it impossible to provide proper recommendations.
+
+92
+00:06:17,610 --> 00:06:22,085
+Another issue to keep in mind is something called cold start.
+
+93
+00:06:22,085 --> 00:06:24,510
+Cold start refers to the difficulty
+
+94
+00:06:24,510 --> 00:06:28,020
+the recommendation system has when there is a new user,
+
+95
+00:06:28,020 --> 00:06:31,610
+and as such a profile doesn't exist for them yet.
+
+96
+00:06:31,610 --> 00:06:37,565
+Cold start can also happen when we have a new item which has not received a rating.
+
+97
+00:06:37,565 --> 00:06:40,815
+Scalability can become an issue as well.
+
+98
+00:06:40,815 --> 00:06:46,315
+As the number of users or items increases and the amount of data expands,
+
+99
+00:06:46,315 --> 00:06:51,405
+collaborative filtering algorithms will begin to suffer drops in performance,
+
+100
+00:06:51,405 --> 00:06:55,020
+simply due to growth and the similarity computation.
+
+101
+00:06:55,020 --> 00:06:58,315
+There are some solutions for each of these challenges
+
+102
+00:06:58,315 --> 00:07:01,510
+such as using hybrid based recommender systems,
+
+103
+00:07:01,510 --> 00:07:04,255
+but they are out of scope of this course.
+
+104
+00:07:04,255 --> 00:07:06,400
+Thanks for watching.
